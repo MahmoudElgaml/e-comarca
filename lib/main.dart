@@ -3,7 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'features/log_in/presentation/pages/login_screen.dart';
+import 'features/auth/presentation/pages/login_screen.dart';
+
 
 void main() {
   runApp(DevicePreview(

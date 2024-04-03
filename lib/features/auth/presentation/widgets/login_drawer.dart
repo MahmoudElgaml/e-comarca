@@ -1,7 +1,7 @@
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/core/utils/app_string.dart';
-import 'package:e_comarce_clean/features/log_in/presentation/widgets/coatume_button.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,6 +10,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../core/utils/app_style.dart';
 import '../pages/login_screen.dart';
+import 'coatume_button.dart';
 import 'costume_avatar.dart';
 import 'costume_text_filed.dart';
 
@@ -21,16 +22,14 @@ class LogInDrawer extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 281.h),
       //height: MediaQuery
-        //  .of(context)
-         // .size
-         // .height,
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
+      //  .of(context)
+      // .size
+      // .height,
+      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(32.r),topRight: Radius.circular(32.r)),
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(32.r), topRight: Radius.circular(32.r)),
       ),
       child: SingleChildScrollView(
         child: Padding(
@@ -73,16 +72,13 @@ class LogInDrawer extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    style: AppStyle.styleRegularOpacity,
-                      "NewUser? "
+                  Text(style: AppStyle.styleRegularOpacity, "NewUser? "),
+                  const Text(
+                    "Create Account",
+                    style: TextStyle(color: AppColor.authColor),
                   ),
-                  const Text("Create Account"
-                  ,style: TextStyle(color: AppColor.authColor),),
-
                 ],
               ),
-
             ],
           ),
         ),
@@ -90,6 +86,3 @@ class LogInDrawer extends StatelessWidget {
     );
   }
 }
-
-
-
