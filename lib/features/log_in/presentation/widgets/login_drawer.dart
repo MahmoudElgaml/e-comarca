@@ -1,4 +1,5 @@
 import 'package:e_comarce_clean/core/utils/app_color.dart';
+import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/core/utils/app_string.dart';
 import 'package:e_comarce_clean/features/log_in/presentation/widgets/coatume_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,6 +10,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../core/utils/app_style.dart';
 import '../pages/login_screen.dart';
+import 'costume_avatar.dart';
 import 'costume_text_filed.dart';
 
 class LogInDrawer extends StatelessWidget {
@@ -19,8 +21,14 @@ class LogInDrawer extends StatelessWidget {
     return Positioned(
       top: 281.h,
       child: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        height: MediaQuery
+            .of(context)
+            .size
+            .height,
+        width: MediaQuery
+            .of(context)
+            .size
+            .width,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(32.r),
@@ -46,8 +54,33 @@ class LogInDrawer extends StatelessWidget {
                 ),
               ),
               Gap(20.h),
-              const CostumeButton()
-
+              const CostumeButton(),
+              Gap(32.h),
+              Text(
+                style: AppStyle.styleRegularOpacity,
+                "or Log in With",
+              ),
+              Gap(28.h),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CostumeAvatar(AppImages.google),
+                  CostumeAvatar(AppImages.faceBook),
+                  CostumeAvatar(AppImages.apple)
+                ],
+              ),
+              Gap(28.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    style: AppStyle.styleRegularOpacity,
+                      "NewUser? "
+                  ),
+                  Text("Create Account"
+                  ,style: TextStyle(color: AppColor.authColor),)
+                ],
+              )
             ],
           ),
         ),
@@ -55,3 +88,6 @@ class LogInDrawer extends StatelessWidget {
     );
   }
 }
+
+
+
