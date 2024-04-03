@@ -18,21 +18,21 @@ class LogInDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: 281.h,
-      child: Container(
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
-        width: MediaQuery
-            .of(context)
-            .size
-            .width,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(32.r),
-        ),
+    return Container(
+      margin: EdgeInsets.only(top: 281.h),
+      //height: MediaQuery
+        //  .of(context)
+         // .size
+         // .height,
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(32.r),topRight: Radius.circular(32.r)),
+      ),
+      child: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 30.h, left: 36.w, right: 36.w),
           child: Column(
@@ -77,10 +77,12 @@ class LogInDrawer extends StatelessWidget {
                     style: AppStyle.styleRegularOpacity,
                       "NewUser? "
                   ),
-                  Text("Create Account"
-                  ,style: TextStyle(color: AppColor.authColor),)
+                  const Text("Create Account"
+                  ,style: TextStyle(color: AppColor.authColor),),
+
                 ],
-              )
+              ),
+
             ],
           ),
         ),
