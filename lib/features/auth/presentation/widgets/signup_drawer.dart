@@ -55,7 +55,7 @@ class SignUpDrawer extends StatelessWidget {
               Gap(32.h),
               Text(
                 style: AppStyle.styleRegularOpacity,
-                "or Log in With",
+                "or Sign Un With",
               ),
               Gap(28.h),
               const SocialButton(),
@@ -63,13 +63,19 @@ class SignUpDrawer extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(style: AppStyle.styleRegularOpacity, "NewUser? "),
-                  const Text(
-                    "Create Account",
-                    style: TextStyle(color: AppColor.authColor),
+                  Text(style: AppStyle.styleRegularOpacity, "Existing User? "),
+                  InkWell(
+                    onTap: () {
+
+                    },
+                    child: const Text(
+                      "Log in",
+                      style: TextStyle(color: AppColor.authColor),
+                    ),
                   ),
                 ],
               ),
+              const Gap(10),
             ],
           ),
         ),

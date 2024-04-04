@@ -1,6 +1,9 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:e_comarce_clean/features/auth/presentation/widgets/signup_drawer.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_images.dart';
@@ -22,7 +25,23 @@ class SignUpScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 88.h, left: 36.w),
-                  child: Image.asset(AppImages.bubbleTextSign),
+                  child: Column(
+                    children: [
+                      Image.asset(AppImages.bubbleTextSign),
+                      const Gap(16),
+                      DefaultTextStyle(
+                        style:  TextStyle(
+                          fontSize: 24.0.sp,
+                        ),
+                        child: AnimatedTextKit(
+                          animatedTexts: [
+                            WavyAnimatedText('Getting Start!'),
+                          ],
+                          onTap: () {},
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 40.h),
