@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_style.dart';
 
 class CostumeButton extends StatelessWidget {
-  const CostumeButton({super.key});
+  const CostumeButton({required this.title, super.key});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class CostumeButton extends StatelessWidget {
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent),
         child: Text(
-          "Login",
+          title,
           style: AppStyle.styleWhite,
         ),
       ),

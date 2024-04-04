@@ -33,6 +33,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   gap: ^3.0.1
   device_preview: ^1.1.0
+  flutter_animate: ^4.5.0
 
 
   # The following adds the Cupertino Icons font to your application.

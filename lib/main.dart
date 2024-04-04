@@ -1,4 +1,5 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:e_comarce_clean/features/auth/presentation/pages/sign_up_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           builder: DevicePreview.appBuilder,
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          home: const LoginScreen(),
+          home: const SignUpScreen(),
         );
       },
 

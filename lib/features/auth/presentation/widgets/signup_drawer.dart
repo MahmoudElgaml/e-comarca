@@ -1,22 +1,16 @@
-import 'package:e_comarce_clean/core/utils/app_color.dart';
-import 'package:e_comarce_clean/core/utils/app_images.dart';
-import 'package:e_comarce_clean/core/utils/app_string.dart';
 import 'package:e_comarce_clean/features/auth/presentation/widgets/social_button.dart';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../core/utils/app_color.dart';
+import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/app_style.dart';
-import '../pages/login_screen.dart';
 import 'coatume_button.dart';
-import 'costume_avatar.dart';
 import 'costume_text_filed.dart';
 
-class LogInDrawer extends StatelessWidget {
-  const LogInDrawer({super.key});
+class SignUpDrawer extends StatelessWidget {
+  const SignUpDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +30,19 @@ class LogInDrawer extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Login",
+                "Sign Up",
                 style: AppStyle.style34,
               ),
               Gap(32.h),
-              const CostumeTextFiled(title: "Email"),
+              const CostumeTextFiled(title: "Full Name"),
               Gap(32.h),
-              const CostumeTextFiled(title: "password"),
+              const CostumeTextFiled(title: "Mobile Number"),
               Gap(20.h),
+              const CostumeTextFiled(title: "Email"),
+              Gap(20.h),
+              const CostumeTextFiled(title: "Password"),
+              Gap(20.h),
+
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -52,7 +51,7 @@ class LogInDrawer extends StatelessWidget {
                 ),
               ),
               Gap(20.h),
-              const CostumeButton(title: 'Login',),
+              const CostumeButton(title: "SignUP"),
               Gap(32.h),
               Text(
                 style: AppStyle.styleRegularOpacity,
