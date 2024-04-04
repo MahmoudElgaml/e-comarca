@@ -1,3 +1,4 @@
+import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/core/utils/app_string.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_style.dart';
 import '../pages/login_screen.dart';
@@ -21,6 +23,7 @@ class LogInDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: MediaQuery.of(context).size.height,
       margin: EdgeInsets.only(top: 281.h),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
@@ -52,7 +55,9 @@ class LogInDrawer extends StatelessWidget {
                 ),
               ),
               Gap(20.h),
-              const CostumeButton(title: 'Login',),
+              const CostumeButton(
+                title: 'Login',
+              ),
               Gap(32.h),
               Text(
                 style: AppStyle.styleRegularOpacity,
@@ -64,10 +69,16 @@ class LogInDrawer extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(style: AppStyle.styleRegularOpacity, "NewUser? "),
-                  const Text(
-                    "Create Account",
-                    style: TextStyle(color: AppColor.authColor),
+                  Text(
+                    style: AppStyle.styleRegularOpacity,
+                    "NewUser? ",
+                  ),
+                  InkWell(
+                    onTap: () => context.go(AppRoute.signUPScreen),
+                    child: const Text(
+                      "Create Account",
+                      style: TextStyle(color: AppColor.authColor),
+                    ),
                   ),
                 ],
               ),

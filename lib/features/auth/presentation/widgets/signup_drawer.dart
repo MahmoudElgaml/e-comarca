@@ -1,7 +1,9 @@
+import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/features/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
@@ -16,6 +18,7 @@ class SignUpDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 281.h),
+      height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -42,7 +45,6 @@ class SignUpDrawer extends StatelessWidget {
               Gap(20.h),
               const CostumeTextFiled(title: "Password"),
               Gap(20.h),
-
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -66,7 +68,7 @@ class SignUpDrawer extends StatelessWidget {
                   Text(style: AppStyle.styleRegularOpacity, "Existing User? "),
                   InkWell(
                     onTap: () {
-
+                      context.go(AppRoute.loginScreen);
                     },
                     child: const Text(
                       "Log in",

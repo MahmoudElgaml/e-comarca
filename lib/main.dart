@@ -1,4 +1,5 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/features/auth/presentation/pages/sign_up_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -25,13 +26,14 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return  MaterialApp(
+        return  MaterialApp.router(
           useInheritedMediaQuery: true,
           locale: DevicePreview.locale(context),
           builder: DevicePreview.appBuilder,
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          home: const SignUpScreen(),
+          routerConfig: AppRoute.router,
+
         );
       },
 
