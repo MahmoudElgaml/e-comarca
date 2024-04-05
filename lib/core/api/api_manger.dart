@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:e_comarce_clean/core/api/end_points.dart';
 
-abstract class APiManger{
+ class APiManger{
 final Dio dio;
 
 APiManger(this.dio);

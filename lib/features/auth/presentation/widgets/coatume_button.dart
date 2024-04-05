@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_style.dart';
 
 class CostumeButton extends StatelessWidget {
-  const CostumeButton({required this.title, super.key});
-
+   CostumeButton({required this.title,this.onPressed, super.key});
+  void Function()? onPressed;
   final String title;
 
   @override
@@ -22,7 +22,7 @@ class CostumeButton extends StatelessWidget {
             colors: [Color(0xff8658E8), Color(0xff4718AD)],
           )),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed ,
         style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent),

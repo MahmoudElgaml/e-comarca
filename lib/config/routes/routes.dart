@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 class AppRoute {
   static const String loginScreen = "/";
   static const String signUPScreen = "/sign";
+  static const String testScreen = "/test";
 
   static final router = GoRouter(
     routes: [
@@ -16,6 +17,9 @@ class AppRoute {
       GoRoute(
         path: signUPScreen,
         builder: (context, state) => const SignUpScreen(),
+      ),GoRoute(
+        path: testScreen,
+        builder: (context, state) => const TestScteen(),
       ),
     ],
   );
