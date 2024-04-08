@@ -6,4 +6,5 @@ import '../../models/UserModel.dart';
 
 abstract class AuthRemoteDataSource{
  Future<Either<Failure,UserModel>> signUp(SignUserModel signUserModel);
+ Future<Either<Failure,UserModel>> logIn({required String email, required String password});
 }

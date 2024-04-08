@@ -16,6 +16,7 @@ class UserModel extends UserEntity {
   String? message;
 
 
+  @override
   UserModel copyWith({
     String? message,
     User? user,
@@ -55,6 +56,7 @@ class UserData extends User {
 
   String? role;
 
+  @override
   User copyWith({
     String? name,
     String? email,
@@ -66,6 +68,7 @@ class UserData extends User {
         role: role ?? this.role,
       );
 
+  @override
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['name'] = name;

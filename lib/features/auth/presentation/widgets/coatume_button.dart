@@ -1,10 +1,16 @@
+import 'package:e_comarce_clean/config/routes/routes.dart';
+import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
+import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_style.dart';
 
 class CostumeButton extends StatelessWidget {
-   CostumeButton({required this.title,this.onPressed, super.key});
+  CostumeButton({required this.title, this.onPressed, super.key});
+
   void Function()? onPressed;
   final String title;
 
@@ -22,13 +28,28 @@ class CostumeButton extends StatelessWidget {
             colors: [Color(0xff8658E8), Color(0xff4718AD)],
           )),
       child: ElevatedButton(
-        onPressed: onPressed ,
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent),
-        child: Text(
-          title,
-          style: AppStyle.styleWhite,
+        child: BlocConsumer<AuthCubit, AuthState>(
+          listener: (context, state) {
+            if(state is AuthSuccessState){
+              context.go(AppRoute.testScreen);
+            }
+          },
+          builder: (context, state) {
+            if(state is AuthLoadingState){
+              return const Center(child: CircularProgressIndicator());
+            }
+            else if(state is AuthFailState){
+              return const Text("error");
+            }
+            return Text(
+              title,
+              style: AppStyle.styleWhite,
+            );
+          },
         ),
       ),
     );

@@ -18,5 +18,10 @@ class AuthRepoImpl implements AuthRepo{
 
   }
 
+  @override
+  Future<Either<Failure, UserEntity>> logIn({required String email, required String password}) async{
+    return await authRemoteDataSource.logIn(email: email, password: password);
+  }
+
 
 }

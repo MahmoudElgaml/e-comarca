@@ -7,6 +7,7 @@ import '../entities/UserEntity.dart';
 
 abstract class AuthRepo{
    Future<Either<Failure,UserEntity>> signUP(SignUserModel signUserModel);
+   Future<Either<Failure,UserEntity>> logIn({required String email, required String password});
 
 
 }

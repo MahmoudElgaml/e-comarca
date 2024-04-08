@@ -1,20 +1,16 @@
 import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/core/utils/app_color.dart';
-import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/core/utils/app_string.dart';
+import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:e_comarce_clean/features/auth/presentation/widgets/social_button.dart';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_style.dart';
-import '../pages/login_screen.dart';
 import 'coatume_button.dart';
-import 'costume_avatar.dart';
 import 'costume_text_filed.dart';
 
 class LogInDrawer extends StatelessWidget {
@@ -55,8 +51,12 @@ class LogInDrawer extends StatelessWidget {
                 ),
               ),
               Gap(20.h),
-               CostumeButton(
+              CostumeButton(
                 title: 'Login',
+                onPressed: () => AuthCubit.get(context).logIn(
+                  email: "mahmoudelgaml@gmail.com",
+                  password: "123456789",
+                ),
               ),
               Gap(32.h),
               Text(

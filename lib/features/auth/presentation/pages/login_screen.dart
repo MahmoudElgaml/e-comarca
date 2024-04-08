@@ -1,12 +1,12 @@
+import 'dart:ffi';
+
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_images.dart';
-import 'package:e_comarce_clean/core/utils/app_style.dart';
+import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gap/gap.dart';
 
 import '../widgets/login_drawer.dart';
 
