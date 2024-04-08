@@ -8,14 +8,30 @@ class AppStyle {
     fontSize: 34.sp,
     fontWeight: FontWeight.bold,
   );
+
   static TextStyle styleRegularOpacity = TextStyle(
     color: Colors.black.withOpacity(.3),
     fontWeight: FontWeight.bold,
   );
+
+  static TextStyle style18 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle style14 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  static TextStyle style12 = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+  );
+
   static TextStyle styleWhite = TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.bold,
-    fontSize: 17.sp
+    fontSize: 17.sp,
   );
-
 }

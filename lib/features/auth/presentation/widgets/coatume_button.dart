@@ -35,7 +35,7 @@ class CostumeButton extends StatelessWidget {
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             if(state is AuthSuccessState){
-              context.go(AppRoute.testScreen);
+              context.go(AppRoute.homeScreen);
             }
           },
           builder: (context, state) {
