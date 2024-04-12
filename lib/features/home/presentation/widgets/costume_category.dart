@@ -9,32 +9,32 @@ class CostumeCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-
-      height: 144.h,
-      width: 100.w,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            width: 100.w,
-            height: 100.h,
-            decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: Image.asset(
-              AppImages.categoryTest,
-              fit: BoxFit.fill,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          width: 80.w,
+          height: 80.h,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
           ),
-          Text(
+          child: Image.asset(
+            AppImages.categoryTest,
+            fit: BoxFit.fill,
+          ),
+        ),
+        SizedBox(
+          width: 65.w,
+          child: Text(
             "women fashion ",
             style: AppStyle.style14
                 .copyWith(fontSize: 14.sp, fontWeight: FontWeight.w400),
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }

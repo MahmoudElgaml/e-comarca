@@ -1,9 +1,17 @@
+import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/core/utils/app_string.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
+import 'package:e_comarce_clean/features/home/presentation/widgets/costume_appbar.dart';
 import 'package:e_comarce_clean/features/home/presentation/widgets/costume_category.dart';
+import 'package:e_comarce_clean/features/home/presentation/widgets/title_row.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
+
+import '../widgets/costume_offer_image.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,48 +23,37 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         body: Padding(
           padding: EdgeInsets.only(
-            left: 16.w,
-            right: 16.w,
-            top: 112.h,
+            top: 9.h,
+            left: 17.w,
+            right: 17.w,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const CostumeAppBar(),
+              Gap(16.h),
               const CostumeOfferImage(),
-              Text(
-                AppString.category,
-                style: AppStyle.style18,
-              ),
+              Gap(24.h),
+             const TitleRow(),
+              Gap(16.h),
               SizedBox(
-                height: 300.h,
+                height: 320.h,
                 width: 412.w,
                 child: GridView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  padding: EdgeInsets.zero,
                   scrollDirection: Axis.horizontal,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                        ),
-                    itemBuilder: (context, index) => CostumeCategory(),itemCount: 20,),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 1.2,
+                    crossAxisCount: 2,
+                  ),
+                  itemBuilder: (context, index) => const CostumeCategory(),
+                  itemCount: 20,
+                ),
               )
-
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class CostumeOfferImage extends StatelessWidget {
-  const CostumeOfferImage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Image.asset(
-        fit: BoxFit.fill,
-        AppImages.offerPhoto,
-        height: 200.h,
-        width: 398.w,
       ),
     );
   }
