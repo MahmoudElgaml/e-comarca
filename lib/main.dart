@@ -19,10 +19,7 @@ import 'features/auth/domain/use_cases/sign_up_usecase.dart';
 void main() {
   Bloc.observer = MyBlocObserver();
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(), // Wrap your app
-    ),
+    const MyApp(),
   );
 }
 
@@ -58,9 +55,7 @@ class MyApp extends StatelessWidget {
                 ),
               )),
           child: MaterialApp.router(
-            useInheritedMediaQuery: true,
-            locale: DevicePreview.locale(context),
-            builder: DevicePreview.appBuilder,
+
             debugShowCheckedModeBanner: false,
             theme: MyLightTheme.myLightTheme,
             title: 'Flutter Demo',
