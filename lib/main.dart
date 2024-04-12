@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
 import 'package:e_comarce_clean/config/routes/routes.dart';
+import 'package:e_comarce_clean/config/themeing/light_theme.dart';
 import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
             locale: DevicePreview.locale(context),
             builder: DevicePreview.appBuilder,
             debugShowCheckedModeBanner: false,
+            theme: MyLightTheme.myLightTheme,
             title: 'Flutter Demo',
             routerConfig: AppRoute.router,
           ),

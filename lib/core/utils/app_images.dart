@@ -5,5 +5,8 @@ class AppImages{
   static const String google="assets/images/google.png";
   static const String apple="assets/images/apple.png";
   static const String bubbleTextSign="assets/images/bubble_text_sign.png";
+  static const String offerPhoto="assets/images/offer_photo.png";
+  static const String categoryTest="assets/images/category_test.png";
+  static const String logo="assets/images/logo.png";
 
 }
