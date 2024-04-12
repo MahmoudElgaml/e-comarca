@@ -15,11 +15,13 @@ class AppStyle {
   );
 
   static TextStyle style18 = TextStyle(
+    color: Colors.black,
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
   );
 
   static TextStyle style14 = TextStyle(
+    color: Colors.black,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
   );
@@ -33,5 +35,10 @@ class AppStyle {
     color: Colors.white,
     fontWeight: FontWeight.bold,
     fontSize: 17.sp,
+  );
+  static TextStyle style20 = TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.w300,
+    fontSize: 20.sp,
   );
 }
