@@ -2,7 +2,7 @@ import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/features/cart_feature/presentation/widgets/product_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:gap/gap.dart';
 
 class ProductCart extends StatelessWidget {
@@ -13,7 +13,7 @@ class ProductCart extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15.r),
+        borderRadius: BorderRadius.circular(15),
         border: Border.all(
           color: AppColor.primaryColor,
         ),
@@ -21,9 +21,9 @@ class ProductCart extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 120.w,
+            width: 120,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.r),
+              borderRadius: BorderRadius.circular(15),
               border: Border.all(
                 color: AppColor.primaryColor,
               ),
@@ -33,8 +33,8 @@ class ProductCart extends StatelessWidget {
               fit: BoxFit.fill,
             ),
           ),
-          Gap(8.w),
-          ProductDetail()
+          const Gap(8),
+          const ProductDetail()
         ],
       ),
     );

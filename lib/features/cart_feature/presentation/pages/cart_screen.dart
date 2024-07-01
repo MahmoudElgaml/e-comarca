@@ -2,7 +2,7 @@ import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
 import 'package:e_comarce_clean/features/cart_feature/presentation/widgets/product_cart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -44,8 +44,8 @@ class CartScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.white,
-      body: Padding(
-        padding:  EdgeInsets.only(top: 32.h,left: 16.w,right: 16.w),
+      body: const Padding(
+        padding:  EdgeInsets.only(top: 32,left: 16,right: 16),
         child: Column(
           children: [
             ProductCart(),

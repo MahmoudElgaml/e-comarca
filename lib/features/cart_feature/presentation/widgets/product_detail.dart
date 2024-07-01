@@ -1,6 +1,6 @@
 import 'package:e_comarce_clean/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:gap/gap.dart';
 
 class ProductDetail extends StatelessWidget {
@@ -15,16 +15,16 @@ class ProductDetail extends StatelessWidget {
           "Nike Air Jordon",
           style: AppStyle.style18,
         ),
-        Gap(13.h),
+        Gap(13),
         Row(
           children: [
             Container(
-              width: 15.w,
-              height: 15.h,
+              width: 15,
+              height: 15,
               decoration: const BoxDecoration(
                   color: Colors.red, shape: BoxShape.circle),
             ),
-            Gap(8.w),
+            Gap(8),
             Text(
               "Orange | Size: 40",
               style: AppStyle.style18
@@ -32,7 +32,7 @@ class ProductDetail extends StatelessWidget {
             ),
           ],
         ),
-        Gap(16.h),
+        Gap(16),
         Text(
           "EGP 3,500",
           style: AppStyle.style18,
