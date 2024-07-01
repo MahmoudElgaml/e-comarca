@@ -5,7 +5,7 @@ import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.da
 import 'package:e_comarce_clean/features/auth/presentation/widgets/social_button.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,29 +20,29 @@ class LogInDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height,
-      margin: EdgeInsets.only(top: 281.h),
+      margin: const EdgeInsets.only(top: 281),
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(32.r),
-          topRight: Radius.circular(32.r),
+          topLeft: Radius.circular(32),
+          topRight: Radius.circular(32),
         ),
       ),
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 30.h, left: 36.w, right: 36.w),
+          padding: const EdgeInsets.only(top: 30, left: 36, right: 36),
           child: Column(
             children: [
               Text(
                 "Login",
                 style: AppStyle.style34,
               ),
-              Gap(32.h),
+              Gap(32),
               const CostumeTextFiled(title: "Email"),
-              Gap(32.h),
+              Gap(32),
               const CostumeTextFiled(title: "password"),
-              Gap(20.h),
+              Gap(20),
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -50,7 +50,7 @@ class LogInDrawer extends StatelessWidget {
                   AppString.helpMessage,
                 ),
               ),
-              Gap(20.h),
+              const Gap(20),
               CostumeButton(
                 title: 'Login',
                 onPressed: () => AuthCubit.get(context).logIn(
@@ -58,14 +58,14 @@ class LogInDrawer extends StatelessWidget {
                   password: "123456789",
                 ),
               ),
-              Gap(32.h),
+              const Gap(32),
               Text(
                 style: AppStyle.styleRegularOpacity,
                 "or Log in With",
               ),
-              Gap(28.h),
+              const Gap(28),
               const SocialButton(),
-              Gap(28.h),
+              const Gap(28),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
