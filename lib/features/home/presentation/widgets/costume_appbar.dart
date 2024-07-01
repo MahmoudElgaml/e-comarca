@@ -23,10 +23,15 @@ class CostumeAppBar extends StatelessWidget {
             Expanded(
               child: TextField(
                 decoration: InputDecoration(
-
-                  prefixIcon: const Icon(Icons.search,color: AppColor.primaryColor,size: 35,),
-                  hintText:AppString.helperSearchText,
-                  hintStyle: AppStyle.style14(context).copyWith(color: Colors.black.withOpacity(0.3),),
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    color: AppColor.primaryColor,
+                    size: 35,
+                  ),
+                  hintText: AppString.helperSearchText,
+                  hintStyle: AppStyle.style14(context).copyWith(
+                    color: Colors.black.withOpacity(0.3),
+                  ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
                     borderSide: const BorderSide(color: AppColor.primaryColor),
