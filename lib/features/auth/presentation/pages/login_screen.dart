@@ -6,7 +6,7 @@ import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.da
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 import '../widgets/login_drawer.dart';
 
@@ -26,11 +26,11 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 88.h, left: 36.w),
+                  padding: EdgeInsets.only(top: 88, left: 36),
                   child: Image.asset(AppImages.bubbleText),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 40.h),
+                  padding: EdgeInsets.only(top: 40),
                   child: Image.asset(AppImages.login_logo),
                 ),
               ],
