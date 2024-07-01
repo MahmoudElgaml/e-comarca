@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CostumeTextFiled extends StatelessWidget {
   const CostumeTextFiled({required this.title, super.key});
@@ -11,7 +10,10 @@ class CostumeTextFiled extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title,style: TextStyle(fontSize: 13.sp),),
+        Text(
+          title,
+          style: const TextStyle(fontSize: 13),
+        ),
         const TextField(
           decoration: InputDecoration(),
         )
