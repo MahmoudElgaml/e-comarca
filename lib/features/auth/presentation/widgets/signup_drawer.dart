@@ -4,7 +4,7 @@ import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.da
 import 'package:e_comarce_clean/features/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -37,34 +37,34 @@ class SignUpDrawer extends StatelessWidget {
           );
         }
         return Container(
-          margin: EdgeInsets.only(top: 281.h),
+          margin: const EdgeInsets.only(top: 281),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(32.r),
-              topRight: Radius.circular(32.r),
+              topLeft: Radius.circular(32),
+              topRight: Radius.circular(32),
             ),
           ),
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.only(top: 30.h, left: 36.w, right: 36.w),
+              padding: const EdgeInsets.only(top: 30, left: 36, right: 36),
               child: Column(
                 children: [
                   Text(
                     "Sign Up",
                     style: AppStyle.style34,
                   ),
-                  Gap(32.h),
+                  const Gap(32),
                   const CostumeTextFiled(title: "Full Name"),
-                  Gap(32.h),
+                  const Gap(32),
                   const CostumeTextFiled(title: "Mobile Number"),
-                  Gap(20.h),
+                  const Gap(20),
                   const CostumeTextFiled(title: "Email"),
-                  Gap(20.h),
+                  const Gap(20),
                   const CostumeTextFiled(title: "Password"),
-                  Gap(20.h),
+                  const Gap(20),
                   Align(
                     alignment: Alignment.centerRight,
                     child: Text(
@@ -72,7 +72,7 @@ class SignUpDrawer extends StatelessWidget {
                       AppString.helpMessage,
                     ),
                   ),
-                  Gap(20.h),
+                  const Gap(20),
                   CostumeButton(
                     title: "SignUP",
                     onPressed: () => AuthCubit.get(context).signUp(
@@ -83,14 +83,14 @@ class SignUpDrawer extends StatelessWidget {
                             phone: "01061746848",
                             rePassword: "1234567895")),
                   ),
-                  Gap(32.h),
+                  const Gap(32),
                   Text(
                     style: AppStyle.styleRegularOpacity,
                     "or Sign Un With",
                   ),
-                  Gap(28.h),
+                  const Gap(28),
                   const SocialButton(),
-                  Gap(28.h),
+                  const Gap(28),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

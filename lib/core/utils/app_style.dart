@@ -1,11 +1,11 @@
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class AppStyle {
-  static TextStyle style34 = TextStyle(
+  static TextStyle style34 = const TextStyle(
     color: AppColor.authColor,
-    fontSize: 34.sp,
+    fontSize: 34,
     fontWeight: FontWeight.bold,
   );
 
@@ -14,24 +14,31 @@ class AppStyle {
     fontWeight: FontWeight.bold,
   );
 
-  static TextStyle style18 = TextStyle(
-    fontSize: 18.sp,
+  static TextStyle style18 = const TextStyle(
+    color: Colors.black,
+    fontSize: 18,
     fontWeight: FontWeight.w500,
   );
 
-  static TextStyle style14 = TextStyle(
-    fontSize: 14.sp,
+  static TextStyle style14 = const TextStyle(
+    color: Colors.black,
+    fontSize: 14,
     fontWeight: FontWeight.w400,
   );
 
-  static TextStyle style12 = TextStyle(
-    fontSize: 12.sp,
+  static TextStyle style12 = const TextStyle(
+    fontSize: 12,
     fontWeight: FontWeight.w400,
   );
 
-  static TextStyle styleWhite = TextStyle(
+  static TextStyle styleWhite = const TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.bold,
-    fontSize: 17.sp,
+    fontSize: 17,
+  );
+  static TextStyle style20 = const TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.w300,
+    fontSize: 20,
   );
 }
