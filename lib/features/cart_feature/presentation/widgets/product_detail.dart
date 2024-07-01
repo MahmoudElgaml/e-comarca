@@ -13,7 +13,7 @@ class ProductDetail extends StatelessWidget {
       children: [
         Text(
           "Nike Air Jordon",
-          style: AppStyle.style18,
+          style: AppStyle.style18(context),
         ),
         Gap(13),
         Row(
@@ -27,7 +27,7 @@ class ProductDetail extends StatelessWidget {
             Gap(8),
             Text(
               "Orange | Size: 40",
-              style: AppStyle.style18
+              style: AppStyle.style18(context)
                   .copyWith(color: Colors.black.withOpacity(.3)),
             ),
           ],
@@ -35,7 +35,7 @@ class ProductDetail extends StatelessWidget {
         Gap(16),
         Text(
           "EGP 3,500",
-          style: AppStyle.style18,
+          style: AppStyle.style18(context),
         ),
       ],
     );

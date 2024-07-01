@@ -47,7 +47,7 @@ class CostumeButton extends StatelessWidget {
             }
             return Text(
               title,
-              style: AppStyle.styleWhite,
+              style: AppStyle.styleWhite(context),
             );
           },
         ),

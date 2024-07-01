@@ -14,13 +14,14 @@ class TitleRow extends StatelessWidget {
       children: [
         Text(
           AppString.category,
-          style: AppStyle.style18,
+          style: AppStyle.style18(context),
         ),
         TextButton(
             onPressed: () {},
             child: Text(
               "View all",
-              style: AppStyle.style14.copyWith(color: AppColor.primaryColor),
+              style: AppStyle.style14(context)
+                  .copyWith(color: AppColor.primaryColor),
             ))
       ],
     );

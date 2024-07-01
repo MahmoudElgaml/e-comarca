@@ -36,7 +36,7 @@ class LogInDrawer extends StatelessWidget {
             children: [
               Text(
                 "Login",
-                style: AppStyle.style34,
+                style: AppStyle.style34(context),
               ),
               Gap(32),
               const CostumeTextFiled(title: "Email"),
@@ -46,7 +46,7 @@ class LogInDrawer extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  style: AppStyle.styleRegularOpacity,
+                  style: AppStyle.styleRegularOpacity(context),
                   AppString.helpMessage,
                 ),
               ),
@@ -60,7 +60,7 @@ class LogInDrawer extends StatelessWidget {
               ),
               const Gap(32),
               Text(
-                style: AppStyle.styleRegularOpacity,
+                style: AppStyle.styleRegularOpacity(context),
                 "or Log in With",
               ),
               const Gap(28),
@@ -70,7 +70,7 @@ class LogInDrawer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    style: AppStyle.styleRegularOpacity,
+                    style: AppStyle.styleRegularOpacity(context),
                     "NewUser? ",
                   ),
                   InkWell(

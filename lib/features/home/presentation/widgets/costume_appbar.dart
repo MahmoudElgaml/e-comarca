@@ -26,7 +26,7 @@ class CostumeAppBar extends StatelessWidget {
 
                   prefixIcon: const Icon(Icons.search,color: AppColor.primaryColor,size: 35,),
                   hintText:AppString.helperSearchText,
-                  hintStyle: AppStyle.style14.copyWith(color: Colors.black.withOpacity(0.3),),
+                  hintStyle: AppStyle.style14(context).copyWith(color: Colors.black.withOpacity(0.3),),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
                     borderSide: const BorderSide(color: AppColor.primaryColor),
