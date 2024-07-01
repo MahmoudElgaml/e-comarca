@@ -8,5 +8,6 @@ class AppImages{
   static const String offerPhoto="assets/images/offer_photo.png";
   static const String categoryTest="assets/images/category_test.png";
   static const String logo="assets/images/logo.png";
+  static const String cartTest="assets/images/Frame 65.png";
 
 }
