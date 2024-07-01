@@ -8,7 +8,7 @@ import 'package:e_comarce_clean/features/home/presentation/widgets/title_row.dar
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:gap/gap.dart';
 
 import '../widgets/costume_offer_image.dart';
@@ -22,23 +22,23 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Padding(
-          padding: EdgeInsets.only(
-            top: 9.h,
-            left: 17.w,
-            right: 17.w,
+          padding: const EdgeInsets.only(
+            top: 9,
+            left: 17,
+            right: 17,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CostumeAppBar(),
-              Gap(16.h),
+              const Gap(16),
               const CostumeOfferImage(),
-              Gap(24.h),
+              const Gap(24),
              const TitleRow(),
-              Gap(16.h),
+              const Gap(16),
               SizedBox(
-                height: 320.h,
-                width: 412.w,
+                height: 320,
+                width: 412,
                 child: GridView.builder(
                   physics: const BouncingScrollPhysics(),
                   padding: EdgeInsets.zero,
