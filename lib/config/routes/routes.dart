@@ -6,10 +6,10 @@ import 'package:e_comarce_clean/features/home/presentation/pages/home_feature_sc
 import 'package:go_router/go_router.dart';
 
 class AppRoute {
-  static const String loginScreen = "/login";
+  static const String loginScreen = "/";
   static const String signUPScreen = "/sign";
   static const String homeScreen = "/home";
-  static const String cartScreen = "/";
+  static const String cartScreen = "/cart";
 
   static final router = GoRouter(
     routes: [

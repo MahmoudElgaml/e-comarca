@@ -3,7 +3,7 @@ import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.da
 import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_style.dart';
@@ -18,13 +18,13 @@ class CostumeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 68.h,
-      decoration: BoxDecoration(
+      height: 68,
+      decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(10.r),
-              topLeft: Radius.circular(10.r),
-              topRight: Radius.circular(10.r)),
-          gradient: const LinearGradient(
+              bottomLeft: Radius.circular(10),
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10)),
+          gradient: LinearGradient(
             colors: [Color(0xff8658E8), Color(0xff4718AD)],
           )),
       child: ElevatedButton(
