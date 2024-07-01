@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "394728838570",
+    "project_id": "e-comarce-6d13f",
+    "storage_bucket": "e-comarce-6d13f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394728838570:android:41033d95517a51668387d3",
+        "android_client_info": {
+          "package_name": "com.example.e_comarce_clean"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCizFzVN8CZaoLv-_m9ccRiqBGiFKFSH24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
