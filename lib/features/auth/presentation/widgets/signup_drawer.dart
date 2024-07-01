@@ -54,7 +54,7 @@ class SignUpDrawer extends StatelessWidget {
                 children: [
                   Text(
                     "Sign Up",
-                    style: AppStyle.style34,
+                    style: AppStyle.style34(context),
                   ),
                   const Gap(32),
                   const CostumeTextFiled(title: "Full Name"),
@@ -68,7 +68,7 @@ class SignUpDrawer extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      style: AppStyle.styleRegularOpacity,
+                      style: AppStyle.styleRegularOpacity(context),
                       AppString.helpMessage,
                     ),
                   ),
@@ -85,7 +85,7 @@ class SignUpDrawer extends StatelessWidget {
                   ),
                   const Gap(32),
                   Text(
-                    style: AppStyle.styleRegularOpacity,
+                    style: AppStyle.styleRegularOpacity(context),
                     "or Sign Un With",
                   ),
                   const Gap(28),
@@ -95,7 +95,7 @@ class SignUpDrawer extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                          style: AppStyle.styleRegularOpacity,
+                          style: AppStyle.styleRegularOpacity(context),
                           "Existing User? "),
                       InkWell(
                         onTap: () {

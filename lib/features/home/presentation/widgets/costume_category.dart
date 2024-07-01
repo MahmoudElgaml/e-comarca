@@ -27,7 +27,7 @@ class CostumeCategory extends StatelessWidget {
           width: 65,
           child: Text(
             "women fashion ",
-            style: AppStyle.style14
+            style: AppStyle.style14(context)
                 .copyWith(fontSize: 14, fontWeight: FontWeight.w400),
             textAlign: TextAlign.center,
             maxLines: 2,
