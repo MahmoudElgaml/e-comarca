@@ -10,7 +10,7 @@ import 'package:e_comarce_clean/features/auth/presentation/widgets/signup_drawer
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:gap/gap.dart';
 
 import '../../../../core/utils/app_color.dart';
@@ -32,14 +32,14 @@ class SignUpScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 88.h, left: 36.w),
+                  padding: EdgeInsets.only(top: 88, left: 36),
                   child: Column(
                     children: [
                       Image.asset(AppImages.bubbleTextSign),
                       const Gap(16),
                       DefaultTextStyle(
                         style: TextStyle(
-                          fontSize: 24.0.sp,
+                          fontSize: 24.0,
                         ),
                         child: AnimatedTextKit(
                           animatedTexts: [
@@ -52,7 +52,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 40.h),
+                  padding: EdgeInsets.only(top: 40),
                   child: Image.asset(AppImages.login_logo),
                 ),
               ],

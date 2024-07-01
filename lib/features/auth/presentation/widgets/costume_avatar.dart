@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class CostumeAvatar extends StatelessWidget {
   const CostumeAvatar(this.image, {super.key});
@@ -9,7 +9,7 @@ class CostumeAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 23.w,vertical: 23.h),
+      padding: EdgeInsets.symmetric(horizontal: 23,vertical: 23),
       decoration: BoxDecoration(
           border: Border.all(
               color: Colors.grey.shade300
