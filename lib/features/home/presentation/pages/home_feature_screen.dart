@@ -20,31 +20,35 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const CostumeAppBar(),
-          const Gap(16),
-          const OfferImageList(),
-          const Gap(24),
-          const TitleRow(),
-          const Gap(16),
-          SizedBox(
-            height: 320,
-            width: 412,
-            child: GridView.builder(
-              physics: const BouncingScrollPhysics(),
-              padding: EdgeInsets.zero,
-              scrollDirection: Axis.horizontal,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 1.2,
-                crossAxisCount: 2,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const CostumeAppBar(),
+            const Gap(16),
+            const OfferImageList(),
+            const Gap(24),
+            const TitleRow(),
+            const Gap(16),
+            SizedBox(
+              height: 320,
+              child: GridView.builder(
+                physics: const BouncingScrollPhysics(),
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.horizontal,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisSpacing: 1,
+                  mainAxisSpacing: 1,
+                 childAspectRatio: 1.3,
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (context, index) =>
+                    const CostumeCategory(),
+                itemCount: 20,
               ),
-              itemBuilder: (context, index) => const CostumeCategory(),
-              itemCount: 20,
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
