@@ -1,21 +1,26 @@
 part of 'home_layout_cubit.dart';
 
 @immutable
-abstract class HomeLayoutState {}
+abstract class HomeLayoutState {
+  Widget get viewTap;
+}
 
-class HomeLayoutInitial extends HomeLayoutState {}
 class HomeViewState extends HomeLayoutState {
-
-final Widget homeViewScreen=const HomeScreen();
-
+  @override
+  Widget get viewTap => const HomeScreen();
 }
+
 class CategoryViewState extends HomeLayoutState {
-  final Widget categoryViewScreen=const CategoryView();
-}
-class WhichListViewState extends HomeLayoutState {
-  final Widget wichListViewScreen=const WichListView();
-}
-class AccountViewState extends HomeLayoutState {
-  final Widget accountViewScreen=const AccountView();
+  @override
+  Widget get viewTap => const CategoryView();
 }
 
+class WhichListViewState extends HomeLayoutState {
+  @override
+  Widget get viewTap => const WichListView();
+}
+
+class AccountViewState extends HomeLayoutState {
+  @override
+  Widget get viewTap => const AccountView();
+}
