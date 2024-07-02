@@ -3,7 +3,9 @@ import 'package:e_comarce_clean/features/auth/presentation/pages/sign_up_screen.
 import 'package:e_comarce_clean/features/auth/presentation/pages/test.dart';
 import 'package:e_comarce_clean/features/cart_feature/presentation/pages/cart_screen.dart';
 import 'package:e_comarce_clean/features/home/presentation/pages/home_feature_screen.dart';
+import 'package:e_comarce_clean/features/home_layout/presentation/manager/home_layout_cubit.dart';
 import 'package:e_comarce_clean/features/home_layout/presentation/pages/home_layout.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoute {
@@ -28,7 +30,8 @@ class AppRoute {
       ),
       GoRoute(
         path: homeLayoutScreen,
-        builder: (context, state) => const HomeLayout(),
+        builder: (context, state) => BlocProvider(
+            create: (context) => HomeLayoutCubit(), child: const HomeLayout()),
       ),
       GoRoute(
         path: cartScreen,
