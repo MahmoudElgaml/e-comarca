@@ -12,6 +12,7 @@ import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 
 import '../widgets/costume_offer_image.dart';
+import '../widgets/offer_image_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           const CostumeAppBar(),
           const Gap(16),
-          const CostumeOfferImage(),
+          const OfferImageList(),
           const Gap(24),
           const TitleRow(),
           const Gap(16),
