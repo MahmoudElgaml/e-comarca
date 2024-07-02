@@ -11,10 +11,9 @@ class CostumeCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: 80,
-          height: 80,
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
@@ -28,7 +27,7 @@ class CostumeCategory extends StatelessWidget {
           child: Text(
             "women fashion ",
             style: AppStyle.style14(context)
-                .copyWith(fontSize: 14, fontWeight: FontWeight.w400),
+                .copyWith( fontWeight: FontWeight.w400),
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,

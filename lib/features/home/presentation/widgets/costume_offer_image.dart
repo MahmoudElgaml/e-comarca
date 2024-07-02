@@ -6,27 +6,35 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/utils/app_images.dart';
 
 class CostumeOfferImage extends StatelessWidget {
-  const CostumeOfferImage({super.key,required this.selectIndex});
-  static const List<String>offerImage=[
+  const CostumeOfferImage({super.key, required this.selectIndex});
+
+  static const List<String> offerImage = [
     Assets.imagesOfferImage1,
     Assets.imagesOfferImage2,
     Assets.imagesOfferImage3,
   ];
-final int selectIndex;
+  final int selectIndex;
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.bottomCenter,
-      children: [
-        Image.asset(offerImage[selectIndex]),
-
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: OfferImageIndicator(selectedIndex:selectIndex ,),
-        )
-      ],
+    return AspectRatio(
+      aspectRatio: 398 / 200,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          Image.asset(
+            offerImage[selectIndex],
+            fit: BoxFit.fill,
+            width: double.infinity,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: OfferImageIndicator(
+              selectedIndex: selectIndex,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
-
-

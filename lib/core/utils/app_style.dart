@@ -62,7 +62,7 @@ class AppStyle {
     } else if (width > 900) {
       return width / 1000;
     } else {
-      return width / 700;
+      return width / 400;
     }
   }
 
@@ -71,7 +71,7 @@ class AppStyle {
     double width = MediaQuery.sizeOf(context).width;
     double scalefactor = scaleFactor(width);
     double lowerLimit = fontSize * .8;
-    double upperLimit = fontSize * 1.2;
+    double upperLimit = fontSize * 1.3;
 
     double responsiveFont = fontSize * scalefactor;
     return responsiveFont.clamp(lowerLimit, upperLimit);
