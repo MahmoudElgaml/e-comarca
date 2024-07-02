@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_comarce_clean/features/home/presentation/pages/account_view.dart';
+import 'package:e_comarce_clean/features/account_feature/presentation/pages/account_view.dart';
 import 'package:e_comarce_clean/features/home/presentation/pages/home_feature_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../home/presentation/pages/category_view.dart';
-import '../../../home/presentation/pages/wichlist_view.dart';
+import '../../../category_feature/presentation/pages/category_view.dart';
+import '../../../wishlist_feature/presentation/pages/wichlist_view.dart';
 
 part 'home_layout_state.dart';
 
