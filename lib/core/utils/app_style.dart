@@ -29,7 +29,7 @@ class AppStyle {
     return TextStyle(
       color: Colors.black,
       fontSize: responsiveFont(context: context, fontSize: 14),
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
     );
   }
 
@@ -37,6 +37,7 @@ class AppStyle {
     return TextStyle(
       fontSize: responsiveFont(context: context, fontSize: 12),
       fontWeight: FontWeight.w400,
+      fontFamily: 'Poppins'
     );
   }
 

@@ -9,9 +9,12 @@ class OfferImageList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ExpandablePageView.builder(
       animateFirstPage: true,
+      animationDuration: const Duration(milliseconds: 500),
       scrollDirection: Axis.horizontal,
       itemCount: 3,
-      itemBuilder: (context, index) =>  CostumeOfferImage( selectIndex: index,),
+      itemBuilder: (context, index) => CostumeOfferImage(
+        selectIndex: index,
+      ),
     );
   }
 }

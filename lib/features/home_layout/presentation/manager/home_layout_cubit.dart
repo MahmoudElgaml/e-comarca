@@ -15,6 +15,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   static HomeLayoutCubit get(context)=>BlocProvider.of(context);
   viewTap(int index){
     switch(index){
+
       case 0:emit(HomeViewState());
       break;
       case 1:emit(CategoryViewState());

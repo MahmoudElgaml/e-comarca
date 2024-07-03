@@ -3,7 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyLightTheme {
   static ThemeData myLightTheme = ThemeData.dark().copyWith(
+    scaffoldBackgroundColor: Colors.white,
     textTheme: GoogleFonts.poppinsTextTheme(
+
     ),
   );
 }
