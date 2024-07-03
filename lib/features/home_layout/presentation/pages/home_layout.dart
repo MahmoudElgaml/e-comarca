@@ -19,7 +19,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           body: BlocBuilder<HomeLayoutCubit, HomeLayoutState>(
             builder: (context, state) {
               return Padding(
-                padding: const EdgeInsets.only(top: 6, left: 16, right: 16),
+                padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
                 child: state.viewTap,
               );
             },

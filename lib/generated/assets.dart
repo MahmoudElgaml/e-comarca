@@ -9,9 +9,9 @@ class Assets {
   static const String imagesBubbleText = 'assets/images/bubble_text.png';
   static const String imagesBubbleTextSign = 'assets/images/bubble_text_sign.png';
   static const String imagesCategoryIcon = 'assets/images/categoryIcon.svg';
-  static const String imagesCategoryTest = 'assets/images/categoryTest.svg';
+  static const String imagesCategoryOfferImage = 'assets/images/categoryOfferImage.png';
+  static const String imagesCategoryTest = 'assets/images/categoryTest.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
-  static const String imagesFrame65 = 'assets/images/Frame 65.png';
   static const String imagesGoogle = 'assets/images/google.png';
   static const String imagesHomeIcon = 'assets/images/homeIcon.svg';
   static const String imagesLogInPhoto = 'assets/images/log_in_photo.png';
