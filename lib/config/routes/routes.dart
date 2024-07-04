@@ -5,6 +5,7 @@ import 'package:e_comarce_clean/features/cart_feature/presentation/pages/cart_sc
 import 'package:e_comarce_clean/features/home/presentation/pages/home_feature_screen.dart';
 import 'package:e_comarce_clean/features/home_layout/presentation/manager/home_layout_cubit.dart';
 import 'package:e_comarce_clean/features/home_layout/presentation/pages/home_layout.dart';
+import 'package:e_comarce_clean/features/products_feature/presentation/pages/products_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,6 +14,7 @@ class AppRoute {
   static const String signUPScreen = "/sign";
   static const String homeLayoutScreen = "/";
   static const String cartScreen = "/cart";
+  static const String productsScreen = "/product";
 
   static final router = GoRouter(
     routes: [
@@ -36,6 +38,10 @@ class AppRoute {
       GoRoute(
         path: cartScreen,
         builder: (context, state) => const CartScreen(),
+      ),
+      GoRoute(
+        path: productsScreen,
+        builder: (context, state) => const ProductsScreen(),
       ),
     ],
   );
