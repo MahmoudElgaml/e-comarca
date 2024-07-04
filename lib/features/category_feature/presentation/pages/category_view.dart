@@ -34,13 +34,14 @@ class _CategoryViewState extends State<CategoryView> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: CategoryBody()
-                ),
+                Expanded(child: CategoryBody()),
                 SizedBox(
                   width: 24,
                 ),
-                Expanded(flex: 2, child: SubcategoryBody())
+                Expanded(
+                  flex: 2,
+                  child: SubcategoryBody(),
+                )
               ],
             ),
           ],
@@ -49,7 +50,3 @@ class _CategoryViewState extends State<CategoryView> {
     );
   }
 }
-
-
-
-
