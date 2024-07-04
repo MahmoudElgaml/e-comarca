@@ -40,6 +40,13 @@ class AppStyle {
       fontFamily: 'Poppins'
     );
   }
+  static TextStyle style11(BuildContext context) {
+    return TextStyle(
+      color: Color(0x99004182),
+      fontSize: 11,
+      fontWeight: FontWeight.w400,
+    );
+  }
 
   static TextStyle styleWhite(BuildContext context) {
     return TextStyle(

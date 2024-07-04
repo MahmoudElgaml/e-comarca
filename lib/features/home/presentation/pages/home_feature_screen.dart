@@ -1,3 +1,4 @@
+import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/core/utils/app_string.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../widgets/costume_offer_image.dart';
 import '../widgets/offer_image_list.dart';
@@ -43,7 +45,8 @@ class HomeScreen extends StatelessWidget {
                   crossAxisCount: 2,
                 ),
                 itemBuilder: (context, index) =>
-                    const CostumeCategory(),
+                    InkWell( onTap:  () => context.go(AppRoute.productsScreen),
+                        child: const CostumeCategory()),
                 itemCount: 20,
               ),
             )

@@ -20,8 +20,7 @@ class Assets {
   static const String imagesOfferImage2 = 'assets/images/offerImage2.png';
   static const String imagesOfferImage3 = 'assets/images/offerImage3.png';
   static const String imagesOfferPhoto = 'assets/images/offerPhoto.svg';
-  static const String imagesProductDetailTest = 'assets/images/productDetailTest.svg';
-  static const String imagesProductTest = 'assets/images/productTest.svg';
+  static const String imagesProductTest = 'assets/images/productTest.png';
   static const String imagesWichList = 'assets/images/wichList.svg';
   static const String utilsAppImages = 'lib/core/utils/app_images.dart';
 
