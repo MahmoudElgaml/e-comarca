@@ -11,21 +11,22 @@ class ProductsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.only(top: 16, left: 16, right: 16),
+          padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CostumeAppBar(),
-              SizedBox(height: 24,),
+              const CostumeAppBar(),
+              const SizedBox(height: 24),
               Expanded(
                 child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 16,
-                     crossAxisSpacing: 16,
-                    childAspectRatio: 191/273
+                    crossAxisSpacing: 16,
+                    childAspectRatio: 191 / 249,
                   ),
-                  itemBuilder: (context, index) => ProductItem(),
+                  itemBuilder: (context, index) =>
+                      const FittedBox(child: ProductItem()),
                   itemCount: 20,
                 ),
               )
