@@ -2,7 +2,7 @@ import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
 import 'package:e_comarce_clean/features/cart_feature/presentation/widgets/product_cart.dart';
 import 'package:flutter/material.dart';
-
+import 'package:gap/gap.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -17,13 +17,7 @@ class CartScreen extends StatelessWidget {
           style: AppStyle.styleLight20(context),
         ),
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
+
         actions: [
           IconButton(
             onPressed: () {},
@@ -32,7 +26,8 @@ class CartScreen extends StatelessWidget {
               Icons.search,
               color: AppColor.primaryColor,
             ),
-          ),IconButton(
+          ),
+          IconButton(
             onPressed: () {},
             icon: const Icon(
               size: 35,
@@ -40,16 +35,19 @@ class CartScreen extends StatelessWidget {
               color: AppColor.primaryColor,
             ),
           ),
-
         ],
       ),
       backgroundColor: Colors.white,
-      body: const Padding(
-        padding:  EdgeInsets.only(top: 32,left: 16,right: 16),
+      body:  Padding(
+        padding: const EdgeInsets.only(top: 32, left: 16, right: 16),
         child: Column(
           children: [
-            ProductCart(),
-
+            Expanded(
+              child: ListView.separated(
+                  itemBuilder: (context, index) => ProductCart(),
+                  separatorBuilder: (context, index) => Gap(20),
+                  itemCount: 10),
+            ),
           ],
         ),
       ),

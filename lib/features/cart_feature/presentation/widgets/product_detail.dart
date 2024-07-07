@@ -1,4 +1,5 @@
 import 'package:e_comarce_clean/core/utils/app_style.dart';
+import 'package:e_comarce_clean/core/utils/components.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
@@ -9,13 +10,14 @@ class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+     mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           "Nike Air Jordon",
           style: AppStyle.style18(context),
         ),
-        Gap(13),
+        const Gap(13),
         Row(
           children: [
             Container(
@@ -24,7 +26,7 @@ class ProductDetail extends StatelessWidget {
               decoration: const BoxDecoration(
                   color: Colors.red, shape: BoxShape.circle),
             ),
-            Gap(8),
+            const Gap(8),
             Text(
               "Orange | Size: 40",
               style: AppStyle.style18(context)
@@ -32,11 +34,19 @@ class ProductDetail extends StatelessWidget {
             ),
           ],
         ),
-        Gap(16),
-        Text(
-          "EGP 3,500",
-          style: AppStyle.style18(context),
+        const Gap(15),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "EGP 3,500",
+              style: AppStyle.style18(context),
+            ),
+            const Gap(53),
+            const IncreaseDecreaseOrder()
+          ],
         ),
+         const Gap(8)
       ],
     );
   }

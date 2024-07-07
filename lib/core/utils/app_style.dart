@@ -84,7 +84,7 @@ class AppStyle {
     } else if (width > 900) {
       return width / 1000;
     } else {
-      return width / 400;
+      return width / 300;
     }
   }
 
