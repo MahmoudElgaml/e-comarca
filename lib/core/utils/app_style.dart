@@ -24,6 +24,13 @@ class AppStyle {
       fontWeight: FontWeight.w500,
     );
   }
+  static TextStyle styleRegular18(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: responsiveFont(context: context, fontSize: 18),
+      fontWeight: FontWeight.w400,
+    );
+  }
 
   static TextStyle style14(BuildContext context) {
     return TextStyle(
@@ -56,10 +63,17 @@ class AppStyle {
     );
   }
 
-  static TextStyle style20(BuildContext context) {
+  static TextStyle styleLight20(BuildContext context) {
     return TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.w300,
+      fontSize: responsiveFont(context: context, fontSize: 20),
+    );
+  }
+  static TextStyle styleMedium20(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.w500,
       fontSize: responsiveFont(context: context, fontSize: 20),
     );
   }

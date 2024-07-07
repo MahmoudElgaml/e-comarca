@@ -14,7 +14,7 @@ class CartScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         title: Text(
           "Cart",
-          style: AppStyle.style20(context),
+          style: AppStyle.styleLight20(context),
         ),
         centerTitle: true,
         leading: IconButton(
