@@ -1,7 +1,9 @@
+import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/features/home/presentation/widgets/costume_appbar.dart';
 import 'package:e_comarce_clean/features/products_feature/presentation/widgets/product_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({super.key});
@@ -25,8 +27,12 @@ class ProductsScreen extends StatelessWidget {
                     crossAxisSpacing: 16,
                     childAspectRatio: 191 / 249,
                   ),
-                  itemBuilder: (context, index) =>
-                      const FittedBox(child: ProductItem()),
+                  itemBuilder: (context, index) =>  FittedBox(
+                    child: InkWell(
+                      onTap: () => context.push(AppRoute.productsDetailScreen),
+                      child: const ProductItem(),
+                    ),
+                  ),
                   itemCount: 20,
                 ),
               )
