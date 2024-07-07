@@ -1,5 +1,7 @@
+import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_style.dart';
@@ -33,7 +35,9 @@ class PriceAddToCartWidget extends StatelessWidget {
                 backgroundColor: AppColor.primaryColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20))),
-            onPressed: () {},
+            onPressed: () {
+              context.push(AppRoute.cartScreen);
+            },
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: FittedBox(
