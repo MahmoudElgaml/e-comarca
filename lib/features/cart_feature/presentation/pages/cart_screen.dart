@@ -1,6 +1,6 @@
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
-import 'package:e_comarce_clean/features/cart_feature/presentation/widgets/product_cart.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/product_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -17,7 +17,6 @@ class CartScreen extends StatelessWidget {
           style: AppStyle.styleLight20(context),
         ),
         centerTitle: true,
-
         actions: [
           IconButton(
             onPressed: () {},
@@ -38,15 +37,18 @@ class CartScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.white,
-      body:  Padding(
+      body: Padding(
         padding: const EdgeInsets.only(top: 32, left: 16, right: 16),
         child: Column(
           children: [
             Expanded(
               child: ListView.separated(
-                  itemBuilder: (context, index) => ProductCart(),
-                  separatorBuilder: (context, index) => Gap(20),
-                  itemCount: 10),
+                itemBuilder: (context, index) => const ProductCart(
+                  isCart: true,
+                ),
+                separatorBuilder: (context, index) => const Gap(20),
+                itemCount: 3,
+              ),
             ),
           ],
         ),
