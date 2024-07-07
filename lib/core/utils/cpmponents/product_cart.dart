@@ -1,14 +1,18 @@
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_images.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/IncreaseDecreaseOrderButton.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/addToCart_button.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/love_button.dart';
 import 'package:e_comarce_clean/features/cart_feature/presentation/widgets/product_detail.dart';
 import 'package:e_comarce_clean/generated/assets.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
 
 class ProductCart extends StatelessWidget {
-  const ProductCart({super.key});
-
+  const ProductCart({super.key,required this.isCart});
+final bool isCart;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -52,12 +56,25 @@ class ProductCart extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.delete_outline),
-              color: AppColor.primaryColor,
-               iconSize: 30,
+            padding: const EdgeInsets.all(3.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional.topEnd,
+                  child: isCart?  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.delete_outline),
+                    color: AppColor.primaryColor,
+                    iconSize: 30,
+                  ):const LoveButton()
+                ),
+                const Spacer(),
+                 Align(
+                  alignment: AlignmentDirectional.bottomEnd,
+                  child: isCart?const IncreaseDecreaseOrderButton():const AddToCartButton(),
+                )
+              ],
             ),
           )
         ],

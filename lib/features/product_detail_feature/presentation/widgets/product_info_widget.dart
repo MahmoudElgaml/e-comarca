@@ -1,4 +1,4 @@
-import 'package:e_comarce_clean/core/utils/components.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/IncreaseDecreaseOrderButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -69,7 +69,7 @@ class ProductInfoWidget extends StatelessWidget {
               style: AppStyle.style14(context),
             ),
             const Spacer(),
-            const IncreaseDecreaseOrder()
+            const IncreaseDecreaseOrderButton()
 
           ],
         ),

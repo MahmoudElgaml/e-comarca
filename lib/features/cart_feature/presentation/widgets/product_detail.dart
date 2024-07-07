@@ -1,5 +1,5 @@
 import 'package:e_comarce_clean/core/utils/app_style.dart';
-import 'package:e_comarce_clean/core/utils/components.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/IncreaseDecreaseOrderButton.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
@@ -30,7 +30,7 @@ class ProductDetail extends StatelessWidget {
             Text(
               "Orange | Size: 40",
               style: AppStyle.style18(context)
-                  .copyWith(color: Colors.black.withOpacity(.3)),
+                  .copyWith(color: Color(0x9906004E)),
             ),
           ],
         ),
@@ -42,8 +42,8 @@ class ProductDetail extends StatelessWidget {
               "EGP 3,500",
               style: AppStyle.style18(context),
             ),
-            const Gap(53),
-            const IncreaseDecreaseOrder()
+
+
           ],
         ),
          const Gap(8)
