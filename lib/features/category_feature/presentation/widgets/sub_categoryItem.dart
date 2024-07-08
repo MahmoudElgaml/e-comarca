@@ -24,7 +24,9 @@ class SupCategoryItem extends StatelessWidget {
         ),
         Text(
           "T-shirts",
-          style: AppStyle.style12(context),
+          style: AppStyle.style12(context).copyWith(
+            color: const Color(0xFF06004E),
+          ),
         )
       ],
     );
