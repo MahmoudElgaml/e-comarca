@@ -11,7 +11,7 @@ class WichListView extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const CostumeApfpBar(),
+          const CostumeAppBar(),
           const Gap(24),
           Expanded(
             child: ListView.separated(
