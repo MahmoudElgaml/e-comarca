@@ -3,6 +3,9 @@ class Assets {
   Assets._();
 
   static const String assetsImagesCategoryTest = 'assets/images/category_test.png';
+  static const String fontsPoppinsLight = 'assets/fonts/Poppins-Light.ttf';
+  static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
+  static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
   static const String imagesAccountIcon = 'assets/images/accountIcon.svg';
   static const String imagesAddToCartIcon = 'assets/images/addToCartIcon.svg';
   static const String imagesApple = 'assets/images/apple.png';

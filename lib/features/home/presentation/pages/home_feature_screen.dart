@@ -41,12 +41,13 @@ class HomeScreen extends StatelessWidget {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisSpacing: 1,
                   mainAxisSpacing: 1,
-                 childAspectRatio: 1.3,
+                  childAspectRatio: 1.3,
                   crossAxisCount: 2,
                 ),
-                itemBuilder: (context, index) =>
-                    InkWell( onTap:  () => context.go(AppRoute.productsScreen),
-                        child: const CostumeCategory()),
+                itemBuilder: (context, index) => InkWell(
+                  onTap: () => context.push(AppRoute.productsScreen),
+                  child: const CostumeCategory(),
+                ),
                 itemCount: 20,
               ),
             )

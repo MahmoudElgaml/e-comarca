@@ -19,7 +19,7 @@ class AppStyle {
 
   static TextStyle style18(BuildContext context) {
     return TextStyle(
-      color: Colors.black,
+      color: const Color(0xFF06004E),
       fontSize: responsiveFont(context: context, fontSize: 18),
       fontWeight: FontWeight.w500,
     );
@@ -48,7 +48,7 @@ class AppStyle {
     );
   }
   static TextStyle style11(BuildContext context) {
-    return TextStyle(
+    return const TextStyle(
       color: Color(0x99004182),
       fontSize: 11,
       fontWeight: FontWeight.w400,
