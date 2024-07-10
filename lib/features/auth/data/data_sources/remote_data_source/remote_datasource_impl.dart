@@ -7,16 +7,19 @@ import 'package:e_comarce_clean/features/auth/data/data_sources/remote_data_sour
 import 'package:e_comarce_clean/features/auth/data/models/SignUserModel.dart';
 import 'package:e_comarce_clean/features/auth/data/models/UserModel.dart';
 
+import '../../../../../core/cache/storage_token.dart';
+
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   APiManger aPiManger;
-
-  AuthRemoteDataSourceImpl(this.aPiManger);
+  StorageToken storageToken;
+  AuthRemoteDataSourceImpl(this.aPiManger,this.storageToken);
 
   @override
   Future<Either<Failure, UserModel>> signUp(SignUserModel signUserModel) async {
     try {
       var user = await aPiManger.post(EndPoints.signUp, signUserModel.toJson());
       UserModel userModel = UserModel.fromJson(user.data);
+      storageToken.setToken(userModel.token!);
       return right(userModel);
     } catch (e) {
       if (e is DioException) {
