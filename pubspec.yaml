@@ -44,6 +44,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   expandable_page_view: ^1.0.17
   font_awesome_flutter: ^10.7.0
+  flutter_secure_storage: ^9.2.2
 
 
 

@@ -1,13 +1,6 @@
-import 'package:e_comarce_clean/core/utils/app_color.dart';
-import 'package:e_comarce_clean/core/utils/app_style.dart';
 import 'package:e_comarce_clean/features/category_feature/presentation/widgets/subCategory_body.dart';
-import 'package:e_comarce_clean/features/category_feature/presentation/widgets/subCategorye_grid.dart';
 import 'package:e_comarce_clean/features/home/presentation/widgets/costume_appbar.dart';
-import 'package:e_comarce_clean/generated/assets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../widgets/catgory_body.dart';
 
