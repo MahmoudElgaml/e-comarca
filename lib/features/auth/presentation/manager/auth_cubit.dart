@@ -12,9 +12,9 @@ class AuthCubit extends Cubit<AuthState> {
   SignUpUseCase signUpUseCase;
   LogInUseCase logInUseCase;
 
-  AuthCubit(this.signUpUseCase,this.logInUseCase) : super(AuthInitial());
+  AuthCubit(this.signUpUseCase, this.logInUseCase) : super(AuthInitial());
 
-  static AuthCubit get(context)=>BlocProvider.of(context);
+  static AuthCubit get(context) => BlocProvider.of(context);
 
   signUp(SignUserModel signUserModel) async {
     emit(AuthLoadingState());
@@ -26,7 +26,8 @@ class AuthCubit extends Cubit<AuthState> {
       ),
     );
   }
-  logIn({required String email,required  String password}) async {
+
+  logIn({required String email, required String password}) async {
     emit(AuthLoadingState());
     var result = await logInUseCase.call(email: email, password: password);
     result.fold(
