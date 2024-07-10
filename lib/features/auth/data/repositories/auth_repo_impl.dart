@@ -14,6 +14,7 @@ class AuthRepoImpl implements AuthRepo{
 
   @override
   Future<Either<Failure, UserEntity>> signUP(SignUserModel signUserModel) {
+
     return authRemoteDataSource.signUp(signUserModel);
 
   }
