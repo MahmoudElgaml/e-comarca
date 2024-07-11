@@ -1,11 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
+import 'package:e_comarce_clean/features/home/domain/entities/category_entity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class CostumeCategory extends StatelessWidget {
-  const CostumeCategory({super.key});
+  const CostumeCategory(
+      {super.key, required this.category, required this.index});
+
+  final List<CategoryData>? category;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -13,26 +18,34 @@ class CostumeCategory extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-          ),
-          child: Image.asset(
-            AppImages.categoryTest,
-            fit: BoxFit.fill,
-          ),
+        CachedNetworkImage(
+          imageBuilder: (context, imageProvider) {
+            return Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: imageProvider,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            );
+          },
+          width: 100,
+          height: 100,
+          imageUrl: category![index].image ?? "",
+          errorWidget: (context, url, error) => const Text("somthing error"),
         ),
-        SizedBox(
-          width: 65,
-          child: Text(
-            "women fashion ",
-            style: AppStyle.style14(context)
-                .copyWith( fontWeight: FontWeight.w400),
-            textAlign: TextAlign.center,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-        )
+        const SizedBox(height: 9),
+        Text(
+          category![index].name ?? "",
+          style:
+              AppStyle.style14(context).copyWith(fontWeight: FontWeight.w400),
+          textAlign: TextAlign.center,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
       ],
     );
   }

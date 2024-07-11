@@ -3,11 +3,11 @@ import 'package:e_comarce_clean/features/home/domain/entities/category_entity.da
 import 'Metadata.dart';
 import 'Data.dart';
 
-class CategoryModel extends CategoryEntity{
+class CategoryModel extends CategoryEntity {
   CategoryModel({
     this.results,
     this.metadata,
-    this.data,
+    super.data,
   });
 
   CategoryModel.fromJson(dynamic json) {
@@ -24,7 +24,6 @@ class CategoryModel extends CategoryEntity{
 
   int? results;
   Metadata? metadata;
-  List<Data>? data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
