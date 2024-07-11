@@ -7,7 +7,10 @@ abstract class HomeLayoutState {
 
 class HomeViewState extends HomeLayoutState {
   @override
-  Widget get viewTap => const HomeScreen();
+  Widget get viewTap => BlocProvider(
+        create: (context) => getIt<HomeCubit>(),
+        child: const HomeScreen(),
+      );
 }
 
 class CategoryViewState extends HomeLayoutState {
