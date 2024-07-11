@@ -3,12 +3,13 @@ import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
 import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/config/themeing/light_theme.dart';
+import 'package:e_comarce_clean/core/cache/storage_token.dart';
+import 'package:e_comarce_clean/core/service_locator/config.dart';
 import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 import 'core/api/api_manger.dart';
 import 'core/utils/bloc_observer.dart';
@@ -23,6 +24,7 @@ void main() async {
   //await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
+  configureDependencies();
   Bloc.observer = MyBlocObserver();
   runApp(
     DevicePreview(enabled: true, builder: (context) => const MyApp()),
@@ -40,19 +42,19 @@ class MyApp extends StatelessWidget {
           SignUpUseCase(
             AuthRepoImpl(
               AuthRemoteDataSourceImpl(
-                APiManger(
-                  Dio(),
-                ),
-              ),
+                  APiManger(
+                    Dio(),
+                  ),
+                  StorageToken()),
             ),
           ),
           LogInUseCase(
             AuthRepoImpl(
               AuthRemoteDataSourceImpl(
-                APiManger(
-                  Dio(),
-                ),
-              ),
+                  APiManger(
+                    Dio(),
+                  ),
+                  StorageToken()),
             ),
           )),
       child: MaterialApp.router(
