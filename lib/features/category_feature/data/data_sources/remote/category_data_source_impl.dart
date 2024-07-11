@@ -7,7 +7,7 @@ import 'package:e_comarce_clean/features/category_feature/data/models/Category2M
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/api/end_points.dart';
-@injectable
+@Injectable(as: CategoryRemoteDataSource)
 class CategoryRemoteDataSourceImp implements CategoryRemoteDataSource{
   APiManger apiManger;
 

@@ -15,7 +15,9 @@ class HomeViewState extends HomeLayoutState {
 
 class CategoryViewState extends HomeLayoutState {
   @override
-  Widget get viewTap => const CategoryView();
+  Widget get viewTap => BlocProvider(
+        create: (context) => getIt<CategoryCubit>()..getCategory(),
+      child: const CategoryView());
 }
 
 class WhichListViewState extends HomeLayoutState {

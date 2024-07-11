@@ -85,6 +85,7 @@ flutter:
     - lib/core/utils/app_images.dart
     - assets/images/2.0x/
     - assets/images/3.0x/
+    - lib/features/category_feature/presentation/manager/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
