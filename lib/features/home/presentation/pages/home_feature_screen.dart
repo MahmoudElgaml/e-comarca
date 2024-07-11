@@ -59,13 +59,16 @@ class HomeScreen extends StatelessWidget {
                       ),
                       itemBuilder: (context, index) => InkWell(
                         onTap: () => context.push(AppRoute.productsScreen),
-                        child:  CostumeCategory(category:state.categoryEntity.data,index: index,),
+                        child: CostumeCategory(
+                          category: state.categoryEntity.data,
+                          index: index,
+                        ),
                       ),
-                      itemCount:state.categoryEntity.data!.length,
+                      itemCount: state.categoryEntity.data!.length,
                     ),
                   );
                 }
-               return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               },
             )
           ],
