@@ -1,6 +1,6 @@
 import 'package:e_comarce_clean/features/home/domain/entities/category_entity.dart';
 
-class Data extends CategoryEntity {
+class Data extends CategoryData{
   Data({
     super.id,
     super.name,

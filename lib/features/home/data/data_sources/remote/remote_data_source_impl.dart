@@ -19,6 +19,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     try {
       var response = await apiManger.get(EndPoints.getAllCategory);
       CategoryModel categoryModel = CategoryModel.fromJson(response.data);
+      print(categoryModel.results);
       return right(categoryModel);
     } catch (e) {
       if (e is DioException) {
