@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
             AuthRepoImpl(
               AuthRemoteDataSourceImpl(
                   APiManger(
-                    Dio(),
+
                   ),
                   StorageToken()),
             ),
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
             AuthRepoImpl(
               AuthRemoteDataSourceImpl(
                   APiManger(
-                    Dio(),
+
                   ),
                   StorageToken()),
             ),

@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:e_comarce_clean/core/service_locator/config.dart';
 import 'package:e_comarce_clean/features/account_feature/presentation/pages/account_view.dart';
+import 'package:e_comarce_clean/features/home/presentation/manager/home_cubit.dart';
 import 'package:e_comarce_clean/features/home/presentation/pages/home_feature_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
