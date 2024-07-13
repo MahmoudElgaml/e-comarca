@@ -12,13 +12,10 @@ class CategoryBody extends StatefulWidget {
   State<CategoryBody> createState() => _CategoryBodyState();
 }
 
-
 class _CategoryBodyState extends State<CategoryBody> {
-  int selectIndex = 0;
-
+  @override
   @override
   Widget build(BuildContext context) {
-
     return Container(
       height: MediaQuery.sizeOf(context).height - 230,
       decoration: const BoxDecoration(
@@ -40,25 +37,25 @@ class _CategoryBodyState extends State<CategoryBody> {
           if (state is CategoryFailState) {
             return Center(child: Text(state.message));
           }
-          if (state is CategorySuccessState) {
-            return ListView.builder(
-              itemBuilder: (context, index) => InkWell(
-                  onTap: () {
-                    selectIndex = index;
-                    SubCategoryCubit.get(context).getSubCategory(state.category2entity.data![index].id!);
-                    setState(() {});
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    child: CategoryItem(
-                        category: state.category2entity.data![index],
-                        isSelected: index == selectIndex),
-                  )),
-              itemCount: 10,
-            );
+          if (state is CategoryLoadingState) {
+            return const Center(child: CircularProgressIndicator());
           }
-          return const Center(
-            child: CircularProgressIndicator(),
+        return  ListView.builder(
+            itemBuilder: (context, index) => InkWell(
+                onTap: () {
+                  CategoryCubit.get(context).changeIndex(index);
+                  SubCategoryCubit.get(context).getSubCategory(
+                      CategoryCubit.get(context).categories[index].id!);
+                  setState(() {});
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  child: CategoryItem(
+                      category: CategoryCubit.get(context).categories[index],
+                      isSelected:
+                          index == CategoryCubit.get(context).selectedIndex),
+                )),
+            itemCount: CategoryCubit.get(context).categories.length,
           );
         },
       ),
