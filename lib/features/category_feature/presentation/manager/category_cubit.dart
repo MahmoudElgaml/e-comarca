@@ -14,8 +14,10 @@ part 'category_state.dart';
 class CategoryCubit extends Cubit<CategoryState> {
   static CategoryCubit get(context) => BlocProvider.of(context);
 
-  CategoryCubit(this.categoryUseCase)
-      : super(CategoryInitial());
+  List<CategoryData2>categories = [];
+  int selectedIndex=0;
+
+  CategoryCubit(this.categoryUseCase) : super(CategoryInitial());
   GetCategoryUseCase categoryUseCase;
 
   getCategory() async {
@@ -23,9 +25,16 @@ class CategoryCubit extends Cubit<CategoryState> {
     var result = await categoryUseCase.call();
     result.fold(
       (l) => emit(CategoryFailState(l.message)),
-      (r) => emit(CategorySuccessState(r)),
+      (r) {
+        categories=r.data??[];
+        emit(CategorySuccessState());
+      },
     );
   }
+  changeIndex(int index){
 
+    selectedIndex=index;
+    emit(CategoryIndexChangeState());
 
+  }
 }

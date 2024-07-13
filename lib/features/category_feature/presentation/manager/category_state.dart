@@ -8,9 +8,7 @@ class CategoryInitial extends CategoryState {}
 class CategoryLoadingState extends CategoryState {}
 
 class CategorySuccessState extends CategoryState {
-  final Category2Entity category2entity;
 
-  CategorySuccessState(this.category2entity);
 }
 
 class CategoryFailState extends CategoryState {
@@ -18,5 +16,6 @@ class CategoryFailState extends CategoryState {
 
   CategoryFailState(this.message);
 }
+class CategoryIndexChangeState extends CategoryState {}
 
 

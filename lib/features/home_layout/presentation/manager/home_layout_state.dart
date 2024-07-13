@@ -19,6 +19,7 @@ class CategoryViewState extends HomeLayoutState {
     providers: [
       BlocProvider(create:  (context) => getIt<CategoryCubit>()..getCategory(), ),
       BlocProvider(create:  (context) => getIt<SubCategoryCubit>(), ),
+
     ],
 
       child: const CategoryView());
