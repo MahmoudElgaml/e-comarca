@@ -35,7 +35,7 @@ class CategoryRemoteDataSourceImp implements CategoryRemoteDataSource {
   Future<Either<Failure, SubCategoryModel>> getSubCategory(
       String categoryId) async {
     try {
-      var response = await apiManger.get(EndPoints.getAllCategory + categoryId + "/" + EndPoints.getSubCategoryOnCategory);
+      var response = await apiManger.get("${EndPoints.getAllCategory}/$categoryId${EndPoints.getSubCategoryOnCategory}");
       SubCategoryModel subCategoryModel =
           SubCategoryModel.fromJson(response.data);
       return right(subCategoryModel);

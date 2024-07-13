@@ -2,6 +2,7 @@ import 'package:e_comarce_clean/features/category_feature/presentation/manager/c
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../manager/sub_category_cubit.dart';
 import 'category_item.dart';
 
 class CategoryBody extends StatefulWidget {
@@ -11,11 +12,13 @@ class CategoryBody extends StatefulWidget {
   State<CategoryBody> createState() => _CategoryBodyState();
 }
 
+
 class _CategoryBodyState extends State<CategoryBody> {
   int selectIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       height: MediaQuery.sizeOf(context).height - 230,
       decoration: const BoxDecoration(
@@ -42,6 +45,7 @@ class _CategoryBodyState extends State<CategoryBody> {
               itemBuilder: (context, index) => InkWell(
                   onTap: () {
                     selectIndex = index;
+                    SubCategoryCubit.get(context).getSubCategory(state.category2entity.data![index].id!);
                     setState(() {});
                   },
                   child: Padding(
