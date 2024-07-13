@@ -41,20 +41,12 @@ class MyApp extends StatelessWidget {
       create: (context) => AuthCubit(
           SignUpUseCase(
             AuthRepoImpl(
-              AuthRemoteDataSourceImpl(
-                  APiManger(
-
-                  ),
-                  StorageToken()),
+              AuthRemoteDataSourceImpl(APiManger(), StorageToken()),
             ),
           ),
           LogInUseCase(
             AuthRepoImpl(
-              AuthRemoteDataSourceImpl(
-                  APiManger(
-
-                  ),
-                  StorageToken()),
+              AuthRemoteDataSourceImpl(APiManger(), StorageToken()),
             ),
           )),
       child: MaterialApp.router(
