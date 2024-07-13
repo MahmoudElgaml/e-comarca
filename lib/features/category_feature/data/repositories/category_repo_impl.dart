@@ -18,9 +18,8 @@ class CategoryRepoImpl implements CategoryRepo{
   }
 
   @override
-  Future<Either<Failure, SubCategoryEntity>> getSubCategory(String categoryId) {
-    // TODO: implement getSubCategory
-    throw UnimplementedError();
+  Future<Either<Failure, SubCategoryEntity>> getSubCategory(String categoryId) async{
+ return await categoryRemoteDataSource.getSubCategory(categoryId);
   }
 
 }
