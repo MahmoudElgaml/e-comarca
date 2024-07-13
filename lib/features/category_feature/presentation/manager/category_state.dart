@@ -18,3 +18,5 @@ class CategoryFailState extends CategoryState {
 
   CategoryFailState(this.message);
 }
+
+

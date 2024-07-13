@@ -2,13 +2,15 @@ import 'package:e_comarce_clean/features/category_feature/domain/entities/catego
 
 class Category2Model extends Category2Entity {
   Category2Model({
-      this.results, 
-      this.metadata, 
-      super.data,});
+    this.results,
+    this.metadata,
+    super.data,
+  });
 
   Category2Model.fromJson(dynamic json) {
     results = json['results'];
-    metadata = json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null;
+    metadata =
+        json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null;
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
@@ -16,22 +18,20 @@ class Category2Model extends Category2Entity {
       });
     }
   }
+
   int? results;
   Metadata? metadata;
-
-
-
-
 }
 
 class Data extends CategoryData2 {
   Data({
-      this.id, 
-      super.name,
-      this.slug, 
-      this.image, 
-      this.createdAt, 
-      this.updatedAt,});
+    super.id,
+    super.name,
+    this.slug,
+    this.image,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   Data.fromJson(dynamic json) {
     id = json['_id'];
@@ -41,8 +41,7 @@ class Data extends CategoryData2 {
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
   }
-  String? id;
-  String? name;
+
   String? slug;
   String? image;
   String? createdAt;
@@ -58,20 +57,21 @@ class Data extends CategoryData2 {
     map['updatedAt'] = updatedAt;
     return map;
   }
-
 }
 
 class Metadata {
   Metadata({
-      this.currentPage, 
-      this.numberOfPages, 
-      this.limit,});
+    this.currentPage,
+    this.numberOfPages,
+    this.limit,
+  });
 
   Metadata.fromJson(dynamic json) {
     currentPage = json['currentPage'];
     numberOfPages = json['numberOfPages'];
     limit = json['limit'];
   }
+
   int? currentPage;
   int? numberOfPages;
   int? limit;
@@ -83,5 +83,4 @@ class Metadata {
     map['limit'] = limit;
     return map;
   }
-
 }
