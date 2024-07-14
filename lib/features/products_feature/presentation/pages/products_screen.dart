@@ -12,6 +12,9 @@ class ProductsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 40,
+        ),
         body: Padding(
           padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
           child: Column(
@@ -25,13 +28,11 @@ class ProductsScreen extends StatelessWidget {
                     crossAxisCount: 2,
                     mainAxisSpacing: 16,
                     crossAxisSpacing: 16,
-                    childAspectRatio: 191 / 249,
+                    childAspectRatio: 191 / 270,
                   ),
-                  itemBuilder: (context, index) =>  FittedBox(
-                    child: InkWell(
-                      onTap: () => context.push(AppRoute.productsDetailScreen),
-                      child: const ProductItem(),
-                    ),
+                  itemBuilder: (context, index) =>  InkWell(
+                    onTap: () => context.push(AppRoute.productsDetailScreen),
+                    child: const ProductItem(),
                   ),
                   itemCount: 20,
                 ),
