@@ -25,7 +25,7 @@ class LoveButton extends StatelessWidget {
           ],
         ),
         child: Center(
-          child: SvgPicture.asset(Assets.imagesLoveIcon),
+          child: SvgPicture.asset(Assets.imagesLoveIcon,),
         ),
       ),
     );

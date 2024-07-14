@@ -11,8 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class ProductCart extends StatelessWidget {
-  const ProductCart({super.key,required this.isCart});
-final bool isCart;
+  const ProductCart({super.key, required this.isCart});
+
+  final bool isCart;
+
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -61,18 +63,20 @@ final bool isCart;
               mainAxisSize: MainAxisSize.min,
               children: [
                 Align(
-                  alignment: AlignmentDirectional.topEnd,
-                  child: isCart?  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.delete_outline),
-                    color: AppColor.primaryColor,
-                    iconSize: 30,
-                  ):const LoveButton()
+                    alignment: AlignmentDirectional.topEnd,
+                    child: isCart ? IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.delete_outline),
+                      color: AppColor.primaryColor,
+                      iconSize: 30,
+                    ) : const LoveButton()
                 ),
                 const Spacer(),
-                 Align(
+                Align(
                   alignment: AlignmentDirectional.bottomEnd,
-                  child: isCart?const IncreaseDecreaseOrderButton():const AddToCartButton(),
+                  child: isCart
+                      ? const IncreaseDecreaseOrderButton()
+                      : const AddToCartButton(),
                 )
               ],
             ),
