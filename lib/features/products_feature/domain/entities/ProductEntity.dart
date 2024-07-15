@@ -26,6 +26,7 @@ class Product {
     this.quantity,
     this.price,
     this.imageCover,
+    this.priceAfterDiscount,
     this.ratingsAverage,
   });
 
@@ -53,6 +54,7 @@ class Product {
   String? title;
 
   String? description;
+ num? priceAfterDiscount;
   num? quantity;
   num? price;
   String? imageCover;
