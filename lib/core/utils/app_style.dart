@@ -79,9 +79,9 @@ class AppStyle {
   }
 
   static double scaleFactor(double width) {
-    if (width < 600) {
+    if (width < 500) {
       return width / 400;
-    } else if (width > 900) {
+    } else if (width > 1200) {
       return width / 1000;
     } else {
       return width / 300;
