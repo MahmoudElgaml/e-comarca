@@ -4,17 +4,21 @@ import 'package:e_comarce_clean/features/product_detail_feature/presentation/wid
 import 'package:e_comarce_clean/features/product_detail_feature/presentation/widgets/pick_size_list.dart';
 import 'package:e_comarce_clean/features/product_detail_feature/presentation/widgets/price_addtocart_widget.dart';
 import 'package:e_comarce_clean/features/product_detail_feature/presentation/widgets/product_info_widget.dart';
+import 'package:e_comarce_clean/features/products_feature/domain/entities/ProductEntity.dart';
 import 'package:e_comarce_clean/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final Product extraString = GoRouterState.of(context).extra! as Product;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -33,19 +37,19 @@ class ProductDetailScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
+      body:  Padding(
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ProductInfoWidget(),
-              Gap(16),
-              PickSizeList(),
-              Gap(16),
-              PickColorList(),
-              Gap(48),
-              PriceAddToCartWidget()
+              ProductInfoWidget(product: extraString,),
+              const Gap(16),
+              const PickSizeList(),
+              const Gap(16),
+              const PickColorList(),
+              const Gap(48),
+              const PriceAddToCartWidget()
             ],
           ),
         ),
