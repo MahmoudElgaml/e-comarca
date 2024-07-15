@@ -20,6 +20,7 @@ class AllProductRemoteDatasourceImpl implements ProductRemoteDatasource {
       var response =
           await aPiManger.get(EndPoints.getProductBaseOnCategory + categoryId);
       ProductModel productModel = ProductModel.fromJson(response.data);
+
       return right(productModel);
     } catch (e) {
       if (e is DioException) {

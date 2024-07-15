@@ -13,7 +13,7 @@ class GetAllProductUseCase {
 
   GetAllProductUseCase(this.productRepo);
 
-  Future<Either<Failure, ProductEntity>> call(String categoryId) {
-    return productRepo.getAllProduct(categoryId);
+  Future<Either<Failure, ProductEntity>> call(String categoryId) async{
+    return await productRepo.getAllProduct(categoryId);
   }
 }

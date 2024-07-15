@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-
 import '../../../../core/erorr/failure.dart';
 import '../../domain/entities/ProductEntity.dart';
 import '../../domain/repositories/product_repo.dart';
@@ -13,8 +12,8 @@ class AllProductRepoImpl extends ProductRepo{
   AllProductRepoImpl(this.allProductRemoteDatasource);
 
   @override
-  Future<Either<Failure, ProductEntity>> getAllProduct(String categoryId) {
-    return allProductRemoteDatasource.getAllProduct(categoryId);
+  Future<Either<Failure, ProductEntity>> getAllProduct(String categoryId)async {
+    return  await allProductRemoteDatasource.getAllProduct(categoryId);
   }
 
 }
