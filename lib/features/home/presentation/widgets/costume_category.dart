@@ -40,13 +40,15 @@ class CostumeCategory extends StatelessWidget {
           errorWidget: (context, url, error) => const Text("somthing error"),
         ),
         const SizedBox(height: 9),
-        Text(
-          category![index].name ?? "",
-          style:
-              AppStyle.style14(context).copyWith(fontWeight: FontWeight.w400),
-          textAlign: TextAlign.center,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
+        FittedBox(
+          child: Text(
+            category![index].name ?? "",
+            style:
+                AppStyle.style14(context).copyWith(fontWeight: FontWeight.w400),
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );

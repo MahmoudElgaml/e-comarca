@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
@@ -37,9 +38,10 @@ class ProductItem extends StatelessWidget {
                 ),
                 child: AspectRatio(
                   aspectRatio:  191 / 128,
-                  child: Image.network(
-                    product.images![0],
+                  child: CachedNetworkImage(
+                    imageUrl: product.images![0],
                     fit: BoxFit.fill,
+                    errorWidget: (context, url, error) => Text(error.toString()),
                   ),
                 ),
               ),

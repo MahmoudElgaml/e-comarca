@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/cpmponents/offer_idndector.dart';
@@ -18,10 +19,11 @@ class ProductDetailImage extends StatelessWidget {
           aspectRatio: 398 / 300,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              images[index],
+            child: CachedNetworkImage(
+              imageUrl: images[index],
               width: double.infinity,
               fit: BoxFit.fill,
+              errorWidget:  (context, url, error) => Text(error.toString()),
             ),
           ),
         ),

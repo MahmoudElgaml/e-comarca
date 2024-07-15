@@ -22,11 +22,12 @@ class ProductInfoWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ExpandablePageView.builder(
-            itemCount: product.images!.length,
-            itemBuilder: (context, index) => ProductDetailImage(
-                  index: index,
-                  images: product.images ?? [],
-                )),
+          itemCount: product.images!.length,
+          itemBuilder: (context, index) => ProductDetailImage(
+            index: index,
+            images: product.images ?? [],
+          ),
+        ),
         const Gap(24),
         Row(
           children: [
@@ -41,7 +42,8 @@ class ProductInfoWidget extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-             HelperFunction.checkOnDiscount(product.price, product.priceAfterDiscount),
+              HelperFunction.checkOnDiscount(
+                  product.price, product.priceAfterDiscount),
               style: AppStyle.style18(context),
             ),
           ],
@@ -96,5 +98,4 @@ class ProductInfoWidget extends StatelessWidget {
       ],
     );
   }
-  
 }
