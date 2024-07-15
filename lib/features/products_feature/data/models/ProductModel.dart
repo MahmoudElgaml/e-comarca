@@ -25,20 +25,20 @@ class ProductModel extends ProductEntity {
 
 class Data extends Product {
   Data({
-    this.sold,
-    this.images,
+    super.sold,
+    super.images,
     this.subcategory,
-    this.ratingsQuantity,
-    this.id,
-    this.title,
+    super.ratingsQuantity,
+    super.id,
+    super.title,
     this.slug,
-    this.description,
-    this.quantity,
-    this.price,
-    this.imageCover,
+    super.description,
+    super.quantity,
+    super.price,
+    super.imageCover,
     this.category,
     this.brand,
-    this.ratingsAverage,
+    super.ratingsAverage,
     this.createdAt,
     this.updatedAt,
     this.id2,
@@ -70,20 +70,13 @@ class Data extends Product {
     id = json['id'];
   }
 
-  num? sold;
-  List<String>? images;
   List<Subcategory>? subcategory;
-  num? ratingsQuantity;
-  String? id;
-  String? title;
+
   String? slug;
-  String? description;
-  num? quantity;
-  num? price;
-  String? imageCover;
+
   Category? category;
   Brand? brand;
-  num? ratingsAverage;
+
   String? createdAt;
   String? updatedAt;
   String? id2;

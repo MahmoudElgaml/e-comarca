@@ -58,7 +58,9 @@ class HomeScreen extends StatelessWidget {
                         crossAxisCount: 2,
                       ),
                       itemBuilder: (context, index) => InkWell(
-                        onTap: () => context.push(AppRoute.productsScreen),
+                        onTap: () => context.push(
+                            AppRoute.productsScreen,
+                            extra: state.categoryEntity.data![index].id),
                         child: CostumeCategory(
                           category: state.categoryEntity.data,
                           index: index,
