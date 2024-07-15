@@ -1,4 +1,5 @@
 import 'package:e_comarce_clean/core/utils/cpmponents/IncreaseDecreaseOrderButton.dart';
+import 'package:e_comarce_clean/core/utils/helper_function.dart';
 import 'package:e_comarce_clean/features/product_detail_feature/presentation/widgets/product_detail_image.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class ProductInfoWidget extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              "EGP ${product.price}",
+             HelperFunction.checkOnDiscount(product.price, product.priceAfterDiscount),
               style: AppStyle.style18(context),
             ),
           ],
@@ -95,4 +96,5 @@ class ProductInfoWidget extends StatelessWidget {
       ],
     );
   }
+  
 }
