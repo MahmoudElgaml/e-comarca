@@ -19,7 +19,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   @override
   Widget build(BuildContext context) {
     final String categoryId = GoRouterState.of(context).extra! as String;
-    print(categoryId);
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -39,32 +39,34 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   if (state is GetProductFailState) {
                     return Center(child: Text(state.message));
                   }
-                  if(state is GetProductSuccessState){
-                   // print(GetProductCubit.get(context).products[0].title);
+                  if (state is GetProductSuccessState) {
+                    // print(GetProductCubit.get(context).products[0].title);
                     return Expanded(
                       child: GridView.builder(
                         gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           mainAxisSpacing: 16,
                           crossAxisSpacing: 16,
                           childAspectRatio: 191 / 270,
                         ),
                         itemBuilder: (context, index) => InkWell(
-                          onTap: () =>
-                              context.push(AppRoute.productsDetailScreen),
+                          onTap: () => context.push(
+                              AppRoute.productsDetailScreen,
+                              extra: GetProductCubit.get(context)
+                                  .products![index]),
                           child: ProductItem(
-                            product: GetProductCubit.get(context).products![index],
+                            product:
+                                GetProductCubit.get(context).products![index],
                           ),
                         ),
-                        itemCount:GetProductCubit.get(context).products!.length,
+                        itemCount:
+                            GetProductCubit.get(context).products!.length,
                       ),
                     );
-                  }
-                  else{
+                  } else {
                     return const Center(child: CircularProgressIndicator());
                   }
-
                 },
               )
             ],

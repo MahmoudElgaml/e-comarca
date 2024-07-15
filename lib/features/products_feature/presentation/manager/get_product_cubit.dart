@@ -26,7 +26,7 @@ class GetProductCubit extends Cubit<GetProductState> {
       (r) {
 
         products = r.data ?? [];
-        print(products![0].title);
+
         emit(GetProductSuccessState());
 
       },

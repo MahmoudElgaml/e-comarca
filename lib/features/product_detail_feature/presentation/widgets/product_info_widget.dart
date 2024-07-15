@@ -1,40 +1,46 @@
 import 'package:e_comarce_clean/core/utils/cpmponents/IncreaseDecreaseOrderButton.dart';
+import 'package:e_comarce_clean/features/product_detail_feature/presentation/widgets/product_detail_image.dart';
+import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../core/utils/app_style.dart';
 import '../../../../generated/assets.dart';
+import '../../../../core/utils/cpmponents/offer_idndector.dart';
+import '../../../products_feature/domain/entities/ProductEntity.dart';
 
 class ProductInfoWidget extends StatelessWidget {
-  const ProductInfoWidget({super.key});
+  const ProductInfoWidget({super.key, required this.product});
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AspectRatio(
-          aspectRatio: 398 / 300,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.asset(
-              Assets.imagesProductDetailTest,
-              width: double.infinity,
-              fit: BoxFit.fill,
-            ),
-          ),
-        ),
+        ExpandablePageView.builder(
+            itemCount: product.images!.length,
+            itemBuilder: (context, index) => ProductDetailImage(
+                  index: index,
+                  images: product.images ?? [],
+                )),
         const Gap(24),
         Row(
           children: [
-            Text(
-              "Nike Air Jordan",
-              style: AppStyle.style18(context),
+            SizedBox(
+              width: 250,
+              child: Text(
+                product.title ?? "",
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: AppStyle.style18(context),
+              ),
             ),
             const Spacer(),
             Text(
-              "EGP 3,500",
+              "EGP ${product.price}",
               style: AppStyle.style18(context),
             ),
           ],
@@ -55,7 +61,7 @@ class ProductInfoWidget extends StatelessWidget {
                 ),
               ),
               child: Text(
-                "3,230 Sold",
+                "${product.sold} Sold",
                 style: AppStyle.style14(context),
               ),
             ),
@@ -65,12 +71,11 @@ class ProductInfoWidget extends StatelessWidget {
               color: Colors.yellow,
             ),
             Text(
-              "4.8",
+              product.ratingsAverage.toString(),
               style: AppStyle.style14(context),
             ),
             const Spacer(),
             const IncreaseDecreaseOrderButton()
-
           ],
         ),
         const Gap(16),
@@ -80,7 +85,7 @@ class ProductInfoWidget extends StatelessWidget {
         ),
         const Gap(8),
         Text(
-          "Nike is a multinational corporation that designs, develops, and sells athletic footwear ,apparel, and accessories",
+          product.description ?? "",
           style: AppStyle.style14(context).copyWith(
             color: const Color(0x9906004E),
           ),

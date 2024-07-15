@@ -1,4 +1,4 @@
-import 'package:e_comarce_clean/features/home/presentation/widgets/offer_idndector.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/offer_idndector.dart';
 import 'package:e_comarce_clean/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,6 +30,7 @@ class CostumeOfferImage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: OfferImageIndicator(
+              numberIndicator: 3,
               selectedIndex: selectIndex,
             ),
           )
