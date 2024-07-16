@@ -32,5 +32,8 @@ class WhichListViewState extends HomeLayoutState {
 
 class AccountViewState extends HomeLayoutState {
   @override
-  Widget get viewTap => const AccountView();
+  Widget get viewTap =>  BlocProvider(
+  create: (context) => getIt<AccountCubit>()..isLogged(),
+  child: AccountView(),
+);
 }

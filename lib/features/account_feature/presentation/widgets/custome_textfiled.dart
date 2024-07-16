@@ -1,4 +1,6 @@
+import 'package:e_comarce_clean/core/cache/storage_token.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
+import 'package:e_comarce_clean/features/account_feature/presentation/widgets/no_loged_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -14,6 +16,7 @@ class CustomTextFiled extends StatefulWidget {
 
 class _CustomTextFiledState extends State<CustomTextFiled> {
   bool isEnable = false;
+  String? token;
 
   @override
   Widget build(BuildContext context) {
@@ -57,14 +60,14 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
       ],
     );
   }
+}
 
-  OutlineInputBorder buildTextFiledBorder() {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide: const BorderSide(
-        width: 1,
-        color: Color(0x4C004182),
-      ),
-    );
-  }
+OutlineInputBorder buildTextFiledBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+    borderSide: const BorderSide(
+      width: 1,
+      color: Color(0x4C004182),
+    ),
+  );
 }
