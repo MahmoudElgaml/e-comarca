@@ -4,9 +4,10 @@ import 'package:e_comarce_clean/features/auth/data/data_sources/remote_data_sour
 import 'package:e_comarce_clean/features/auth/data/models/SignUserModel.dart';
 
 import 'package:e_comarce_clean/features/auth/domain/repositories/auth_rebo.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../domain/entities/UserEntity.dart';
-
+@Injectable(as:AuthRepo)
 class AuthRepoImpl implements AuthRepo{
   AuthRemoteDataSource authRemoteDataSource;
 

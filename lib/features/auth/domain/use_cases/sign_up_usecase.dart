@@ -3,9 +3,10 @@ import 'package:e_comarce_clean/core/erorr/failure.dart';
 import 'package:e_comarce_clean/features/auth/data/models/SignUserModel.dart';
 
 import 'package:e_comarce_clean/features/auth/domain/repositories/auth_rebo.dart';
+import 'package:injectable/injectable.dart';
 
 import '../entities/UserEntity.dart';
-
+@injectable
 class SignUpUseCase{
  AuthRepo authRepo;
 
