@@ -11,6 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'core/api/api_manger.dart';
 import 'core/utils/bloc_observer.dart';
@@ -26,6 +27,8 @@ void main() async {
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
   configureDependencies();
+  FlutterSecureStorage storage=const FlutterSecureStorage();
+await  storage.deleteAll();
   Bloc.observer = MyBlocObserver();
   runApp(
     DevicePreview(enabled: true, builder: (context) => const MyApp()),

@@ -23,6 +23,7 @@ class Assets {
   static const String imagesLogInPhoto = 'assets/images/log_in_photo.png';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLoveIcon = 'assets/images/love_icon.svg';
+  static const String imagesNoLogin = 'assets/images/noLogin.json';
   static const String imagesOfferImage1 = 'assets/images/offer_image1.png';
   static const String imagesOfferImage2 = 'assets/images/offerImage2.png';
   static const String imagesOfferImage3 = 'assets/images/offerImage3.png';

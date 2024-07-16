@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_comarce_clean/core/service_locator/config.dart';
+import 'package:e_comarce_clean/features/account_feature/presentation/manager/account_cubit.dart';
 import 'package:e_comarce_clean/features/account_feature/presentation/pages/account_view.dart';
 import 'package:e_comarce_clean/features/category_feature/presentation/manager/category_cubit.dart';
 import 'package:e_comarce_clean/features/home/presentation/manager/home_cubit.dart';

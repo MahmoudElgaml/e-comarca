@@ -20,7 +20,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       var user = await aPiManger.post(EndPoints.signUp, signUserModel.toJson());
       UserModel userModel = UserModel.fromJson(user.data);
-      storageToken.setToken(userModel.token!);
       return right(userModel);
     } catch (e) {
       if (e is DioException) {
@@ -38,6 +37,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       var response = await aPiManger
           .post(EndPoints.logIn, {"email": email, "password": password});
       UserModel userModel = UserModel.fromJson(response.data);
+      storageToken.setToken(userModel.token!);
       return right(userModel);
     } catch (e) {
       if (e is DioException) {
