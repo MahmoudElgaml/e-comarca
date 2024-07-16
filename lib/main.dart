@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
 import 'package:e_comarce_clean/config/routes/routes.dart';
@@ -38,19 +39,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthCubit(
-          SignUpUseCase(
-            AuthRepoImpl(
-              AuthRemoteDataSourceImpl(APiManger(), StorageToken()),
-            ),
-          ),
-          LogInUseCase(
-            AuthRepoImpl(
-              AuthRemoteDataSourceImpl(APiManger(), StorageToken()),
-            ),
-          )),
+      create: (context) => getIt<AuthCubit>(),
       child: MaterialApp.router(
-        useInheritedMediaQuery: true,
         locale: DevicePreview.locale(context),
         builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,

@@ -2,7 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:e_comarce_clean/core/erorr/failure.dart';
 import 'package:e_comarce_clean/features/auth/domain/entities/UserEntity.dart';
 import 'package:e_comarce_clean/features/auth/domain/repositories/auth_rebo.dart';
-
+import 'package:injectable/injectable.dart';
+@injectable
 class LogInUseCase{
   AuthRepo authRepo;
 
