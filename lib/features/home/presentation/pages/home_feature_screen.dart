@@ -4,7 +4,7 @@ import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/core/utils/app_string.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
 import 'package:e_comarce_clean/features/home/presentation/manager/home_cubit.dart';
-import 'package:e_comarce_clean/features/home/presentation/widgets/costume_appbar.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/costume_appbar.dart';
 import 'package:e_comarce_clean/features/home/presentation/widgets/costume_category.dart';
 import 'package:e_comarce_clean/features/home/presentation/widgets/title_row.dart';
 import 'package:flutter/cupertino.dart';

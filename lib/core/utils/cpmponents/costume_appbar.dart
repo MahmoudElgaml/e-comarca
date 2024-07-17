@@ -1,3 +1,4 @@
+import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_string.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
@@ -5,8 +6,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../core/utils/app_images.dart';
+import '../app_images.dart';
 
 class CostumeAppBar extends StatelessWidget {
   const CostumeAppBar({super.key});
@@ -41,7 +43,9 @@ class CostumeAppBar extends StatelessWidget {
             ),
             const Gap(24),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push(AppRoute.cartScreen);
+              },
               icon: const Icon(
                 Icons.shopping_cart_outlined,
                 size: 30,

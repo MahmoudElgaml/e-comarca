@@ -1,6 +1,6 @@
 import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/core/service_locator/config.dart';
-import 'package:e_comarce_clean/features/home/presentation/widgets/costume_appbar.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/costume_appbar.dart';
 import 'package:e_comarce_clean/features/products_feature/presentation/manager/get_product_cubit.dart';
 import 'package:e_comarce_clean/features/products_feature/presentation/widgets/product_item.dart';
 import 'package:flutter/cupertino.dart';
