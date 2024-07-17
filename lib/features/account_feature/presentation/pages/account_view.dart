@@ -2,6 +2,8 @@ import 'package:e_comarce_clean/core/service_locator/config.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
 import 'package:e_comarce_clean/features/account_feature/presentation/manager/account_cubit.dart';
 import 'package:e_comarce_clean/features/account_feature/presentation/widgets/custome_textfiled.dart';
+import 'package:e_comarce_clean/features/auth/domain/entities/UserEntity.dart';
+import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:e_comarce_clean/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +22,7 @@ class AccountView extends StatefulWidget {
 class _AccountViewState extends State<AccountView> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
@@ -32,6 +35,7 @@ class _AccountViewState extends State<AccountView> {
             return const NoLoggedWidget();
           }
           else if(state is AccountIsLoggedState){
+            User? user=getIt<AuthCubit>().signedUser?.user;
             return CustomScrollView(
               //crossAxisAlignment: CrossAxisAlignment.start,
               slivers: [
@@ -43,12 +47,12 @@ class _AccountViewState extends State<AccountView> {
                   title: Column(
                     children: [
                       Text(
-                        "Welcome, Mohamed",
+                        "Welcome,${user!.name} ",
                         style: AppStyle.style18(context),
                       ),
                       const Gap(5),
                       Text(
-                        "mohamed.N@gmail.com",
+                        user.email??"",
                         style: AppStyle.style14(context)
                             .copyWith(color: const Color(0x9906004E)),
                       ),
@@ -56,14 +60,14 @@ class _AccountViewState extends State<AccountView> {
                   ),
                 ),
                 const SliverToBoxAdapter(child: Gap(40)),
-                const SliverFillRemaining(
+                 SliverFillRemaining(
                   hasScrollBody: false,
                   child: Column(
                     children: [
                       CustomTextFiled(
-                          title: "Your full name", hint: "Mohamed Mohamed Nabil"),
+                          title: "Your full name", hint: user.name??""),
                       CustomTextFiled(
-                          title: "Your E-mail", hint: "mohamed.N@gmail.com"),
+                          title: "Your E-mail", hint: user.email??""),
                       CustomTextFiled(title: "Your password", hint: "*******"),
                       CustomTextFiled(
                           title: "Your mobile number", hint: "01061746848"),

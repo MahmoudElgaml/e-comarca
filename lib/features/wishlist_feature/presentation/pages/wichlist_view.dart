@@ -1,5 +1,5 @@
 import 'package:e_comarce_clean/core/utils/cpmponents/product_cart.dart';
-import 'package:e_comarce_clean/features/home/presentation/widgets/costume_appbar.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/costume_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

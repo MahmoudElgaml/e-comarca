@@ -1,5 +1,5 @@
 import 'package:e_comarce_clean/features/category_feature/presentation/widgets/subCategory_body.dart';
-import 'package:e_comarce_clean/features/home/presentation/widgets/costume_appbar.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/costume_appbar.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/catgory_body.dart';

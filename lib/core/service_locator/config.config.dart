@@ -94,7 +94,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i19.LogInUseCase>(() => _i19.LogInUseCase(gh<_i17.AuthRepo>()));
     gh.factory<_i20.SignUpUseCase>(
         () => _i20.SignUpUseCase(gh<_i17.AuthRepo>()));
-    gh.factory<_i21.AuthCubit>(() => _i21.AuthCubit(
+    gh.singleton<_i21.AuthCubit>(() => _i21.AuthCubit(
           gh<_i20.SignUpUseCase>(),
           gh<_i19.LogInUseCase>(),
         ));

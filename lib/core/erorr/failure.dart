@@ -2,12 +2,13 @@ import 'package:dio/dio.dart';
 
 abstract class Failure {
   String message;
+  String? statusCode;
 
-  Failure(this.message);
+  Failure(this.message, {this.statusCode});
 }
 
 class ServerFailure extends Failure {
-  ServerFailure(super.message);
+  ServerFailure(super.message, {super.statusCode});
 
   factory ServerFailure.fromServer(DioException dioException) {
     switch (dioException.type) {
@@ -39,13 +40,17 @@ class ServerFailure extends Failure {
 
   factory ServerFailure.fromBadResponse(int statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 402) {
-      return ServerFailure(response["message"]);
+      return ServerFailure(response["message"],
+          statusCode: statusCode.toString());
     } else if (statusCode == 404) {
-      return ServerFailure("not found ,try again later");
+      return ServerFailure(" not found data ",
+          statusCode: statusCode.toString());
     } else if (statusCode == 500) {
-      return ServerFailure("internal server error, please try later");
+      return ServerFailure("internal server error, please try later",
+          statusCode: statusCode.toString());
     } else {
-      return ServerFailure("opps try again latter");
+      return ServerFailure("opps try again latter",
+          statusCode: statusCode.toString());
     }
   }
 }

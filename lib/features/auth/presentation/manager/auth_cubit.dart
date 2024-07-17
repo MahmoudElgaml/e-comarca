@@ -8,6 +8,7 @@ import 'package:meta/meta.dart';
 import '../../domain/use_cases/sign_up_usecase.dart';
 
 part 'auth_state.dart';
+@singleton
 @injectable
 class AuthCubit extends Cubit<AuthState> {
   SignUpUseCase signUpUseCase;
@@ -16,6 +17,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this.signUpUseCase, this.logInUseCase) : super(AuthInitial());
 
   static AuthCubit get(context) => BlocProvider.of(context);
+  UserEntity? signedUser;
 
   signUp(SignUserModel signUserModel) async {
     emit(AuthLoadingState());
@@ -23,7 +25,7 @@ class AuthCubit extends Cubit<AuthState> {
     result.fold(
       (fail) => emit(AuthFailState(fail.message)),
       (signeddUser) => emit(
-        AuthSuccessState(signeddUser),
+        AuthSuccessState(),
       ),
     );
   }
@@ -33,10 +35,11 @@ class AuthCubit extends Cubit<AuthState> {
     var result = await logInUseCase.call(email: email, password: password);
     result.fold(
       (fail) => emit(AuthFailState(fail.message)),
-      (signeddUser) => emit(
-        AuthSuccessState(signeddUser),
-      ),
+      (results) {
+        signedUser=results;
+        print(signedUser!.user!.name);
+        emit(AuthSuccessState());
+      },
     );
   }
-
 }
