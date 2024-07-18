@@ -19,8 +19,13 @@ class CartRemoteDatasourceImpl implements CartRemoteDatasource {
   @override
   Future<Either<Failure, CartProductsModel>> getCartProduct() async {
     try {
+      String? token=await storageToken.getToken();
+      print(token);
       var response = await aPiManger.get(EndPoints.getCartProduct,
-          header: {"token": storageToken.getToken()});
+          header: {
+          'Content-Type': 'application/json',
+           "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGVmZGY4ZWQwZGMwMDE2Yzk4Yjk1YSIsIm5hbWUiOiJBaG1lZCBBYmQgQWwtTXV0aSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzIxMzM3MDQ5LCJleHAiOjE3MjkxMTMwNDl9.-8djNm5gXtbYIQVQxQvv61IhFbIxtAZtApdVK1CwEi4"
+      });
       CartProductsModel cartProductsModel =
           CartProductsModel.fromJson(response.data);
       return right(cartProductsModel);

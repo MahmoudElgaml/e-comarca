@@ -1,6 +1,6 @@
 import 'package:e_comarce_clean/core/cache/storage_token.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
-import 'package:e_comarce_clean/features/account_feature/presentation/widgets/no_loged_widget.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/no_loged_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

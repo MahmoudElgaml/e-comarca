@@ -1,3 +1,5 @@
+
+
 import 'package:dartz/dartz.dart';
 import 'package:e_comarce_clean/core/erorr/failure.dart';
 import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduct.dart';
@@ -9,7 +11,7 @@ class GetCartDataUseCase{
   CartRepo cartRepo;
 
   GetCartDataUseCase(this.cartRepo);
-  Future<Either<Failure,CartDataEntity>> getCartData()async{
+  Future<Either<Failure,CartDataEntity>> call()async{
     return await cartRepo.getCartProduct();
 
   }

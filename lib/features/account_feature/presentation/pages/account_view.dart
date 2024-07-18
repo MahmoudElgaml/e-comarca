@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../core/cache/storage_token.dart';
-import '../widgets/no_loged_widget.dart';
+import '../../../../core/utils/cpmponents/no_loged_widget.dart';
 
 class AccountView extends StatefulWidget {
   AccountView({super.key});

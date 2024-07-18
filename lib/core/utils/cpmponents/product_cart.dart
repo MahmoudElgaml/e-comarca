@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/IncreaseDecreaseOrderButton.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/addToCart_button.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/love_button.dart';
+import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduct.dart';
 import 'package:e_comarce_clean/features/cart_feature/presentation/widgets/product_detail.dart';
 import 'package:e_comarce_clean/generated/assets.dart';
 import 'package:flutter/foundation.dart';
@@ -11,10 +13,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class ProductCart extends StatelessWidget {
-  const ProductCart({super.key, required this.isCart});
+  const ProductCart({super.key, required this.isCart, this.product});
 
   final bool isCart;
-
+  final ProductData? product;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -42,8 +44,9 @@ class ProductCart extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(
-                      Assets.imagesCategoryTest,
+                    child: CachedNetworkImage(
+                      imageUrl: product!.imageCover??"",
+                      errorWidget: (context, url, error) => Text((error.toString())),
                       fit: BoxFit.fill,
                       height: double.infinity,
                     ),
