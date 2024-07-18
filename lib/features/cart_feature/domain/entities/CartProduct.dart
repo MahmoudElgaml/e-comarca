@@ -11,40 +11,40 @@ class CartDataEntity {
     if (json['products'] != null) {
       products = [];
       json['products'].forEach((v) {
-        products?.add(Products.fromJson(v));
+        products?.add(ProductsData.fromJson(v));
       });
     }
   }
 
   String? id;
   String? cartOwner;
-  List<Products>? products;
+  List<ProductsData>? products;
 }
 
-class Products {
-  Products({
+class ProductsData {
+  ProductsData({
     this.count,
     this.id,
     this.product,
     this.price,
   });
 
-  Products.fromJson(dynamic json) {
+  ProductsData.fromJson(dynamic json) {
     count = json['count'];
     id = json['_id'];
     product =
-        json['product'] != null ? Product.fromJson(json['product']) : null;
+        json['product'] != null ? ProductData.fromJson(json['product']) : null;
     price = json['price'];
   }
 
   num? count;
   String? id;
-  Product? product;
+  ProductData? product;
   num? price;
 }
 
-class Product {
-  Product({
+class ProductData {
+  ProductData({
     this.id,
     this.title,
     this.quantity,
@@ -52,7 +52,7 @@ class Product {
     this.ratingsAverage,
   });
 
-  Product.fromJson(dynamic json) {
+  ProductData.fromJson(dynamic json) {
     id = json['_id'];
     title = json['title'];
     quantity = json['quantity'];
