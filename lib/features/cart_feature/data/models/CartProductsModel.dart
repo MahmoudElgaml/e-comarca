@@ -1,6 +1,6 @@
 import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduct.dart';
 
-class CartProductsModel {
+class CartProductsModel extends CartDataEntity {
   CartProductsModel({
     this.status,
     this.numOfCartItems,
