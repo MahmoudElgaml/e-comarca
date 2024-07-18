@@ -10,7 +10,7 @@ class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-     mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
@@ -29,8 +29,8 @@ class ProductDetail extends StatelessWidget {
             const Gap(8),
             Text(
               "Orange | Size: 40",
-              style: AppStyle.style18(context)
-                  .copyWith(color: Color(0x9906004E)),
+              style:
+              AppStyle.style18(context).copyWith(color: const Color(0x9906004E)),
             ),
           ],
         ),
@@ -42,11 +42,9 @@ class ProductDetail extends StatelessWidget {
               "EGP 3,500",
               style: AppStyle.style18(context),
             ),
-
-
           ],
         ),
-         const Gap(8)
+        const Gap(8)
       ],
     );
   }
