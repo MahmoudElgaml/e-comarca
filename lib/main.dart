@@ -27,8 +27,8 @@ void main() async {
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
   configureDependencies();
-  FlutterSecureStorage storage=const FlutterSecureStorage();
-await  storage.deleteAll();
+  FlutterSecureStorage storage = const FlutterSecureStorage();
+  await storage.deleteAll();
   Bloc.observer = MyBlocObserver();
   runApp(
     DevicePreview(enabled: true, builder: (context) => const MyApp()),

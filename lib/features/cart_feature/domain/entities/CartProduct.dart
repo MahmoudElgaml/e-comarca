@@ -1,11 +1,11 @@
-class CartData {
-  CartData({
+class CartDataEntity {
+  CartDataEntity({
     this.id,
     this.cartOwner,
     this.products,
   });
 
-  CartData.fromJson(dynamic json) {
+  CartDataEntity.fromJson(dynamic json) {
     id = json['_id'];
     cartOwner = json['cartOwner'];
     if (json['products'] != null) {
