@@ -3,8 +3,8 @@ import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduc
 class CartProductsModel extends CartDataEntity {
   CartProductsModel({
     this.status,
-    this.numOfCartItems,
-    this.data,
+    super.numOfCartItems,
+    super.data,
   });
 
   CartProductsModel.fromJson(dynamic json) {
@@ -14,11 +14,10 @@ class CartProductsModel extends CartDataEntity {
   }
 
   String? status;
-  num? numOfCartItems;
-  Data? data;
+
 }
 
-class Data extends CartDataEntity {
+class Data extends CartData {
   Data({
     super.id,
     super.cartOwner,
@@ -26,7 +25,7 @@ class Data extends CartDataEntity {
     this.createdAt,
     this.updatedAt,
     this.v,
-    this.totalCartPrice,
+    super.totalCartPrice,
   });
 
   Data.fromJson(dynamic json) {
@@ -47,10 +46,9 @@ class Data extends CartDataEntity {
   String? createdAt;
   String? updatedAt;
   num? v;
-  num? totalCartPrice;
 }
 
-class Products extends ProductsData {
+class Products extends CartProducts {
   Products({
     super.count,
     super.id,
@@ -67,7 +65,7 @@ class Products extends ProductsData {
   }
 }
 
-class Product extends ProductData {
+class Product extends CartProduct {
   Product({
     this.subcategory,
     super.id,

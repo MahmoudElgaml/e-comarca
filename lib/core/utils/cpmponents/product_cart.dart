@@ -16,7 +16,7 @@ class ProductCart extends StatelessWidget {
   const ProductCart({super.key, required this.isCart, this.product});
 
   final bool isCart;
-  final ProductData? product;
+  final CartProducts? product;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -45,7 +45,7 @@ class ProductCart extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: CachedNetworkImage(
-                      imageUrl: product!.imageCover??"",
+                      imageUrl: product?.product?.imageCover ??"",
                       errorWidget: (context, url, error) => Text((error.toString())),
                       fit: BoxFit.fill,
                       height: double.infinity,
@@ -53,9 +53,9 @@ class ProductCart extends StatelessWidget {
                   ),
                 ),
                 const Gap(8),
-                const FittedBox(
+              FittedBox(
                   fit: BoxFit.scaleDown,
-                  child: ProductDetail(),
+                  child: ProductDetail( product: product,),
                 )
               ],
             ),

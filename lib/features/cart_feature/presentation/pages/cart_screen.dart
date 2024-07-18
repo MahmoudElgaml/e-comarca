@@ -46,38 +46,42 @@ class CartScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(top: 32, left: 16, right: 16),
         child: Column(
-           mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             BlocBuilder<GetCartProductCubit, GetCartProductState>(
               builder: (context, state) {
-                if(state is GetCartProductUnLoggedState){
+                if (state is GetCartProductUnLoggedState) {
                   return const NoLoggedWidget();
-
-                }
-                else if(state  is GetCartProductEmptyState){
-
-                  return const Center(child: Text("no data go do some shopping"));
-                }
-                else if (state is GetCartProductFailState){
-
-                  return Center(child: Text(state.message),);
-                }
-                else if (state is GetCartProductSuccessState){
-                  List<ProductsData> products= GetCartProductCubit.get(context).cartData!.products??[];
+                } else if (state is GetCartProductEmptyState) {
+                  return const Center(
+                    child: Text(
+                      "no data go do some shopping",
+                    ),
+                  );
+                } else if (state is GetCartProductFailState) {
+                  return Center(
+                    child: Text(
+                      state.message,
+                    ),
+                  );
+                } else if (state is GetCartProductSuccessState) {
+                  List<CartProducts> products = GetCartProductCubit.get(context)
+                          .cartData!
+                          .data!
+                          .products ??
+                      [];
                   return Expanded(
                     child: ListView.separated(
-                      itemBuilder: (context, index) =>
-                       ProductCart(
-                        product: products[index].product,
+                      itemBuilder: (context, index) => ProductCart(
+                        product: products[index],
                         isCart: true,
                       ),
                       separatorBuilder: (context, index) => const Gap(20),
-                      itemCount: 1,
+                      itemCount: products.length,
                     ),
                   );
                 }
                 return const Center(child: CircularProgressIndicator());
-
               },
             ),
           ],
