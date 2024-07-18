@@ -1,12 +1,13 @@
 import 'package:e_comarce_clean/core/utils/app_style.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/IncreaseDecreaseOrderButton.dart';
+import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduct.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail({super.key});
-
+  const ProductDetail({super.key,this.product});
+final  CartProducts? product;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,7 +15,7 @@ class ProductDetail extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Nike Air Jordon",
+          product?.product?.title??" ",
           style: AppStyle.style18(context),
         ),
         const Gap(13),
@@ -39,7 +40,7 @@ class ProductDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "EGP 3,500",
+              "EGP ${product?.price} ",
               style: AppStyle.style18(context),
             ),
           ],
