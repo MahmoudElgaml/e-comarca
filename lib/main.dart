@@ -6,11 +6,13 @@ import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/config/themeing/light_theme.dart';
 import 'package:e_comarce_clean/core/cache/storage_token.dart';
 import 'package:e_comarce_clean/core/service_locator/config.dart';
+import 'package:e_comarce_clean/core/services/loading_service.dart';
 import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'core/api/api_manger.dart';
@@ -27,6 +29,7 @@ void main() async {
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
   configureDependencies();
+  configureEasyLoading();
   FlutterSecureStorage storage = const FlutterSecureStorage();
   await storage.deleteAll();
   Bloc.observer = MyBlocObserver();
@@ -45,7 +48,7 @@ class MyApp extends StatelessWidget {
       create: (context) => getIt<AuthCubit>(),
       child: MaterialApp.router(
         locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
+        builder: EasyLoading.init(builder: DevicePreview.appBuilder),
         debugShowCheckedModeBanner: false,
         theme: MyLightTheme.myLightTheme,
         title: 'Flutter Demo',

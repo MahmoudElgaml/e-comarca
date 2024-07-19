@@ -10,6 +10,9 @@ class AppStyle {
     );
   }
 
+  static TextStyle easySuccess =
+      const TextStyle(color: Colors.green, fontWeight: FontWeight.bold);
+
   static TextStyle styleRegularOpacity(BuildContext context) {
     return TextStyle(
       color: Colors.black.withOpacity(.3),
@@ -24,6 +27,7 @@ class AppStyle {
       fontWeight: FontWeight.w500,
     );
   }
+
   static TextStyle styleRegular18(BuildContext context) {
     return TextStyle(
       color: Colors.black,
@@ -42,11 +46,11 @@ class AppStyle {
 
   static TextStyle style12(BuildContext context) {
     return TextStyle(
-      fontSize: responsiveFont(context: context, fontSize: 12),
-      fontWeight: FontWeight.w400,
-      fontFamily: 'Poppins'
-    );
+        fontSize: responsiveFont(context: context, fontSize: 12),
+        fontWeight: FontWeight.w400,
+        fontFamily: 'Poppins');
   }
+
   static TextStyle style11(BuildContext context) {
     return const TextStyle(
       color: Color(0x99004182),
@@ -70,6 +74,7 @@ class AppStyle {
       fontSize: responsiveFont(context: context, fontSize: 20),
     );
   }
+
   static TextStyle styleMedium20(BuildContext context) {
     return TextStyle(
       color: Colors.black,
