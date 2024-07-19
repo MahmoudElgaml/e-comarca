@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_comarce_clean/core/service_locator/config.dart';
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_images.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
+import 'package:e_comarce_clean/features/cart_feature/presentation/manager/get_cart_product_cubit.dart';
 import 'package:e_comarce_clean/features/products_feature/domain/entities/ProductEntity.dart';
 import 'package:e_comarce_clean/features/products_feature/presentation/widgets/product_details.dart';
 import 'package:e_comarce_clean/generated/assets.dart';
@@ -18,7 +20,6 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           side: const BorderSide(width: 2, color: Color(0x4C004182)),
@@ -37,11 +38,12 @@ class ProductItem extends StatelessWidget {
                   topRight: Radius.circular(15),
                 ),
                 child: AspectRatio(
-                  aspectRatio:  191 / 128,
+                  aspectRatio: 191 / 128,
                   child: CachedNetworkImage(
                     imageUrl: product.images![0],
                     fit: BoxFit.fill,
-                    errorWidget: (context, url, error) => Text(error.toString()),
+                    errorWidget: (context, url, error) =>
+                        Text(error.toString()),
                   ),
                 ),
               ),
@@ -64,7 +66,13 @@ class ProductItem extends StatelessWidget {
                   alignment: AlignmentDirectional.bottomEnd,
                   child: Padding(
                     padding: const EdgeInsets.all(3.0),
-                    child: SvgPicture.asset(Assets.imagesIconPlus),
+                    child: IconButton(
+                      icon: SvgPicture.asset(Assets.imagesIconPlus),
+                      onPressed: () {
+                        getIt<GetCartProductCubit>().addToCart(product.id!);
+
+                      },
+                    ),
                   ),
                 )
               ],

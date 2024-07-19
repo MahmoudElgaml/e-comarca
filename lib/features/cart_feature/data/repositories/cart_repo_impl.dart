@@ -16,5 +16,11 @@ class CartRepoImpl implements CartRepo{
     return await cartRemoteDatasource.getCartProduct();
   }
 
+  @override
+  Future<Either<Failure, String>> addToCart(String productId) async{
+    return await cartRemoteDatasource.addToCart(productId);
+
+  }
+
 
 }
