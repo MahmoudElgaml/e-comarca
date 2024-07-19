@@ -19,7 +19,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
   @override
   Widget build(BuildContext context) {
     final String categoryId = GoRouterState.of(context).extra! as String;
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

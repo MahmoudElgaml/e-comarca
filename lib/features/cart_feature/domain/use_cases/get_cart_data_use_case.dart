@@ -15,4 +15,5 @@ class GetCartDataUseCase{
     return await cartRepo.getCartProduct();
 
   }
+
 }

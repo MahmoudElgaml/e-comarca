@@ -7,5 +7,6 @@ import '../../../domain/entities/CartProduct.dart';
 abstract class CartRemoteDatasource{
 
   Future<Either<Failure,CartProductsModel>> getCartProduct();
+  Future<Either<Failure,String>> addToCart(String productId);
 
 }

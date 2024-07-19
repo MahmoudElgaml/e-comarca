@@ -4,6 +4,7 @@ import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduc
 
 abstract class CartRepo{
   Future<Either<Failure,CartDataEntity>> getCartProduct();
+  Future<Either<Failure,String>> addToCart(String productId);
 
 
 }
