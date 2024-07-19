@@ -14,9 +14,14 @@ final  CartProducts? product;
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          product?.product?.title??" ",
-          style: AppStyle.style18(context),
+        SizedBox(
+          width: 200,
+          child: Text(
+            product?.product?.title??" ",
+            overflow: TextOverflow.ellipsis,
+             maxLines: 1,
+            style: AppStyle.style18(context),
+          ),
         ),
         const Gap(13),
         Row(
