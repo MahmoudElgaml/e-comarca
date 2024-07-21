@@ -8,6 +8,7 @@ abstract class EndPoints{
   static const String getProductBaseOnCategory ="/api/v1/products?category[in]=";
   static const String getCartProduct ="/api/v1/cart";
   static const String addToCart ="/api/v1/cart";
+  static const String deleteFromCart ="/api/v1/cart";
 
 
 }

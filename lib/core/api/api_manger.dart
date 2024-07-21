@@ -20,4 +20,8 @@ class APiManger {
     return dio.post(EndPoints.baseUrl + endPoint,
         data: body, options: Options(headers: header,preserveHeaderCase: true));
   }
+  Future<Response> delete(String endPoint, {Map<String, dynamic>? header}) {
+    return dio.delete(EndPoints.baseUrl + endPoint,
+        options: Options(headers: header, preserveHeaderCase: true));
+  }
 }

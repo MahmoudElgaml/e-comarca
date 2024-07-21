@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduct.dart';
 import 'package:e_comarce_clean/features/cart_feature/domain/use_cases/add_to_cart_use_case.dart';
+import 'package:e_comarce_clean/features/cart_feature/domain/use_cases/delete_from_cart_use_cas.dart';
 import 'package:e_comarce_clean/features/cart_feature/domain/use_cases/get_cart_data_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -10,10 +11,12 @@ part 'get_cart_product_state.dart';
 
 @injectable
 class GetCartProductCubit extends Cubit<GetCartProductState> {
-  GetCartProductCubit(this.cartDataUseCase, this.addToCartUseCase)
+  GetCartProductCubit(
+      this.cartDataUseCase, this.addToCartUseCase, this.deleteFromCartUseCas)
       : super(GetCartProductInitial());
   GetCartDataUseCase cartDataUseCase;
   AddToCartUseCase addToCartUseCase;
+  DeleteFromCartUseCas deleteFromCartUseCas;
   CartDataEntity? cartData;
 
   static GetCartProductCubit get(context) => BlocProvider.of(context);
@@ -50,7 +53,19 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
         } else {
           emit(GetCartProductFailState(l.message));
         }
+      },
+      (r) {
+        emit(GetCartProductSuccessState());
+      },
+    );
+  }
 
+  deleteFromCart(String productId) async {
+    emit(GetCartProductLoadingState());
+    var result = await deleteFromCartUseCas.call(productId);
+    result.fold(
+      (l) {
+        emit(GetCartProductFailState(l.message));
       },
       (r) {
         emit(GetCartProductSuccessState());

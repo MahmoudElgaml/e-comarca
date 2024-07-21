@@ -54,4 +54,25 @@ class CartRemoteDatasourceImpl implements CartRemoteDatasource {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, String>> deleteFromCart(String productId)async {
+   try{
+  String?token=   await storageToken.getToken();
+   await  aPiManger.delete("${EndPoints.deleteFromCart}/$productId", header: {
+     'Content-Type': 'application/json',
+     "token":token
+   });
+  return right("done");
+
+   }
+   catch(e){
+     if (e is DioException) {
+       return left(ServerFailure.fromServer(e));
+     } else {
+       return left(ServerFailure(e.toString()));
+     }
+
+   }
+  }
 }
