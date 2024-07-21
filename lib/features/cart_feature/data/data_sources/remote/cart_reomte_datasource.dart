@@ -8,5 +8,6 @@ abstract class CartRemoteDatasource{
 
   Future<Either<Failure,CartProductsModel>> getCartProduct();
   Future<Either<Failure,String>> addToCart(String productId);
+  Future<Either<Failure,String>> deleteFromCart(String productId);
 
 }

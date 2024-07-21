@@ -5,6 +5,7 @@ import 'package:e_comarce_clean/core/utils/cpmponents/IncreaseDecreaseOrderButto
 import 'package:e_comarce_clean/core/utils/cpmponents/addToCart_button.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/love_button.dart';
 import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduct.dart';
+import 'package:e_comarce_clean/features/cart_feature/presentation/manager/get_cart_product_cubit.dart';
 import 'package:e_comarce_clean/features/cart_feature/presentation/widgets/product_detail.dart';
 import 'package:e_comarce_clean/generated/assets.dart';
 import 'package:flutter/foundation.dart';
@@ -68,7 +69,10 @@ class ProductCart extends StatelessWidget {
                 Align(
                     alignment: AlignmentDirectional.topEnd,
                     child: isCart ? IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        GetCartProductCubit.get(context).deleteFromCart(product!.product!.id!);
+                        GetCartProductCubit.get(context).getCartProduct();
+                      },
                       icon: const Icon(Icons.delete_outline),
                       color: AppColor.primaryColor,
                       iconSize: 30,
