@@ -13,3 +13,4 @@ class GetCartProductFailState extends GetCartProductState {
 }
 class GetCartProductUnLoggedState extends GetCartProductState {}
 class GetCartProductEmptyState extends GetCartProductState {}
+class AddToCartSuccessState extends GetCartProductState {}

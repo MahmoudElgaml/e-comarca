@@ -95,7 +95,7 @@ class AppStyle {
 
   static double responsiveFont(
       {required double fontSize, required BuildContext context}) {
-    double width = MediaQuery.sizeOf(context).width;
+    double width = MediaQuery.of(context).size.width;
     double scalefactor = scaleFactor(width);
     double lowerLimit = fontSize * .8;
     double upperLimit = fontSize * 1.3;

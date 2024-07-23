@@ -17,7 +17,7 @@ class _CategoryBodyState extends State<CategoryBody> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.sizeOf(context).height - 230,
+      height: MediaQuery.of(context).size.height - 230,
       decoration: const BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.only(topLeft: Radius.circular(10)),

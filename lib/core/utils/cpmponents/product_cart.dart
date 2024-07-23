@@ -70,8 +70,8 @@ class ProductCart extends StatelessWidget {
                     alignment: AlignmentDirectional.topEnd,
                     child: isCart ? IconButton(
                       onPressed: () {
-                        GetCartProductCubit.get(context).deleteFromCart(product!.product!.id!);
-                        GetCartProductCubit.get(context).getCartProduct();
+                       GetCartProductCubit.get(context).deleteFromCart(product!.product!.id!);
+
                       },
                       icon: const Icon(Icons.delete_outline),
                       color: AppColor.primaryColor,

@@ -65,17 +65,19 @@ class CartScreen extends StatelessWidget {
                     ),
                   );
                 } else if (state is GetCartProductSuccessState) {
-                  List<CartProducts> products = GetCartProductCubit.get(context)
-                          .cartData!
-                          .data!
-                          .products ??
+                  List<CartProducts> products = GetCartProductCubit
+                      .get(context)
+                      .cartData!
+                      .data!
+                      .products ??
                       [];
                   return Expanded(
                     child: ListView.separated(
-                      itemBuilder: (context, index) => ProductCart(
-                        product: products[index],
-                        isCart: true,
-                      ),
+                      itemBuilder: (context, index) =>
+                          ProductCart(
+                            product: products[index],
+                            isCart: true,
+                          ),
                       separatorBuilder: (context, index) => const Gap(20),
                       itemCount: products.length,
                     ),

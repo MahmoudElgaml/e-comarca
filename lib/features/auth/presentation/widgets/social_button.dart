@@ -8,7 +8,7 @@ class SocialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Row(
+    return   Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CostumeAvatar(AppImages.google),
