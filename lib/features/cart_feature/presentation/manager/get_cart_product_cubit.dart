@@ -36,6 +36,7 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
       },
       (r) {
         cartData = r;
+
         emit(GetCartProductSuccessState());
       },
     );
@@ -69,6 +70,7 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
       },
       (r) {
         emit(GetCartProductSuccessState());
+        getCartProduct();
       },
     );
   }
