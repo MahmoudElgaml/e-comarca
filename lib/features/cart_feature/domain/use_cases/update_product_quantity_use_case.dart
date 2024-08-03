@@ -9,7 +9,7 @@ class UpdateProductQuantityUseCase {
 
   UpdateProductQuantityUseCase(this.cartRepo);
 
-  Future<Either<Failure, String>> call(String productId, String count) {
+  Future<Either<Failure, String>> call(String productId, num count) {
     return cartRepo.updateProductQuantity(productId, count);
   }
 }

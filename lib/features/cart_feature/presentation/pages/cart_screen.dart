@@ -10,6 +10,7 @@ import 'package:e_comarce_clean/features/product_detail_feature/presentation/wid
 import 'package:e_comarce_clean/features/products_feature/presentation/manager/get_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:gap/gap.dart';
 
 class CartScreen extends StatelessWidget {
@@ -45,11 +46,17 @@ class CartScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.white,
-      body: BlocBuilder<GetCartProductCubit, GetCartProductState>(
+      body: BlocConsumer<GetCartProductCubit, GetCartProductState>(
+        listener: (context, state) {
+          if (state is GetCartProductLoadingState){
+            EasyLoading.show();
+          }
+        },
         builder: (context, state) {
           List<CartProducts>? products =
               GetCartProductCubit.get(context).cartData?.data?.products ?? [];
           if (state is GetCartProductUnLoggedState) {
+            EasyLoading.dismiss();
             return const NoLoggedWidget();
           } else if (state is GetCartProductEmptyState) {
             return const Center(
@@ -58,12 +65,14 @@ class CartScreen extends StatelessWidget {
               ),
             );
           } else if (state is GetCartProductFailState) {
+            EasyLoading.dismiss();
             return Center(
               child: Text(
                 state.message,
               ),
             );
           } else if (state is GetCartProductSuccessState) {
+            EasyLoading.dismiss();
             return Padding(
               padding: const EdgeInsets.only(top: 32, left: 16, right: 16,bottom: 32),
               child: Column(
@@ -90,7 +99,7 @@ class CartScreen extends StatelessWidget {
               ),
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: Text(""));
         },
       ),
     );

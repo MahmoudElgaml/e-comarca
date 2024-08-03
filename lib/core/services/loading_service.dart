@@ -14,5 +14,5 @@ void configureEasyLoading() {
     ..maskColor = const Color(0x54ffffff)
     ..userInteractions = false
     ..dismissOnTap = false
-    ..successWidget= Center(child: Text("add Successfully",style: AppStyle.easySuccess,));
+    ..successWidget= Center(child: Text("add Successfully",style: AppStyle.easySuccess));
 }

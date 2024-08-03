@@ -46,7 +46,7 @@ class ServerFailure extends Failure {
       return ServerFailure(" not found data ",
           statusCode: statusCode.toString());
     } else if (statusCode == 500) {
-      return ServerFailure("internal server error, please try later",
+      return ServerFailure(response["message"],
           statusCode: statusCode.toString());
     } else {
       return ServerFailure("opps try again latter",

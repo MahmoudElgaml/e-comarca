@@ -68,14 +68,14 @@ class Products extends CartProducts {
 class Product extends CartProduct {
   Product({
     this.subcategory,
-    super.id,
+    this.id2,
     super.title,
     super.quantity,
     super.imageCover,
     this.category,
     this.brand,
     super.ratingsAverage,
-    this.id2,
+    super.id,
   });
 
   Product.fromJson(dynamic json) {

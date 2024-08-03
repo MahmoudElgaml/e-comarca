@@ -24,8 +24,9 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
   static GetCartProductCubit get(context) => BlocProvider.of(context);
 
   getCartProduct() async {
-    var result = await cartDataUseCase.call();
     emit(GetCartProductLoadingState());
+    var result = await cartDataUseCase.call();
+
     result.fold(
       (l) {
         if (l.statusCode == "401") {
@@ -33,6 +34,7 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
         } else if (l.statusCode == "404") {
           emit(GetCartProductEmptyState());
         } else {
+
           emit(GetCartProductFailState(l.message));
         }
       },
@@ -71,22 +73,23 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
         emit(GetCartProductFailState(l.message));
       },
       (r) {
-        emit(GetCartProductSuccessState());
+
         getCartProduct();
       },
     );
   }
 
-  updateProductQuantity(String productId,String count) async {
-    emit(GetCartProductLoadingState());
+  updateProductQuantity(String productId,num count) async {
+emit(GetCartProductLoadingState());
     var result = await updateProductQuantityUseCase.call(productId, count);
     result.fold(
       (l) {
         emit(GetCartProductFailState(l.message));
       },
       (r) {
-        emit(GetCartProductSuccessState());
         getCartProduct();
+
+
       },
     );
   }

@@ -76,14 +76,14 @@ class CartRemoteDatasourceImpl implements CartRemoteDatasource {
 
   @override
   Future<Either<Failure, String>> updateProductQuantity(String productId,
-      String count) async {
+      num count) async {
     try {
       String? token = await storageToken.getToken();
       await aPiManger.put(
         "${EndPoints.updateProductCountCart}/$productId",
         header: {
           'Content-Type': 'application/json',
-          "token": token,
+          "token": token
         },
         body: {
           "count": count
