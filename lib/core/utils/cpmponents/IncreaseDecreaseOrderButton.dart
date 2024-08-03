@@ -1,3 +1,5 @@
+import 'package:e_comarce_clean/core/utils/helper_function.dart';
+import 'package:e_comarce_clean/features/cart_feature/presentation/manager/get_cart_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -5,11 +7,14 @@ import '../../../generated/assets.dart';
 import '../app_style.dart';
 
 class IncreaseDecreaseOrderButton extends StatelessWidget {
-  const IncreaseDecreaseOrderButton({super.key, this.quantity});
- final num? quantity;
+  const IncreaseDecreaseOrderButton({super.key, this.quantity, this.productId});
+
+  final num? quantity;
+  final String? productId;
+
   @override
   Widget build(BuildContext context) {
-    return   Container(
+    return Container(
       width: 122,
       height: 42,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 11),
@@ -24,7 +29,14 @@ class IncreaseDecreaseOrderButton extends StatelessWidget {
         alignment: AlignmentDirectional.center,
         child: Row(
           children: [
-            InkWell(child: Image.asset(Assets.imagesDecreaseIocn)),
+            InkWell(
+                onTap: () {
+                  HelperFunction.checkQuantity(quantity!)
+                      ? GetCartProductCubit.get(context)
+                          .updateProductQuantity(productId!, quantity! - 1)
+                      : null;
+                },
+                child: Image.asset(Assets.imagesDecreaseIocn)),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 22.0),
               child: Text(
@@ -32,7 +44,12 @@ class IncreaseDecreaseOrderButton extends StatelessWidget {
                 style: AppStyle.style18(context).copyWith(color: Colors.white),
               ),
             ),
-            InkWell(child: SvgPicture.asset(Assets.imagesIncreaseIcon)),
+            InkWell(
+                onTap: () {
+                  GetCartProductCubit.get(context)
+                      .updateProductQuantity(productId!, quantity! + 1);
+                },
+                child: SvgPicture.asset(Assets.imagesIncreaseIcon)),
           ],
         ),
       ),

@@ -33,7 +33,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
           EasyLoading.dismiss();
           SnackBarServices.showUnLoggedMessage(context);
         } else if (state is GetCartProductSuccessState) {
-          EasyLoading.showSuccess("add Successfully");
+          EasyLoading.showSuccess("add Successfully",duration: const Duration(milliseconds: 500));
           EasyLoading.dismiss();
         }
       },

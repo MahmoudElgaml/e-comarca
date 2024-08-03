@@ -6,7 +6,7 @@ abstract class CartRepo{
   Future<Either<Failure,CartDataEntity>> getCartProduct();
   Future<Either<Failure,String>> addToCart(String productId);
   Future<Either<Failure,String>> deleteFromCart(String productId);
-  Future<Either<Failure,String>> updateProductQuantity(String productId,String count);
+  Future<Either<Failure,String>> updateProductQuantity(String productId,num count);
 
 
 }

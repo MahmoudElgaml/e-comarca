@@ -26,6 +26,7 @@ class APiManger {
   }
   Future<Response> put(String endPoint, {Map<String, dynamic>? body,Map<String, dynamic>? header}) {
     return dio.put(EndPoints.baseUrl + endPoint,
+        data: body,
         options: Options(headers: header, preserveHeaderCase: true));
   }
 }

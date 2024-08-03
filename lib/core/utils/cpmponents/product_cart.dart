@@ -88,7 +88,8 @@ class ProductCart extends StatelessWidget {
                   alignment: AlignmentDirectional.bottomEnd,
                   child: isCart
                       ? IncreaseDecreaseOrderButton(
-                          quantity: product?.count)
+                          quantity: product?.count,
+                  productId: product!.product!.id,)
                       : const AddToCartButton(),
                 )
               ],

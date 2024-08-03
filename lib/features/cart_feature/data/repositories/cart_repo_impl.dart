@@ -28,7 +28,7 @@ class CartRepoImpl implements CartRepo{
   }
 
   @override
-  Future<Either<Failure, String>> updateProductQuantity(String productId, String count) async{
+  Future<Either<Failure, String>> updateProductQuantity(String productId, num count) async{
    return await cartRemoteDatasource.updateProductQuantity(productId, count);
   }
 
