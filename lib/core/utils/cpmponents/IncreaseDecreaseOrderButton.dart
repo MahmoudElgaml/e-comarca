@@ -5,8 +5,8 @@ import '../../../generated/assets.dart';
 import '../app_style.dart';
 
 class IncreaseDecreaseOrderButton extends StatelessWidget {
-  const IncreaseDecreaseOrderButton({super.key});
-
+  const IncreaseDecreaseOrderButton({super.key, this.quantity});
+ final num? quantity;
   @override
   Widget build(BuildContext context) {
     return   Container(
@@ -24,15 +24,15 @@ class IncreaseDecreaseOrderButton extends StatelessWidget {
         alignment: AlignmentDirectional.center,
         child: Row(
           children: [
-            Image.asset(Assets.imagesDecreaseIocn),
+            InkWell(child: Image.asset(Assets.imagesDecreaseIocn)),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 22.0),
               child: Text(
-                "1",
+                quantity.toString(),
                 style: AppStyle.style18(context).copyWith(color: Colors.white),
               ),
             ),
-            SvgPicture.asset(Assets.imagesIncreaseIcon),
+            InkWell(child: SvgPicture.asset(Assets.imagesIncreaseIcon)),
           ],
         ),
       ),

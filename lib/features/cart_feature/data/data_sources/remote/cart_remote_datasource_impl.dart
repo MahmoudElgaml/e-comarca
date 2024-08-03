@@ -24,7 +24,7 @@ class CartRemoteDatasourceImpl implements CartRemoteDatasource {
       var response = await aPiManger.get(EndPoints.getCartProduct,
           header: {'Content-Type': 'application/json', "token": token});
       CartProductsModel cartProductsModel =
-          CartProductsModel.fromJson(response.data);
+      CartProductsModel.fromJson(response.data);
       return right(cartProductsModel);
     } catch (e) {
       if (e is DioException) {
@@ -56,23 +56,47 @@ class CartRemoteDatasourceImpl implements CartRemoteDatasource {
   }
 
   @override
-  Future<Either<Failure, String>> deleteFromCart(String productId)async {
-   try{
-  String?token=   await storageToken.getToken();
-   await  aPiManger.delete("${EndPoints.deleteFromCart}/$productId", header: {
-     'Content-Type': 'application/json',
-     "token":token
-   });
-  return right("done");
+  Future<Either<Failure, String>> deleteFromCart(String productId) async {
+    try {
+      String?token = await storageToken.getToken();
+      await aPiManger.delete("${EndPoints.deleteFromCart}/$productId", header: {
+        'Content-Type': 'application/json',
+        "token": token
+      });
+      return right("done");
+    }
+    catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 
-   }
-   catch(e){
-     if (e is DioException) {
-       return left(ServerFailure.fromServer(e));
-     } else {
-       return left(ServerFailure(e.toString()));
-     }
-
-   }
+  @override
+  Future<Either<Failure, String>> updateProductQuantity(String productId,
+      String count) async {
+    try {
+      String? token = await storageToken.getToken();
+      await aPiManger.put(
+        "${EndPoints.updateProductCountCart}/$productId",
+        header: {
+          'Content-Type': 'application/json',
+          "token": token,
+        },
+        body: {
+          "count": count
+        },
+      );
+      return right("success");
+    }
+    catch(e){
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
   }
 }

@@ -18,6 +18,7 @@ class ProductCart extends StatelessWidget {
 
   final bool isCart;
   final CartProducts? product;
+
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
@@ -46,17 +47,20 @@ class ProductCart extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: CachedNetworkImage(
-                      imageUrl: product?.product?.imageCover ??"",
-                      errorWidget: (context, url, error) => Text((error.toString())),
+                      imageUrl: product?.product?.imageCover ?? "",
+                      errorWidget: (context, url, error) =>
+                          Text((error.toString())),
                       fit: BoxFit.fill,
                       height: double.infinity,
                     ),
                   ),
                 ),
                 const Gap(8),
-              FittedBox(
+                FittedBox(
                   fit: BoxFit.scaleDown,
-                  child: ProductDetail( product: product,),
+                  child: ProductDetail(
+                    product: product,
+                  ),
                 )
               ],
             ),
@@ -68,21 +72,23 @@ class ProductCart extends StatelessWidget {
               children: [
                 Align(
                     alignment: AlignmentDirectional.topEnd,
-                    child: isCart ? IconButton(
-                      onPressed: () {
-                       GetCartProductCubit.get(context).deleteFromCart(product!.product!.id!);
-
-                      },
-                      icon: const Icon(Icons.delete_outline),
-                      color: AppColor.primaryColor,
-                      iconSize: 30,
-                    ) : const LoveButton()
-                ),
+                    child: isCart
+                        ? IconButton(
+                            onPressed: () {
+                              GetCartProductCubit.get(context)
+                                  .deleteFromCart(product!.product!.id!);
+                            },
+                            icon: const Icon(Icons.delete_outline),
+                            color: AppColor.primaryColor,
+                            iconSize: 30,
+                          )
+                        : const LoveButton()),
                 const Spacer(),
                 Align(
                   alignment: AlignmentDirectional.bottomEnd,
                   child: isCart
-                      ? const IncreaseDecreaseOrderButton()
+                      ? IncreaseDecreaseOrderButton(
+                          quantity: product?.count)
                       : const AddToCartButton(),
                 )
               ],

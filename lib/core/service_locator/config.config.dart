@@ -17,11 +17,11 @@ import '../../features/auth/data/data_sources/remote_data_source/remote_data_sou
     as _i6;
 import '../../features/auth/data/data_sources/remote_data_source/remote_datasource_impl.dart'
     as _i7;
-import '../../features/auth/data/repositories/auth_repo_impl.dart' as _i25;
-import '../../features/auth/domain/repositories/auth_rebo.dart' as _i24;
-import '../../features/auth/domain/use_cases/log_in_usecase.dart' as _i26;
-import '../../features/auth/domain/use_cases/sign_up_usecase.dart' as _i27;
-import '../../features/auth/presentation/manager/auth_cubit.dart' as _i28;
+import '../../features/auth/data/repositories/auth_repo_impl.dart' as _i26;
+import '../../features/auth/domain/repositories/auth_rebo.dart' as _i25;
+import '../../features/auth/domain/use_cases/log_in_usecase.dart' as _i27;
+import '../../features/auth/domain/use_cases/sign_up_usecase.dart' as _i28;
+import '../../features/auth/presentation/manager/auth_cubit.dart' as _i30;
 import '../../features/cart_feature/data/data_sources/remote/cart_remote_datasource_impl.dart'
     as _i9;
 import '../../features/cart_feature/data/data_sources/remote/cart_reomte_datasource.dart'
@@ -35,32 +35,34 @@ import '../../features/cart_feature/domain/use_cases/delete_from_cart_use_cas.da
     as _i22;
 import '../../features/cart_feature/domain/use_cases/get_cart_data_use_case.dart'
     as _i23;
+import '../../features/cart_feature/domain/use_cases/update_product_quantity_use_case.dart'
+    as _i24;
 import '../../features/cart_feature/presentation/manager/get_cart_product_cubit.dart'
-    as _i34;
+    as _i29;
 import '../../features/category_feature/data/data_sources/remote/category_data_source_impl.dart'
     as _i17;
 import '../../features/category_feature/data/data_sources/remote/category_remote_data_source.dart'
     as _i16;
 import '../../features/category_feature/data/repositories/category_repo_impl.dart'
-    as _i30;
+    as _i32;
 import '../../features/category_feature/domain/repositories/category_repo.dart'
-    as _i29;
+    as _i31;
 import '../../features/category_feature/domain/use_cases/get_category_usecase.dart'
-    as _i35;
-import '../../features/category_feature/domain/use_cases/get_subcategory_usecase.dart'
     as _i36;
-import '../../features/category_feature/presentation/manager/category_cubit.dart'
+import '../../features/category_feature/domain/use_cases/get_subcategory_usecase.dart'
     as _i37;
+import '../../features/category_feature/presentation/manager/category_cubit.dart'
+    as _i38;
 import '../../features/category_feature/presentation/manager/sub_category_cubit.dart'
-    as _i40;
+    as _i41;
 import '../../features/home/data/data_sources/remote/remote_data_source.dart'
     as _i19;
 import '../../features/home/data/data_sources/remote/remote_data_source_impl.dart'
     as _i20;
-import '../../features/home/data/repositories/home_rebo_impl.dart' as _i32;
-import '../../features/home/domain/repositories/home_repo.dart' as _i31;
-import '../../features/home/domain/use_cases/get_all_category.dart' as _i38;
-import '../../features/home/presentation/manager/home_cubit.dart' as _i39;
+import '../../features/home/data/repositories/home_rebo_impl.dart' as _i34;
+import '../../features/home/domain/repositories/home_repo.dart' as _i33;
+import '../../features/home/domain/use_cases/get_all_category.dart' as _i39;
+import '../../features/home/presentation/manager/home_cubit.dart' as _i40;
 import '../../features/products_feature/data/data_sources/product_data_source.dart'
     as _i10;
 import '../../features/products_feature/data/data_sources/product_remote_datasource_impl.dart'
@@ -72,7 +74,7 @@ import '../../features/products_feature/domain/repositories/product_repo.dart'
 import '../../features/products_feature/domain/use_cases/get_product_use_case.dart'
     as _i18;
 import '../../features/products_feature/presentation/manager/get_product_cubit.dart'
-    as _i33;
+    as _i35;
 import '../api/api_manger.dart' as _i4;
 import '../cache/storage_token.dart' as _i5;
 
@@ -116,38 +118,41 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i22.DeleteFromCartUseCas(gh<_i14.CartRepo>()));
     gh.factory<_i23.GetCartDataUseCase>(
         () => _i23.GetCartDataUseCase(gh<_i14.CartRepo>()));
-    gh.factory<_i24.AuthRepo>(
-        () => _i25.AuthRepoImpl(gh<_i6.AuthRemoteDataSource>()));
-    gh.factory<_i26.LogInUseCase>(() => _i26.LogInUseCase(gh<_i24.AuthRepo>()));
-    gh.factory<_i27.SignUpUseCase>(
-        () => _i27.SignUpUseCase(gh<_i24.AuthRepo>()));
-    gh.singleton<_i28.AuthCubit>(() => _i28.AuthCubit(
-          gh<_i27.SignUpUseCase>(),
-          gh<_i26.LogInUseCase>(),
-        ));
-    gh.factory<_i29.CategoryRepo>(
-        () => _i30.CategoryRepoImpl(gh<_i16.CategoryRemoteDataSource>()));
-    gh.factory<_i31.HomeRepo>(
-        () => _i32.HomeReboImpl(gh<_i19.HomeRemoteDataSource>()));
-    gh.factory<_i33.GetProductCubit>(
-        () => _i33.GetProductCubit(gh<_i18.GetAllProductUseCase>()));
-    gh.factory<_i34.GetCartProductCubit>(() => _i34.GetCartProductCubit(
+    gh.factory<_i24.UpdateProductQuantityUseCase>(
+        () => _i24.UpdateProductQuantityUseCase(gh<_i14.CartRepo>()));
+    gh.factory<_i25.AuthRepo>(
+        () => _i26.AuthRepoImpl(gh<_i6.AuthRemoteDataSource>()));
+    gh.factory<_i27.LogInUseCase>(() => _i27.LogInUseCase(gh<_i25.AuthRepo>()));
+    gh.factory<_i28.SignUpUseCase>(
+        () => _i28.SignUpUseCase(gh<_i25.AuthRepo>()));
+    gh.factory<_i29.GetCartProductCubit>(() => _i29.GetCartProductCubit(
           gh<_i23.GetCartDataUseCase>(),
           gh<_i21.AddToCartUseCase>(),
           gh<_i22.DeleteFromCartUseCas>(),
+          gh<_i24.UpdateProductQuantityUseCase>(),
         ));
-    gh.factory<_i35.GetCategoryUseCase>(
-        () => _i35.GetCategoryUseCase(gh<_i29.CategoryRepo>()));
-    gh.factory<_i36.GetSubcategoryUseCase>(
-        () => _i36.GetSubcategoryUseCase(gh<_i29.CategoryRepo>()));
-    gh.factory<_i37.CategoryCubit>(
-        () => _i37.CategoryCubit(gh<_i35.GetCategoryUseCase>()));
-    gh.factory<_i38.GetAllCategoryUseCase>(
-        () => _i38.GetAllCategoryUseCase(gh<_i31.HomeRepo>()));
-    gh.factory<_i39.HomeCubit>(
-        () => _i39.HomeCubit(gh<_i38.GetAllCategoryUseCase>()));
-    gh.factory<_i40.SubCategoryCubit>(
-        () => _i40.SubCategoryCubit(gh<_i36.GetSubcategoryUseCase>()));
+    gh.singleton<_i30.AuthCubit>(() => _i30.AuthCubit(
+          gh<_i28.SignUpUseCase>(),
+          gh<_i27.LogInUseCase>(),
+        ));
+    gh.factory<_i31.CategoryRepo>(
+        () => _i32.CategoryRepoImpl(gh<_i16.CategoryRemoteDataSource>()));
+    gh.factory<_i33.HomeRepo>(
+        () => _i34.HomeReboImpl(gh<_i19.HomeRemoteDataSource>()));
+    gh.factory<_i35.GetProductCubit>(
+        () => _i35.GetProductCubit(gh<_i18.GetAllProductUseCase>()));
+    gh.factory<_i36.GetCategoryUseCase>(
+        () => _i36.GetCategoryUseCase(gh<_i31.CategoryRepo>()));
+    gh.factory<_i37.GetSubcategoryUseCase>(
+        () => _i37.GetSubcategoryUseCase(gh<_i31.CategoryRepo>()));
+    gh.factory<_i38.CategoryCubit>(
+        () => _i38.CategoryCubit(gh<_i36.GetCategoryUseCase>()));
+    gh.factory<_i39.GetAllCategoryUseCase>(
+        () => _i39.GetAllCategoryUseCase(gh<_i33.HomeRepo>()));
+    gh.factory<_i40.HomeCubit>(
+        () => _i40.HomeCubit(gh<_i39.GetAllCategoryUseCase>()));
+    gh.factory<_i41.SubCategoryCubit>(
+        () => _i41.SubCategoryCubit(gh<_i37.GetSubcategoryUseCase>()));
     return this;
   }
 }
