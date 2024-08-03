@@ -27,5 +27,10 @@ class CartRepoImpl implements CartRepo{
      return await cartRemoteDatasource.deleteFromCart(productId);
   }
 
+  @override
+  Future<Either<Failure, String>> updateProductQuantity(String productId, String count) async{
+   return await cartRemoteDatasource.updateProductQuantity(productId, count);
+  }
+
 
 }

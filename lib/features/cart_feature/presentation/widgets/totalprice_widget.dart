@@ -23,7 +23,7 @@ class TotalPriceWidget extends StatelessWidget {
             ),
             const Gap(12),
             Text(
-              totalPrice,
+              "EGP $totalPrice",
               style: AppStyle.style18(context),
             ),
           ],
