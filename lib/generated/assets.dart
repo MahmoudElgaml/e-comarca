@@ -22,7 +22,6 @@ class Assets {
   static const String imagesIncreaseIcon = 'assets/images/increaseIcon.svg';
   static const String imagesLogInPhoto = 'assets/images/log_in_photo.png';
   static const String imagesLogo = 'assets/images/logo.png';
-  static const String imagesLoveIcon = 'assets/images/love_icon.svg';
   static const String imagesNoLogin = 'assets/images/noLogin.json';
   static const String imagesOfferImage1 = 'assets/images/offer_image1.png';
   static const String imagesOfferImage2 = 'assets/images/offerImage2.png';
@@ -30,6 +29,9 @@ class Assets {
   static const String imagesOfferPhoto = 'assets/images/offerPhoto.svg';
   static const String imagesProductDetailTest = 'assets/images/productDetailTest.png';
   static const String imagesProductTest = 'assets/images/productTest.png';
+  static const String imagesSelectedLoveIcon = 'assets/images/selected_love_icon.svg';
+  static const String imagesUnselectedLobeButton = 'assets/images/unselected_lobe_button.svg';
   static const String imagesWichList = 'assets/images/wichList.svg';
+  static const String utilsAppImages = 'lib/core/utils/app_images.dart';
 
 }
