@@ -1,13 +1,13 @@
 import 'package:e_comarce_clean/features/wishlist_feature/domain/entities/WishProductEntity.dart';
 
-class ProductModel extends WishProductEntity {
-  ProductModel({
+class WishlistProductModel extends WishProductEntity {
+  WishlistProductModel({
     this.status,
     this.count,
     super.data,
   });
 
-  ProductModel.fromJson(dynamic json) {
+  WishlistProductModel.fromJson(dynamic json) {
     status = json['status'];
     count = json['count'];
     if (json['data'] != null) {
