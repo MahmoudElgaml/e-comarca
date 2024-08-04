@@ -10,8 +10,8 @@ class AddToWishlistUseCase{
 
   AddToWishlistUseCase(this.wishlistRepo);
 
-  Future<Either<Failure,String>>call()async{
-    return await wishlistRepo.addToWishlist();
+  Future<Either<Failure,String>>call(String productId)async{
+    return await wishlistRepo.addToWishlist(productId);
 
 
   }
