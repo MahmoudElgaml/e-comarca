@@ -4,6 +4,7 @@ import 'package:e_comarce_clean/features/wishlist_feature/domain/entities/WishPr
 
 abstract  class WishlistRepo{
   Future<Either<Failure,WishProductEntity>> getWishlistData();
+  Future<Either<Failure,String>> addToWishlist();
 
 
 }
