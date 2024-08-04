@@ -17,7 +17,7 @@ class WichListView extends StatelessWidget {
             child: ListView.separated(
               itemBuilder: (context, index) => const ProductCart(isCart: false),
               separatorBuilder: (context, index) => const Gap(20),
-              itemCount: 3,
+              itemCount:0,
             ),
           )
         ],
