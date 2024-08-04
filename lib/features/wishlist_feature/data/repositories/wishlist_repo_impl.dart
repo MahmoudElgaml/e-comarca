@@ -16,4 +16,10 @@ class WishlistRepoImpl implements WishlistRepo{
 
   }
 
+  @override
+  Future<Either<Failure, String>> addToWishlist(String productId) async{
+    return await wishlistRemoteDataSource.addToWishlist(productId);
+
+  }
+
 }

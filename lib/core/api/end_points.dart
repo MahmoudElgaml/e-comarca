@@ -11,6 +11,7 @@ abstract class EndPoints{
   static const String deleteFromCart ="/api/v1/cart";
   static const String updateProductCountCart ="/api/v1/cart";
   static const String getWishlistData ="/api/v1/wishlist";
+  static const String addToWishList ="/api/v1/wishlist";
 
 
 }

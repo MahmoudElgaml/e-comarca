@@ -8,37 +8,48 @@ import 'package:e_comarce_clean/features/wishlist_feature/data/data_sources/wish
 import 'package:e_comarce_clean/features/wishlist_feature/data/models/ProductModel.dart';
 import 'package:e_comarce_clean/features/wishlist_feature/domain/entities/WishProductEntity.dart';
 import 'package:injectable/injectable.dart';
-@Injectable(as:  WishlistRemoteDataSource)
-class WishlistRemoteDataSourceImpl implements WishlistRemoteDataSource{
 
+@Injectable(as: WishlistRemoteDataSource)
+class WishlistRemoteDataSourceImpl implements WishlistRemoteDataSource {
   APiManger aPiManger;
   StorageToken storageToken;
-
 
   WishlistRemoteDataSourceImpl(this.aPiManger, this.storageToken);
 
   @override
-  Future<Either<Failure, WishlistProductModel>> getWishlistData() async{
-    String? token=await storageToken.getToken();
-   try{
-
-     var response= await aPiManger.get(EndPoints.getWishlistData,header: {
-       "token":token
-     });
-     WishlistProductModel productModel=WishlistProductModel.fromJson(response.data);
-     return right(productModel);
-
-   }
-   catch(e){
-     if (e is DioException) {
-       return left(ServerFailure.fromServer(e));
-     } else {
-       return left(ServerFailure(e.toString()));
-     }
-   }
-
+  Future<Either<Failure, WishlistProductModel>> getWishlistData() async {
+    String? token = await storageToken.getToken();
+    try {
+      var response = await aPiManger
+          .get(EndPoints.getWishlistData, header: {"token": token});
+      WishlistProductModel productModel =
+          WishlistProductModel.fromJson(response.data);
+      return right(productModel);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
   }
 
+  @override
+  Future<Either<Failure, String>> addToWishlist(String productId) async {
+    String? token = await storageToken.getToken();
+    try {
+      var response = await aPiManger.post(
+          EndPoints.addToWishList, {"productId": productId},
+          header: {"token": token});
 
+      return right("success");
 
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }
