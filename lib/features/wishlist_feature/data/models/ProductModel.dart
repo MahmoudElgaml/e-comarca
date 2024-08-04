@@ -74,17 +74,15 @@ class Data extends WishProductDataEntity{
     id = json['id'];
   }
 
-  num? sold;
-  List<String>? images;
+
   List<Subcategory>? subcategory;
-  num? ratingsQuantity;
-  String? id;
-  String? title;
+
+
   String? slug;
-  String? description;
-  num? quantity;
-  num? price;
-  String? imageCover;
+
+
+
+
   Category? category;
   Brand? brand;
   num? ratingsAverage;

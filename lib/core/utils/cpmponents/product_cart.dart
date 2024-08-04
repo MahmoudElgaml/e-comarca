@@ -7,6 +7,7 @@ import 'package:e_comarce_clean/core/utils/cpmponents/love_button.dart';
 import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduct.dart';
 import 'package:e_comarce_clean/features/cart_feature/presentation/manager/get_cart_product_cubit.dart';
 import 'package:e_comarce_clean/features/cart_feature/presentation/widgets/product_detail.dart';
+import 'package:e_comarce_clean/features/wishlist_feature/domain/entities/WishProductEntity.dart';
 import 'package:e_comarce_clean/generated/assets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +15,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class ProductCart extends StatelessWidget {
-  const ProductCart({super.key, required this.isCart, this.product});
+  const ProductCart({super.key, required this.isCart, this.product,this.wishProduct});
 
   final bool isCart;
   final CartProducts? product;
+  final WishProductDataEntity? wishProduct;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class ProductCart extends StatelessWidget {
         alignment: AlignmentDirectional.topEnd,
         children: [
           Container(
-            // width: MediaQuery.sizeOf(context).width,
+
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               border: Border.all(
@@ -47,9 +49,9 @@ class ProductCart extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: CachedNetworkImage(
-                      imageUrl: product?.product?.imageCover ?? "",
+                      imageUrl: isCart? product?.product?.imageCover ?? "":wishProduct?.imageCover??"",
                       errorWidget: (context, url, error) =>
-                          Text((error.toString())),
+                          Text("some thing wrong"),
                       fit: BoxFit.fill,
                       height: double.infinity,
                     ),
@@ -59,7 +61,9 @@ class ProductCart extends StatelessWidget {
                 FittedBox(
                   fit: BoxFit.scaleDown,
                   child: ProductDetail(
+                    isCart: isCart,
                     product: product,
+                    wishProduct: wishProduct,
                   ),
                 )
               ],

@@ -27,7 +27,10 @@ class CategoryViewState extends HomeLayoutState {
 
 class WhichListViewState extends HomeLayoutState {
   @override
-  Widget get viewTap => const WichListView();
+  Widget get viewTap =>  BlocProvider(
+    create: (context) => getIt<WishlistCubit>()..getWishlistProduct(),
+    child: const WichListView(),
+  );
 }
 
 class AccountViewState extends HomeLayoutState {

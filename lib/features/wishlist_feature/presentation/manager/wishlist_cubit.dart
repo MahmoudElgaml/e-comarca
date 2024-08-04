@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_comarce_clean/features/wishlist_feature/domain/entities/WishProductEntity.dart';
 import 'package:e_comarce_clean/features/wishlist_feature/domain/use_cases/get_wishlist_data_use_case.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
@@ -11,6 +12,7 @@ class WishlistCubit extends Cubit<WishlistState> {
   WishlistCubit(this.wishlistDataUseCase) : super(WishlistInitial());
   GetWishlistDataUseCase wishlistDataUseCase;
   WishProductEntity? wishProductEntity;
+  static WishlistCubit get(context)=>BlocProvider.of(context);
 
   getWishlistProduct() async {
     emit(WishlistLoadingState());
