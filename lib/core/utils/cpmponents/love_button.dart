@@ -1,11 +1,17 @@
+import 'package:e_comarce_clean/core/service_locator/config.dart';
+import 'package:e_comarce_clean/core/services/snack_bar_services.dart';
+import 'package:e_comarce_clean/features/wishlist_feature/presentation/manager/wishlist_cubit.dart';
 import 'package:e_comarce_clean/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LoveButton extends StatefulWidget {
-  const LoveButton({
-    super.key,
-  });
+  const LoveButton({super.key, this.productId, this.wishlistCubit});
+
+  final WishlistCubit? wishlistCubit;
+  final String? productId;
 
   @override
   State<LoveButton> createState() => _LoveButtonState();
@@ -18,6 +24,9 @@ class _LoveButtonState extends State<LoveButton> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        isSelected
+            ? null
+            : widget.wishlistCubit!.addToWishlist(widget.productId!);
         setState(() {
           isSelected = !isSelected;
         });
@@ -25,7 +34,6 @@ class _LoveButtonState extends State<LoveButton> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-
           width: 30,
           height: 30,
           decoration: const ShapeDecoration(

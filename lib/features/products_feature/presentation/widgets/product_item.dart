@@ -6,6 +6,7 @@ import 'package:e_comarce_clean/core/utils/app_style.dart';
 import 'package:e_comarce_clean/features/cart_feature/presentation/manager/get_cart_product_cubit.dart';
 import 'package:e_comarce_clean/features/products_feature/domain/entities/ProductEntity.dart';
 import 'package:e_comarce_clean/features/products_feature/presentation/widgets/product_details.dart';
+import 'package:e_comarce_clean/features/wishlist_feature/presentation/manager/wishlist_cubit.dart';
 import 'package:e_comarce_clean/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,9 +16,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/utils/cpmponents/love_button.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key, required this.product,required this.cartCubit});
+  const ProductItem({super.key, required this.product,required this.cartCubit,this.wishlistCubit});
   final GetCartProductCubit cartCubit;
   final Product product;
+  final WishlistCubit? wishlistCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -59,11 +61,11 @@ class ProductItem extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Align(
+                 Align(
                     alignment: AlignmentDirectional.topEnd,
                     child: Padding(
-                      padding: EdgeInsets.all(3.0),
-                      child: LoveButton(),
+                      padding: const EdgeInsets.all(3.0),
+                      child: LoveButton(productId: product.id,wishlistCubit: wishlistCubit,),
                     )),
                 Align(
                   alignment: AlignmentDirectional.bottomEnd,

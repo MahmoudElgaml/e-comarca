@@ -11,6 +11,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../cart_feature/presentation/manager/get_cart_product_cubit.dart';
+import '../../../wishlist_feature/presentation/manager/wishlist_cubit.dart';
 
 class ProductsScreen extends StatefulWidget {
   const ProductsScreen({super.key});
@@ -24,6 +25,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget build(BuildContext context) {
     final String categoryId = GoRouterState.of(context).extra! as String;
     final GetCartProductCubit cartCubit = getIt<GetCartProductCubit>();
+    var wishCubit = getIt<WishlistCubit>();
     return BlocListener<GetCartProductCubit, GetCartProductState>(
       bloc: cartCubit,
       listener: (context, state) {
@@ -33,61 +35,81 @@ class _ProductsScreenState extends State<ProductsScreen> {
           EasyLoading.dismiss();
           SnackBarServices.showUnLoggedMessage(context);
         } else if (state is GetCartProductSuccessState) {
-          EasyLoading.showSuccess("add Successfully",duration: const Duration(milliseconds: 500));
           EasyLoading.dismiss();
+          EasyLoading.showSuccess("add Successfully",
+              duration: const Duration(milliseconds: 500));
         }
       },
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            toolbarHeight: 40,
-          ),
-          body: Padding(
-            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CostumeAppBar(),
-                const SizedBox(height: 24),
-                BlocBuilder<GetProductCubit, GetProductState>(
-                  bloc: GetProductCubit.get(context)
-                    ..getProductBaseOnCategory(categoryId),
-                  builder: (context, state) {
-                    if (state is GetProductFailState) {
-                      return Center(child: Text(state.message));
-                    }
-                    if (state is GetProductSuccessState) {
-                      // print(GetProductCubit.get(context).products[0].title);
-                      return Expanded(
-                        child: GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 16,
-                            crossAxisSpacing: 16,
-                            childAspectRatio: 191 / 270,
-                          ),
-                          itemBuilder: (context, index) => InkWell(
-                            onTap: () => context.push(
-                                AppRoute.productsDetailScreen,
-                                extra: GetProductCubit.get(context)
-                                    .products![index]),
-                            child: ProductItem(
-                              cartCubit: cartCubit,
-                              product:
-                                  GetProductCubit.get(context).products![index],
+      child: BlocListener<WishlistCubit, WishlistState>(
+        bloc: wishCubit,
+        listener: (context, state) {
+          if (state is WishlistUnLoggedState) {
+            EasyLoading.dismiss();
+            SnackBarServices.showUnLoggedMessage(context);
+          } else if (state is WishlistLoadingState) {
+            EasyLoading.show();
+          } else if (state is WishlistSuccessState) {
+            EasyLoading.dismiss();
+          } else if (state is WishlistFailureState) {
+            showDialog(
+              context: context,
+              builder: (context) => Text(state.message),
+            );
+          }
+        },
+        child: SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              toolbarHeight: 40,
+            ),
+            body: Padding(
+              padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CostumeAppBar(),
+                  const SizedBox(height: 24),
+                  BlocBuilder<GetProductCubit, GetProductState>(
+                    bloc: GetProductCubit.get(context)
+                      ..getProductBaseOnCategory(categoryId),
+                    builder: (context, state) {
+                      if (state is GetProductFailState) {
+                        return Center(child: Text(state.message));
+                      }
+                      if (state is GetProductSuccessState) {
+                        // print(GetProductCubit.get(context).products[0].title);
+                        return Expanded(
+                          child: GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 16,
+                              crossAxisSpacing: 16,
+                              childAspectRatio: 191 / 270,
                             ),
+                            itemBuilder: (context, index) => InkWell(
+                              onTap: () => context.push(
+                                  AppRoute.productsDetailScreen,
+                                  extra: GetProductCubit.get(context)
+                                      .products![index]),
+                              child: ProductItem(
+                                wishlistCubit: wishCubit,
+                                cartCubit: cartCubit,
+                                product: GetProductCubit.get(context)
+                                    .products![index],
+                              ),
+                            ),
+                            itemCount:
+                                GetProductCubit.get(context).products!.length,
                           ),
-                          itemCount:
-                              GetProductCubit.get(context).products!.length,
-                        ),
-                      );
-                    } else {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                  },
-                )
-              ],
+                        );
+                      } else {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    },
+                  )
+                ],
+              ),
             ),
           ),
         ),
