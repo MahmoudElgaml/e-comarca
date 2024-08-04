@@ -84,6 +84,8 @@ import '../../features/wishlist_feature/data/repositories/wishlist_repo_impl.dar
     as _i946;
 import '../../features/wishlist_feature/domain/repositories/wishlist_repo.dart'
     as _i156;
+import '../../features/wishlist_feature/domain/use_cases/add_to_wishlist_use_case.dart'
+    as _i505;
 import '../../features/wishlist_feature/domain/use_cases/get_wishlist_data_use_case.dart'
     as _i54;
 import '../../features/wishlist_feature/presentation/manager/wishlist_cubit.dart'
@@ -170,14 +172,18 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i786.CategoryCubit(gh<_i491.GetCategoryUseCase>()));
     gh.factory<_i54.GetWishlistDataUseCase>(
         () => _i54.GetWishlistDataUseCase(gh<_i156.WishlistRepo>()));
+    gh.factory<_i505.AddToWishlistUseCase>(
+        () => _i505.AddToWishlistUseCase(gh<_i156.WishlistRepo>()));
     gh.factory<_i265.GetAllCategoryUseCase>(
         () => _i265.GetAllCategoryUseCase(gh<_i1021.HomeRepo>()));
     gh.factory<_i629.HomeCubit>(
         () => _i629.HomeCubit(gh<_i265.GetAllCategoryUseCase>()));
+    gh.factory<_i644.WishlistCubit>(() => _i644.WishlistCubit(
+          gh<_i54.GetWishlistDataUseCase>(),
+          gh<_i505.AddToWishlistUseCase>(),
+        ));
     gh.factory<_i484.SubCategoryCubit>(
         () => _i484.SubCategoryCubit(gh<_i119.GetSubcategoryUseCase>()));
-    gh.factory<_i644.WishlistCubit>(
-        () => _i644.WishlistCubit(gh<_i54.GetWishlistDataUseCase>()));
     return this;
   }
 }
