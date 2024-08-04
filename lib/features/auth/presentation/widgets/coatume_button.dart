@@ -9,9 +9,9 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/utils/app_style.dart';
 
 class CostumeButton extends StatelessWidget {
-  CostumeButton({required this.title, this.onPressed, super.key});
+  const CostumeButton({required this.title, this.onPressed, super.key});
 
-  void Function()? onPressed;
+  final void Function()? onPressed;
   final String title;
 
   @override
@@ -34,15 +34,14 @@ class CostumeButton extends StatelessWidget {
             shadowColor: Colors.transparent),
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
-            if(state is AuthSuccessState){
+            if (state is AuthSuccessState) {
               context.go(AppRoute.homeLayoutScreen);
             }
           },
           builder: (context, state) {
-            if(state is AuthLoadingState){
+            if (state is AuthLoadingState) {
               return const Center(child: CircularProgressIndicator());
-            }
-            else if(state is AuthFailState){
+            } else if (state is AuthFailState) {
               return const Text("error");
             }
             return Text(
