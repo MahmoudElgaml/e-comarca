@@ -1,13 +1,16 @@
 import 'package:e_comarce_clean/core/utils/app_style.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/IncreaseDecreaseOrderButton.dart';
 import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduct.dart';
+import 'package:e_comarce_clean/features/wishlist_feature/domain/entities/WishProductEntity.dart';
 import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail({super.key,this.product});
+  const ProductDetail({super.key,this.product,required this.isCart,this.wishProduct});
 final  CartProducts? product;
+final  WishProductDataEntity? wishProduct;
+final bool isCart;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,7 +20,7 @@ final  CartProducts? product;
         SizedBox(
           width: 200,
           child: Text(
-            product?.product?.title??" ",
+           isCart? product?.product?.title??" ":wishProduct?.title??"",
             overflow: TextOverflow.ellipsis,
              maxLines: 1,
             style: AppStyle.style18(context),
@@ -45,7 +48,7 @@ final  CartProducts? product;
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "EGP ${product?.price} ",
+              "EGP ${isCart?product?.price:wishProduct?.price} ",
               style: AppStyle.style18(context),
             ),
           ],

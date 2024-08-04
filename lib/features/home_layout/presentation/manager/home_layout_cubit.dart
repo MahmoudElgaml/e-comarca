@@ -5,6 +5,7 @@ import 'package:e_comarce_clean/features/account_feature/presentation/pages/acco
 import 'package:e_comarce_clean/features/category_feature/presentation/manager/category_cubit.dart';
 import 'package:e_comarce_clean/features/home/presentation/manager/home_cubit.dart';
 import 'package:e_comarce_clean/features/home/presentation/pages/home_feature_screen.dart';
+import 'package:e_comarce_clean/features/wishlist_feature/presentation/manager/wishlist_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
