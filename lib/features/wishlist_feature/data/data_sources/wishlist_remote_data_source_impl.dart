@@ -43,7 +43,24 @@ class WishlistRemoteDataSourceImpl implements WishlistRemoteDataSource {
           header: {"token": token});
 
       return right("success");
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromServer(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 
+  @override
+  Future<Either<Failure, String>> deleteFromWishlist(String productId) async {
+    String? token = await storageToken.getToken();
+    try {
+      var response = await aPiManger.delete(
+          "${EndPoints.deleteFromWishList}/$productId",
+          header: {"token": token});
+
+      return right("success");
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromServer(e));

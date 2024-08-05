@@ -9,5 +9,6 @@ import '../../domain/entities/WishProductEntity.dart';
 abstract class WishlistRemoteDataSource{
   Future<Either<Failure,WishlistProductModel>> getWishlistData();
   Future<Either<Failure,String>> addToWishlist(String productId);
+  Future<Either<Failure,String>> deleteFromWishlist(String productId);
 
 }
