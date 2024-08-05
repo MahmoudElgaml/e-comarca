@@ -8,27 +8,27 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LoveButton extends StatefulWidget {
-  const LoveButton({super.key, this.productId, this.wishlistCubit});
+   LoveButton({super.key, this.productId, this.wishlistCubit,required this.isSelected});
 
   final WishlistCubit? wishlistCubit;
   final String? productId;
-
+   bool isSelected ;
   @override
   State<LoveButton> createState() => _LoveButtonState();
 }
 
 class _LoveButtonState extends State<LoveButton> {
-  bool isSelected = false;
+
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        isSelected
+        widget.isSelected
             ? null
             : widget.wishlistCubit!.addToWishlist(widget.productId!);
         setState(() {
-          isSelected = !isSelected;
+          widget.isSelected = !widget.isSelected;
         });
       },
       child: Padding(
@@ -50,7 +50,7 @@ class _LoveButtonState extends State<LoveButton> {
           ),
           child: Center(
             child: SvgPicture.asset(
-              isSelected
+             widget.isSelected
                   ? Assets.imagesSelectedLoveIcon
                   : Assets.imagesUnselectedLobeButton,
             ),

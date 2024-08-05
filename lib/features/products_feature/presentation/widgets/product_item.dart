@@ -16,14 +16,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/utils/cpmponents/love_button.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key, required this.product,required this.cartCubit,this.wishlistCubit});
+  const ProductItem(
+      {super.key,
+      required this.product,
+      required this.cartCubit,
+      this.wishlistCubit});
+
   final GetCartProductCubit cartCubit;
   final Product product;
   final WishlistCubit? wishlistCubit;
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
@@ -61,11 +65,15 @@ class ProductItem extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                 Align(
+                Align(
                     alignment: AlignmentDirectional.topEnd,
                     child: Padding(
                       padding: const EdgeInsets.all(3.0),
-                      child: LoveButton(productId: product.id,wishlistCubit: wishlistCubit,),
+                      child: LoveButton(
+                        productId: product.id,
+                        wishlistCubit: wishlistCubit,
+                        isSelected: false,
+                      ),
                     )),
                 Align(
                   alignment: AlignmentDirectional.bottomEnd,
