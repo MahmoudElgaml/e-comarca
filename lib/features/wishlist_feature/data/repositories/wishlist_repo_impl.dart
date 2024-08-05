@@ -22,4 +22,10 @@ class WishlistRepoImpl implements WishlistRepo{
 
   }
 
+  @override
+  Future<Either<Failure, String>> deleteFromWishlist(String productId) {
+    // TODO: implement deleteFromWishlist
+    throw UnimplementedError();
+  }
+
 }
