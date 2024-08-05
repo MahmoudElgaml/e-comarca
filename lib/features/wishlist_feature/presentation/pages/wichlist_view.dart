@@ -5,6 +5,7 @@ import 'package:e_comarce_clean/features/wishlist_feature/domain/entities/WishPr
 import 'package:e_comarce_clean/features/wishlist_feature/presentation/manager/wishlist_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:gap/gap.dart';
 
 class WichListView extends StatelessWidget {
@@ -18,20 +19,28 @@ class WichListView extends StatelessWidget {
           const CostumeAppBar(),
           const Gap(24),
           BlocConsumer<WishlistCubit, WishlistState>(
-            listener: (context, state) {},
+            listener: (context, state) {
+              if(state is WishlistLoadingState){
+                EasyLoading.show();
+              }
+            },
             builder: (context, state) {
               if (state is WishlistUnLoggedState) {
+                EasyLoading.dismiss();
                 return const NoLoggedWidget();
               } else if (state is WishlistFailureState) {
-                Center(
+                EasyLoading.dismiss();
+               return Center(
                   child: Text(state.message),
                 );
               } else if (state is WishlistSuccessState) {
+                EasyLoading.dismiss();
                 List<WishProductDataEntity>? products =
                     WishlistCubit.get(context).wishProductEntity!.data;
                 return Expanded(
                   child: ListView.separated(
                     itemBuilder: (context, index) =>  ProductCart(
+                      wishCubit: WishlistCubit.get(context),
                       wishProduct: products?[index],
                       isCart: false,
                     ),

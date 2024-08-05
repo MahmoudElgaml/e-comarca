@@ -8,28 +8,39 @@ import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduc
 import 'package:e_comarce_clean/features/cart_feature/presentation/manager/get_cart_product_cubit.dart';
 import 'package:e_comarce_clean/features/cart_feature/presentation/widgets/product_detail.dart';
 import 'package:e_comarce_clean/features/wishlist_feature/domain/entities/WishProductEntity.dart';
+import 'package:e_comarce_clean/features/wishlist_feature/presentation/manager/wishlist_cubit.dart';
 import 'package:e_comarce_clean/generated/assets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'package:gap/gap.dart';
 
+import '../../service_locator/config.dart';
+
 class ProductCart extends StatelessWidget {
-  const ProductCart({super.key, required this.isCart, this.product,this.wishProduct});
+  const ProductCart(
+      {super.key,
+      required this.isCart,
+      this.cartproduct,
+      this.wishProduct,
+      this.wishCubit});
 
   final bool isCart;
-  final CartProducts? product;
+  final CartProducts? cartproduct;
   final WishProductDataEntity? wishProduct;
+  final WishlistCubit? wishCubit;
 
   @override
   Widget build(BuildContext context) {
+    GetCartProductCubit cartCubit = getIt<GetCartProductCubit>();
     return AspectRatio(
       aspectRatio: 389 / 113,
       child: Stack(
         alignment: AlignmentDirectional.topEnd,
         children: [
           Container(
-
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               border: Border.all(
@@ -49,7 +60,9 @@ class ProductCart extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: CachedNetworkImage(
-                      imageUrl: isCart? product?.product?.imageCover ?? "":wishProduct?.imageCover??"",
+                      imageUrl: isCart
+                          ? cartproduct?.product?.imageCover ?? ""
+                          : wishProduct?.imageCover ?? "",
                       errorWidget: (context, url, error) =>
                           const Text("some thing wrong"),
                       fit: BoxFit.fill,
@@ -62,7 +75,7 @@ class ProductCart extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: ProductDetail(
                     isCart: isCart,
-                    product: product,
+                    product: cartproduct,
                     wishProduct: wishProduct,
                   ),
                 )
@@ -80,21 +93,40 @@ class ProductCart extends StatelessWidget {
                         ? IconButton(
                             onPressed: () {
                               GetCartProductCubit.get(context)
-                                  .deleteFromCart(product!.product!.id!);
+                                  .deleteFromCart(cartproduct!.product!.id!);
                             },
                             icon: const Icon(Icons.delete_outline),
                             color: AppColor.primaryColor,
                             iconSize: 30,
                           )
-                        :  LoveButton(isSelected: true,)),
+                        : LoveButton(
+                            isSelected: true,
+                            productId: wishProduct!.id,
+                            wishlistCubit: wishCubit,
+                          )),
                 const Spacer(),
                 Align(
                   alignment: AlignmentDirectional.bottomEnd,
                   child: isCart
                       ? IncreaseDecreaseOrderButton(
-                          quantity: product?.count,
-                  productId: product!.product!.id,)
-                      : const AddToCartButton(),
+                          quantity: cartproduct?.count,
+                          productId: cartproduct!.product!.id,
+                        )
+                      : BlocListener<GetCartProductCubit, GetCartProductState>(
+                          bloc: cartCubit,
+                          listener: (context, state) {
+                            if (state is GetCartProductLoadingState) {
+                              EasyLoading.show();
+                            } else if (state is GetCartProductSuccessState) {
+                              EasyLoading.showSuccess("Added to Cart",
+                                  duration: const Duration(milliseconds: 500));
+                            }
+                          },
+                          child: AddToCartButton(
+                            cartCubit: cartCubit,
+                            productId: wishProduct!.id!,
+                          ),
+                        ),
                 )
               ],
             ),
