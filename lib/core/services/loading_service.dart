@@ -4,8 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 void configureEasyLoading() {
   EasyLoading.instance
-    ..indicatorType = EasyLoadingIndicatorType.ring
-    ..indicatorSize = 50.0
+    ..indicatorType = EasyLoadingIndicatorType.cubeGrid
     ..loadingStyle = EasyLoadingStyle.custom
     ..backgroundColor = const Color(0xffffffff)
     ..indicatorColor = const Color(0xff004182)
@@ -13,6 +12,5 @@ void configureEasyLoading() {
     ..maskType = EasyLoadingMaskType.custom
     ..maskColor = const Color(0x54ffffff)
     ..userInteractions = false
-    ..dismissOnTap = false
-    ..successWidget= Center(child: Text("add Successfully",style: AppStyle.easySuccess));
+    ..dismissOnTap = false;
 }

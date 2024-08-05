@@ -25,7 +25,7 @@ class _LoveButtonState extends State<LoveButton> {
     return InkWell(
       onTap: () {
         widget.isSelected
-            ? null
+            ? widget.wishlistCubit!.deleteFromWishlist(widget.productId!)
             : widget.wishlistCubit!.addToWishlist(widget.productId!);
         setState(() {
           widget.isSelected = !widget.isSelected;

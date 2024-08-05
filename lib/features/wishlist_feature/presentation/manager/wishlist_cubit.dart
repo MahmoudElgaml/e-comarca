@@ -6,13 +6,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
+import '../../domain/use_cases/delete_from_wishlist_use_case.dart';
+
 part 'wishlist_state.dart';
 
 @injectable
 class WishlistCubit extends Cubit<WishlistState> {
-  WishlistCubit(this.wishlistDataUseCase,this.addToWishlistUseCase) : super(WishlistInitial());
+  WishlistCubit(this.wishlistDataUseCase, this.addToWishlistUseCase,
+      this.deleteFromWishlistUseCase)
+      : super(WishlistInitial());
   GetWishlistDataUseCase wishlistDataUseCase;
   AddToWishlistUseCase addToWishlistUseCase;
+  DeleteFromWishlistUseCase deleteFromWishlistUseCase;
   WishProductEntity? wishProductEntity;
 
   static WishlistCubit get(context) => BlocProvider.of(context);
@@ -50,8 +55,26 @@ class WishlistCubit extends Cubit<WishlistState> {
         }
       },
       (r) {
-
         emit(WishlistSuccessState());
+      },
+    );
+  }
+
+  deleteFromWishlist(String productId) async {
+    emit(WishlistLoadingState());
+    var result = await deleteFromWishlistUseCase.call(productId);
+
+    result.fold(
+      (l) {
+        if (l.statusCode == "401") {
+          emit(WishlistUnLoggedState());
+        } else {
+          emit(WishlistFailureState(l.message));
+        }
+      },
+      (r) {
+        emit(WishlistSuccessState());
+        getWishlistProduct();
       },
     );
   }

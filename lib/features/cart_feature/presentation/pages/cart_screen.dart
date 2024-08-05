@@ -80,7 +80,7 @@ class CartScreen extends StatelessWidget {
                   Expanded(
                     child: ListView.separated(
                       itemBuilder: (context, index) => ProductCart(
-                        product: products[index],
+                        cartproduct: products[index],
                         isCart: true,
                       ),
                       separatorBuilder: (context, index) => const Gap(20),
