@@ -51,7 +51,7 @@ class ProductCart extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl: isCart? product?.product?.imageCover ?? "":wishProduct?.imageCover??"",
                       errorWidget: (context, url, error) =>
-                          Text("some thing wrong"),
+                          const Text("some thing wrong"),
                       fit: BoxFit.fill,
                       height: double.infinity,
                     ),
@@ -86,7 +86,7 @@ class ProductCart extends StatelessWidget {
                             color: AppColor.primaryColor,
                             iconSize: 30,
                           )
-                        : const LoveButton()),
+                        :  LoveButton(isSelected: true,)),
                 const Spacer(),
                 Align(
                   alignment: AlignmentDirectional.bottomEnd,
