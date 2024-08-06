@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_comarce_clean/features/category_feature/domain/entities/SubCategoryEntity.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +16,8 @@ class SupCategoryItem extends StatelessWidget {
           aspectRatio: 1,
           child: ClipRRect(
               borderRadius: BorderRadius.circular(5),
-              child: Image.asset(
-                Assets.imagesCategoryTest,
+              child: CachedNetworkImage(
+                imageUrl: subCategoryData!.imageCover??"",
                 fit: BoxFit.fill,
               )),
         ),
@@ -24,7 +25,7 @@ class SupCategoryItem extends StatelessWidget {
           height: 8,
         ),
         Text(
-          subCategoryData?.name??"",
+          subCategoryData?.title??"",
           style: AppStyle.style12(context).copyWith(
             color: const Color(0xFF06004E),
           ),

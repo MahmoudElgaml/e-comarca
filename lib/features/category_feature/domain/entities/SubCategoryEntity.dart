@@ -9,9 +9,11 @@ class SubCategoryEntity {
 class SubCategoryData {
   SubCategoryData({
     this.id,
-    this.name,
+    this.title,
+    this.imageCover
   });
 
   String? id;
-  String? name;
+  String? title;
+  String? imageCover;
 }
