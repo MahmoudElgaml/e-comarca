@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_style.dart';
 import '../../../../generated/assets.dart';
+import '../manager/sub_category_cubit.dart';
 
 class SubcategoryBody extends StatelessWidget {
   const SubcategoryBody({super.key});
@@ -12,10 +13,7 @@ class SubcategoryBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Men’s Fashion",
-          style: AppStyle.style14(context),
-        ),
+
         const SizedBox(height: 16),
         Image.asset(
           Assets.imagesCategoryOfferImage,

@@ -16,22 +16,22 @@ class _CategoryViewState extends State<CategoryView> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return  const Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const CostumeAppBar(),
-            const SizedBox(
+            CostumeAppBar(),
+            SizedBox(
               height: 16,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Expanded(child: CategoryBody()),
-                const SizedBox(
+                Expanded(child: CategoryBody()),
+                SizedBox(
                   width: 24,
                 ),
-                const Expanded(
+                Expanded(
                   flex: 2,
                   child: SubcategoryBody(),
                 )

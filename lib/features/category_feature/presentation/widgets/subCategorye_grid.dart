@@ -17,33 +17,43 @@ class SubcategoryGrid extends StatelessWidget {
             state is CategoryIndexChangeState) {
           return BlocBuilder<SubCategoryCubit, SubCategoryState>(
             bloc: SubCategoryCubit.get(context)
-              ..getSubCategory(CategoryCubit.get(context)
-                  .categories[CategoryCubit.get(context).selectedIndex]
-                  .id!),
+              ..getSubCategory(
+                CategoryCubit.get(context)
+                    .categories[CategoryCubit.get(context).selectedIndex]
+                    .id!,
+              ),
             builder: (context, state) {
               if (state is SubCategoryFailState) {
-                return Center(child: Text(state.message));
+                return Center(
+                  child: Text(state.message),
+                );
               }
 
               if (state is SubCategorySuccessState) {
                 return GridView.builder(
+
                   itemBuilder: (context, index) => SupCategoryItem(
                     subCategoryData: state.subCategoryEntity.data?[index],
                   ),
                   itemCount: state.subCategoryEntity.data!.length,
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 70 / 96,
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 13,
-                      crossAxisCount: 3),
+                    childAspectRatio: 70 / 96,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 13,
+                    crossAxisCount: 3,
+                  ),
                 );
               }
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             },
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
       },
     );
