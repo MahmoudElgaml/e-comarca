@@ -19,8 +19,6 @@ class CostumeCategory extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CachedNetworkImage(
-            fadeInDuration: const Duration( milliseconds:2),
-
           imageBuilder: (context, imageProvider) {
             return Container(
               width: 100,
