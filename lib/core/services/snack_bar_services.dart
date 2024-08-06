@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 class SnackBarServices {
   static void showUnLoggedMessage(BuildContext context) {
     var snackBar = SnackBar(
+
       content: Text(
         "you Must Login First",
         style: AppStyle.styleMedium20(context).copyWith(color: Colors.white),

@@ -4,6 +4,7 @@ import 'package:e_comarce_clean/core/services/snack_bar_services.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/costume_appbar.dart';
 import 'package:e_comarce_clean/features/products_feature/presentation/manager/get_product_cubit.dart';
 import 'package:e_comarce_clean/features/products_feature/presentation/widgets/product_item.dart';
+import 'package:e_comarce_clean/features/products_feature/presentation/widgets/products_grid.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,45 +70,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 children: [
                   const CostumeAppBar(),
                   const SizedBox(height: 24),
-                  BlocBuilder<GetProductCubit, GetProductState>(
-                    bloc: GetProductCubit.get(context)
-                      ..getProductBaseOnCategory(categoryId),
-                    builder: (context, state) {
-                      if (state is GetProductFailState) {
-                        return Center(child: Text(state.message));
-                      }
-                      if (state is GetProductSuccessState) {
-                        // print(GetProductCubit.get(context).products[0].title);
-                        return Expanded(
-                          child: GridView.builder(
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 16,
-                              crossAxisSpacing: 16,
-                              childAspectRatio: 191 / 270,
-                            ),
-                            itemBuilder: (context, index) => InkWell(
-                              onTap: () => context.push(
-                                  AppRoute.productsDetailScreen,
-                                  extra: GetProductCubit.get(context)
-                                      .products![index]),
-                              child: ProductItem(
-                                wishlistCubit: wishCubit,
-                                cartCubit: cartCubit,
-                                product: GetProductCubit.get(context)
-                                    .products![index],
-                              ),
-                            ),
-                            itemCount:
-                                GetProductCubit.get(context).products!.length,
-                          ),
-                        );
-                      } else {
-                        return const Center(child: CircularProgressIndicator());
-                      }
-                    },
-                  )
+                  ProductsGrid(cartCubit:cartCubit ,categoryId:categoryId ,wishCubit: wishCubit,)
                 ],
               ),
             ),
