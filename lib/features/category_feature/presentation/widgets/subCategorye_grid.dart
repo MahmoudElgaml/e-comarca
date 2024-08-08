@@ -62,22 +62,21 @@ class SubCategoryLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Shimmer.fromColors(
-        baseColor: Colors.black,
-        highlightColor: Colors.grey[100]!,
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisSpacing: 16,
-            crossAxisSpacing: 16,
-            childAspectRatio: 70 / 96,
-          ),
-          itemBuilder: (context, index) {
-            return const Skeleton(height: 70, width: 96);
-          },
-          itemCount: 8,
+    return Shimmer.fromColors(
+      baseColor: Colors.black,
+      highlightColor: Colors.grey[100]!,
+      child: GridView.builder(
+        shrinkWrap: true,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          mainAxisSpacing: 16,
+          crossAxisSpacing: 16,
+          childAspectRatio: 70 / 96,
         ),
+        itemBuilder: (context, index) {
+          return const Skeleton(height: 70, width: 96);
+        },
+        itemCount: 8,
       ),
     );
   }
