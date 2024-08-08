@@ -3,7 +3,9 @@ import 'package:e_comarce_clean/features/category_feature/presentation/manager/c
 import 'package:e_comarce_clean/features/category_feature/presentation/widgets/sub_categoryItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 
+import '../../../../core/services/rectangle_shimmer.dart';
 import '../manager/sub_category_cubit.dart';
 
 class SubcategoryGrid extends StatelessWidget {
@@ -31,7 +33,6 @@ class SubcategoryGrid extends StatelessWidget {
 
               if (state is SubCategorySuccessState) {
                 return GridView.builder(
-
                   itemBuilder: (context, index) => SupCategoryItem(
                     subCategoryData: state.subCategoryEntity.data?[index],
                   ),
@@ -45,17 +46,39 @@ class SubcategoryGrid extends StatelessWidget {
                   ),
                 );
               }
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const SubCategoryLoading();
             },
           );
         } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const SubCategoryLoading();
         }
       },
+    );
+  }
+}
+
+class SubCategoryLoading extends StatelessWidget {
+  const SubCategoryLoading({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Shimmer.fromColors(
+        baseColor: Colors.black,
+        highlightColor: Colors.grey[100]!,
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 16,
+            childAspectRatio: 70 / 96,
+          ),
+          itemBuilder: (context, index) {
+            return const Skeleton(height: 70, width: 96);
+          },
+          itemCount: 8,
+        ),
+      ),
     );
   }
 }
