@@ -13,7 +13,12 @@ class HomeCubit extends Cubit<HomeState> {
   GetAllCategoryUseCase getAllCategoryUseCase;
 
   static HomeCubit get(context) => BlocProvider.of(context);
-
+  @override
+  void emit(HomeState state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
   getAllCategory() async {
     emit(HomeLoadingState());
 

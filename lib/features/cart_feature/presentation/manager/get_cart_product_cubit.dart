@@ -20,6 +20,12 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
   DeleteFromCartUseCas deleteFromCartUseCas;
   UpdateProductQuantityUseCase updateProductQuantityUseCase;
   CartDataEntity? cartData;
+  @override
+  void emit(GetCartProductState state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
 
   static GetCartProductCubit get(context) => BlocProvider.of(context);
 

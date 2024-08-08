@@ -19,7 +19,12 @@ class CategoryCubit extends Cubit<CategoryState> {
 
   CategoryCubit(this.categoryUseCase) : super(CategoryInitial());
   GetCategoryUseCase categoryUseCase;
-
+  @override
+  void emit(CategoryState state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
   getCategory() async {
     emit(CategoryLoadingState());
     var result = await categoryUseCase.call();
