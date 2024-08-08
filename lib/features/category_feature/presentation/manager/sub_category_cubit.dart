@@ -13,7 +13,12 @@ class SubCategoryCubit extends Cubit<SubCategoryState> {
   SubCategoryCubit(this.getSubCategoryUseCase) : super(SubCategoryInitial());
 
   GetSubcategoryUseCase getSubCategoryUseCase;
-
+  @override
+  void emit(SubCategoryState state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
   getSubCategory(String categoryId) async {
     emit(SubCategoryLoadingState());
     var subcategory = await getSubCategoryUseCase.call(categoryId);

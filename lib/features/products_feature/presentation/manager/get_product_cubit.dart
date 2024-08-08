@@ -15,7 +15,12 @@ class GetProductCubit extends Cubit<GetProductState> {
   static GetProductCubit get(context) => BlocProvider.of(context);
   List<Product>? products = [];
   GetAllProductUseCase getAllProductUseCase;
-
+  @override
+  void emit(GetProductState state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
   getProductBaseOnCategory(String categoryId) async {
     emit(GetProductLoadingState());
     var result = await getAllProductUseCase.call(categoryId);
