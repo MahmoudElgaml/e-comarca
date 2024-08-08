@@ -21,8 +21,16 @@ class WishlistCubit extends Cubit<WishlistState> {
   WishProductEntity? wishProductEntity;
 
   static WishlistCubit get(context) => BlocProvider.of(context);
+  @override
+  void emit(WishlistState state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
 
   getWishlistProduct() async {
+
+
     emit(WishlistLoadingState());
     var result = await wishlistDataUseCase.call();
 
@@ -38,11 +46,13 @@ class WishlistCubit extends Cubit<WishlistState> {
         wishProductEntity = r;
 
         emit(WishlistSuccessState());
+
       },
     );
   }
 
   addToWishlist(String productId) async {
+
     emit(WishlistLoadingState());
     var result = await addToWishlistUseCase.call(productId);
 
@@ -61,6 +71,7 @@ class WishlistCubit extends Cubit<WishlistState> {
   }
 
   deleteFromWishlist(String productId) async {
+
     emit(WishlistLoadingState());
     var result = await deleteFromWishlistUseCase.call(productId);
 
