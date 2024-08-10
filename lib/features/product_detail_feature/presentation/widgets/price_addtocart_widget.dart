@@ -1,13 +1,21 @@
 import 'package:e_comarce_clean/config/routes/routes.dart';
+import 'package:e_comarce_clean/core/utils/helper_function.dart';
+import 'package:e_comarce_clean/features/cart_feature/presentation/manager/get_cart_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_style.dart';
+import '../../../cart_feature/data/models/CartProductsModel.dart';
+import '../../../products_feature/domain/entities/ProductEntity.dart';
 
 class PriceAddToCartWidget extends StatelessWidget {
-  const PriceAddToCartWidget({super.key});
+  const PriceAddToCartWidget(
+      {super.key, required this.cartCubit, required this.product});
+
+  final GetCartProductCubit cartCubit;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +31,7 @@ class PriceAddToCartWidget extends StatelessWidget {
             ),
             const Gap(12),
             Text(
-              "EGP 3,500",
+             HelperFunction.checkOnDiscount(product.price, product.priceAfterDiscount),
               style: AppStyle.style18(context),
             ),
           ],
@@ -32,11 +40,13 @@ class PriceAddToCartWidget extends StatelessWidget {
         Expanded(
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-                backgroundColor: AppColor.primaryColor,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20))),
+              backgroundColor: AppColor.primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
             onPressed: () {
-              context.push(AppRoute.cartScreen);
+              cartCubit.addToCart(product.id!);
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),

@@ -84,7 +84,7 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
   }
 
   updateProductQuantity(String productId, num count) async {
-    emit(GetCartProductLoadingState());
+
     var result = await updateProductQuantityUseCase.call(productId, count);
     result.fold(
       (l) {
@@ -92,6 +92,18 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
       },
       (r) {
         getCartProduct();
+      },
+    );
+  }
+  updateProductQuantityWithoutGetData(String productId, num count) async {
+
+    var result = await updateProductQuantityUseCase.call(productId, count);
+    result.fold(
+      (l) {
+        emit(GetCartProductFailState(l.message));
+      },
+      (r) {
+
       },
     );
   }

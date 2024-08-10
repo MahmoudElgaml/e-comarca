@@ -12,12 +12,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/service_locator/config.dart';
+import '../../../cart_feature/presentation/manager/get_cart_product_cubit.dart';
+
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Product extraString = GoRouterState.of(context).extra! as Product;
+    final Product productDetail = GoRouterState.of(context).extra! as Product;
+    var cartCubit = getIt<GetCartProductCubit>();
 
     return Scaffold(
       appBar: AppBar(
@@ -44,14 +48,18 @@ class ProductDetailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ProductInfoWidget(
-                product: extraString,
+                cartCubit: cartCubit,
+                product: productDetail,
               ),
               const Gap(16),
               const PickSizeList(),
               const Gap(16),
               const PickColorList(),
               const Gap(48),
-              const PriceAddToCartWidget(),
+              PriceAddToCartWidget(
+                cartCubit: cartCubit,
+                product: productDetail,
+              ),
             ],
           ),
         ),

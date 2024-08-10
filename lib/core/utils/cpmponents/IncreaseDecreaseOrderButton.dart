@@ -11,11 +11,13 @@ class IncreaseDecreaseOrderButton extends StatefulWidget {
       {super.key,
       required this.quantity,
       this.productId,
-      required this.isCart});
+      required this.isCart,
+      this.update});
 
   num quantity;
   final String? productId;
   final bool isCart;
+  void Function(int quantity1)? update;
 
   @override
   State<IncreaseDecreaseOrderButton> createState() =>
@@ -52,6 +54,7 @@ class _IncreaseDecreaseOrderButtonState
                   HelperFunction.checkQuantity(widget.quantity)
                       ? widget.quantity--
                       : null;
+
                   setState(() {});
                 }
               },
