@@ -37,19 +37,21 @@ class ProductDetailScreen extends StatelessWidget {
           ),
         ],
       ),
-      body:  Padding(
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ProductInfoWidget(product: extraString,),
+              ProductInfoWidget(
+                product: extraString,
+              ),
               const Gap(16),
               const PickSizeList(),
               const Gap(16),
               const PickColorList(),
               const Gap(48),
-              const PriceAddToCartWidget()
+              const PriceAddToCartWidget(),
             ],
           ),
         ),

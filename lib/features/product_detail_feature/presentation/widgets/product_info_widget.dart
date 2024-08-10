@@ -78,7 +78,11 @@ class ProductInfoWidget extends StatelessWidget {
               style: AppStyle.style14(context),
             ),
             const Spacer(),
-            const IncreaseDecreaseOrderButton()
+            IncreaseDecreaseOrderButton(
+              isCart: false,
+              productId: product.id,
+              quantity: 1,
+            )
           ],
         ),
         const Gap(16),

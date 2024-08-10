@@ -6,12 +6,24 @@ import 'package:flutter_svg/svg.dart';
 import '../../../generated/assets.dart';
 import '../app_style.dart';
 
-class IncreaseDecreaseOrderButton extends StatelessWidget {
-  const IncreaseDecreaseOrderButton({super.key, this.quantity, this.productId});
+class IncreaseDecreaseOrderButton extends StatefulWidget {
+  IncreaseDecreaseOrderButton(
+      {super.key,
+      required this.quantity,
+      this.productId,
+      required this.isCart});
 
-  final num? quantity;
+  num quantity;
   final String? productId;
+  final bool isCart;
 
+  @override
+  State<IncreaseDecreaseOrderButton> createState() =>
+      _IncreaseDecreaseOrderButtonState();
+}
+
+class _IncreaseDecreaseOrderButtonState
+    extends State<IncreaseDecreaseOrderButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,26 +42,41 @@ class IncreaseDecreaseOrderButton extends StatelessWidget {
         child: Row(
           children: [
             InkWell(
-                onTap: () {
-                  HelperFunction.checkQuantity(quantity!)
-                      ? GetCartProductCubit.get(context)
-                          .updateProductQuantity(productId!, quantity! - 1)
+              onTap: () {
+                if (widget.isCart) {
+                  HelperFunction.checkQuantity(widget.quantity)
+                      ? GetCartProductCubit.get(context).updateProductQuantity(
+                          widget.productId!, widget.quantity - 1)
                       : null;
-                },
-                child: Image.asset(Assets.imagesDecreaseIocn)),
+                } else {
+                  HelperFunction.checkQuantity(widget.quantity)
+                      ? widget.quantity--
+                      : null;
+                  setState(() {});
+                }
+              },
+              child: Image.asset(Assets.imagesDecreaseIocn),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 22.0),
               child: Text(
-                quantity.toString(),
+                widget.quantity.toString(),
                 style: AppStyle.style18(context).copyWith(color: Colors.white),
               ),
             ),
             InkWell(
-                onTap: () {
-                  GetCartProductCubit.get(context)
-                      .updateProductQuantity(productId!, quantity! + 1);
-                },
-                child: SvgPicture.asset(Assets.imagesIncreaseIcon)),
+              onTap: () {
+                if (widget.isCart) {
+                  GetCartProductCubit.get(context).updateProductQuantity(
+                      widget.productId!, widget.quantity + 1);
+                } else {
+                  setState(() {
+                    widget.quantity++;
+                  });
+                }
+              },
+              child: SvgPicture.asset(Assets.imagesIncreaseIcon),
+            ),
           ],
         ),
       ),

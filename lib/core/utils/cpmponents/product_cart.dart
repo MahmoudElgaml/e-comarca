@@ -109,7 +109,8 @@ class ProductCart extends StatelessWidget {
                   alignment: AlignmentDirectional.bottomEnd,
                   child: isCart
                       ? IncreaseDecreaseOrderButton(
-                          quantity: cartproduct?.count,
+                    isCart: true,
+                          quantity: cartproduct!.count!,
                           productId: cartproduct!.product!.id,
                         )
                       : BlocListener<GetCartProductCubit, GetCartProductState>(
