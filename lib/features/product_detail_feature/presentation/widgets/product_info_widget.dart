@@ -22,7 +22,7 @@ class ProductInfoWidget extends StatelessWidget {
       {super.key, required this.product, required this.cartCubit});
 
   final Product product;
-  int quantity = 1;
+  num quantity = 1;
   final GetCartProductCubit cartCubit;
 
   @override
@@ -103,6 +103,9 @@ class ProductInfoWidget extends StatelessWidget {
                   }
                 },
                 child: IncreaseDecreaseOrderButton(
+                  update: (quantity1) {
+                    quantity = quantity1;
+                  },
                   isCart: false,
                   productId: product.id,
                   quantity: quantity,

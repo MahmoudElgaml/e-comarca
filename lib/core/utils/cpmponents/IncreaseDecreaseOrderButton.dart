@@ -17,7 +17,7 @@ class IncreaseDecreaseOrderButton extends StatefulWidget {
   num quantity;
   final String? productId;
   final bool isCart;
-  void Function(int quantity1)? update;
+  void Function(num quantity1)? update;
 
   @override
   State<IncreaseDecreaseOrderButton> createState() =>
@@ -54,7 +54,7 @@ class _IncreaseDecreaseOrderButtonState
                   HelperFunction.checkQuantity(widget.quantity)
                       ? widget.quantity--
                       : null;
-
+                  widget.update!(widget.quantity);
                   setState(() {});
                 }
               },
@@ -73,9 +73,9 @@ class _IncreaseDecreaseOrderButtonState
                   GetCartProductCubit.get(context).updateProductQuantity(
                       widget.productId!, widget.quantity + 1);
                 } else {
-                  setState(() {
-                    widget.quantity++;
-                  });
+                  widget.quantity++;
+                  widget.update!(widget.quantity);
+                  setState(() {});
                 }
               },
               child: SvgPicture.asset(Assets.imagesIncreaseIcon),
