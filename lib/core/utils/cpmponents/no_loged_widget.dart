@@ -12,34 +12,36 @@ class NoLoggedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Lottie.asset(Assets.imagesNoLogin),
-          Text(
-            "You Must Login First",
-            style: AppStyle.style34(context).copyWith(color: AppColor.primaryColor),
-          ),
-          const Gap(18),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.only(left: 20,right: 20),
-                backgroundColor: AppColor.primaryColor),
-            onPressed: () {
-              context.go(
-                AppRoute.loginScreen
-              );
-            },
-            child: Text(
-              "Login",
-              style: AppStyle.styleMedium20(context).copyWith(
-                color: Colors.white,
-                fontSize: 25
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Lottie.asset(Assets.imagesNoLogin),
+            Text(
+              "You Must Login First",
+              style: AppStyle.style34(context).copyWith(
+                color: AppColor.primaryColor,
               ),
             ),
-          )
-        ],
+            const Gap(18),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                backgroundColor: AppColor.primaryColor,
+              ),
+              onPressed: () {
+                context.go(AppRoute.loginScreen);
+              },
+              child: Text(
+                "Login",
+                style: AppStyle.styleMedium20(context)
+                    .copyWith(color: Colors.white, fontSize: 25),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

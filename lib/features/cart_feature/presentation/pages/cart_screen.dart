@@ -1,5 +1,6 @@
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/empty_cart_widget.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/no_loged_widget.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/product_cart.dart';
 import 'package:e_comarce_clean/features/cart_feature/data/models/CartProductsModel.dart';
@@ -77,7 +78,10 @@ class CartScreen extends StatelessWidget {
             );
           } else if (state is GetCartProductSuccessState) {
             EasyLoading.dismiss();
-            return CartGrid(cartProducts: products);
+
+            return products.isEmpty
+                ? const EmptyCartWidget()
+                : CartGrid(cartProducts: products);
           }
           return const CartLoading();
         },

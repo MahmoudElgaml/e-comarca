@@ -83,6 +83,14 @@ class AppStyle {
     );
   }
 
+  static TextStyle styleBold28(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+      fontSize: responsiveFont(context: context, fontSize: 28),
+    );
+  }
+
   static double scaleFactor(double width) {
     if (width < 500) {
       return width / 400;

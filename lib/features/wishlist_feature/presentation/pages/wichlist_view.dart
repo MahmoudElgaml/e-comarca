@@ -1,4 +1,5 @@
 import 'package:e_comarce_clean/core/services/rectangle_shimmer.dart';
+import 'package:e_comarce_clean/core/utils/cpmponents/empty_wishlist_widget.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/no_loged_widget.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/product_cart.dart';
 import 'package:e_comarce_clean/core/utils/cpmponents/costume_appbar.dart';
@@ -40,7 +41,9 @@ class WichListView extends StatelessWidget {
                 EasyLoading.dismiss();
                 List<WishProductDataEntity>? products =
                     WishlistCubit.get(context).wishProductEntity!.data;
-                return WishlistGrid(wishProducts: products);
+                return products!.isEmpty
+                    ? const EmptyWishlistWidget()
+                    : WishlistGrid(wishProducts: products);
               }
 
               return const Expanded(child: WishlistLoading());

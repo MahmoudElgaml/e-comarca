@@ -15,6 +15,10 @@ class Assets {
   static const String imagesCategoryOfferImage = 'assets/images/categoryOfferImage.png';
   static const String imagesCategoryTest = 'assets/images/categoryTest.png';
   static const String imagesDecreaseIocn = 'assets/images/decreaseIocn.png';
+  static const String imagesEmpty = 'assets/images/empty.json';
+  static const String imagesEmptyCart = 'assets/images/empty_cart.svg';
+  static const String imagesEmptyWishList = 'assets/images/empty_wish_list.svg';
+  static const String imagesError = 'assets/images/error.json';
   static const String imagesFacebook = 'assets/images/facebook.png';
   static const String imagesGoogle = 'assets/images/google.png';
   static const String imagesHomeIcon = 'assets/images/homeIcon.svg';
