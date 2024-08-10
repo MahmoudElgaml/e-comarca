@@ -43,7 +43,7 @@ class WichListView extends StatelessWidget {
                 return WishlistGrid(wishProducts: products);
               }
 
-              return Expanded(child: const WishlistLoading());
+              return const Expanded(child: WishlistLoading());
             },
           )
         ],

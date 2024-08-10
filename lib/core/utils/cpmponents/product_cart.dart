@@ -25,16 +25,17 @@ class ProductCart extends StatelessWidget {
       required this.isCart,
       this.cartproduct,
       this.wishProduct,
-      this.wishCubit});
+      this.wishCubit,
+      this.cartCubit});
 
   final bool isCart;
   final CartProducts? cartproduct;
   final WishProductDataEntity? wishProduct;
   final WishlistCubit? wishCubit;
+  final GetCartProductCubit? cartCubit;
 
   @override
   Widget build(BuildContext context) {
-    GetCartProductCubit cartCubit = getIt<GetCartProductCubit>();
     return AspectRatio(
       aspectRatio: 389 / 113,
       child: Stack(
@@ -109,7 +110,7 @@ class ProductCart extends StatelessWidget {
                   alignment: AlignmentDirectional.bottomEnd,
                   child: isCart
                       ? IncreaseDecreaseOrderButton(
-                    isCart: true,
+                          isCart: true,
                           quantity: cartproduct!.count!,
                           productId: cartproduct!.product!.id,
                         )
@@ -124,7 +125,7 @@ class ProductCart extends StatelessWidget {
                             }
                           },
                           child: AddToCartButton(
-                            cartCubit: cartCubit,
+                            cartCubit: cartCubit!,
                             productId: wishProduct!.id!,
                           ),
                         ),

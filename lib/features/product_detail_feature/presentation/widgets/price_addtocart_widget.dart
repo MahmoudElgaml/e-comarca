@@ -31,7 +31,7 @@ class PriceAddToCartWidget extends StatelessWidget {
             ),
             const Gap(12),
             Text(
-             HelperFunction.checkOnDiscount(product.price, product.priceAfterDiscount),
+              "EGP ${HelperFunction.checkOnDiscount(product.price, product.priceAfterDiscount)}",
               style: AppStyle.style18(context),
             ),
           ],

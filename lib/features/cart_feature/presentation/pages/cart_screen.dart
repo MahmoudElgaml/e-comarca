@@ -85,6 +85,7 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
+
 class CartLoading extends StatelessWidget {
   const CartLoading({super.key});
 
