@@ -58,7 +58,7 @@ class SignUpScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SignUpDrawer()
+          SignUpDrawer()
         ],
       ),
     );

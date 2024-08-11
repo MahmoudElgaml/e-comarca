@@ -39,9 +39,9 @@ class LogInDrawer extends StatelessWidget {
                 style: AppStyle.style34(context),
               ),
               Gap(32),
-              const CostumeTextFiled(title: "Email"),
+             // const CostumeTextFiled(title: "Email"),
               Gap(32),
-              const CostumeTextFiled(title: "password"),
+             // const CostumeTextFiled(title: "password"),
               Gap(20),
               Align(
                 alignment: Alignment.centerRight,
@@ -52,6 +52,7 @@ class LogInDrawer extends StatelessWidget {
               ),
               const Gap(20),
               CostumeButton(
+                isSign: false,
                 title: 'Login',
                 onPressed: () => AuthCubit.get(context).logIn(
                   email: "mahmoudelgaml@gmail.com",

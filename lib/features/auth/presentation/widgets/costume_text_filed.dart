@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CostumeTextFiled extends StatelessWidget {
-  const CostumeTextFiled({required this.title, super.key});
+  const CostumeTextFiled({required this.title, super.key,required this.textEditingController});
 
   final String title;
-
+  final TextEditingController textEditingController;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,8 +14,9 @@ class CostumeTextFiled extends StatelessWidget {
           title,
           style: const TextStyle(fontSize: 13),
         ),
-        const TextField(
-          decoration: InputDecoration(),
+         TextField(
+          controller: textEditingController,
+          decoration: const InputDecoration(),
         )
       ],
     );
