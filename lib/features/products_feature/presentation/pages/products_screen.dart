@@ -24,9 +24,7 @@ class ProductsScreen extends StatefulWidget {
 class _ProductsScreenState extends State<ProductsScreen> {
   @override
   Widget build(BuildContext context) {
-    final String categoryId = GoRouterState
-        .of(context)
-        .extra! as String;
+    final String categoryId = GoRouterState.of(context).extra! as String;
     final GetCartProductCubit cartCubit = getIt<GetCartProductCubit>();
     var wishCubit = getIt<WishlistCubit>();
     return BlocListener<GetCartProductCubit, GetCartProductState>(

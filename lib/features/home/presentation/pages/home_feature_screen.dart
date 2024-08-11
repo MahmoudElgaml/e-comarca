@@ -18,6 +18,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../widgets/brand_grid.dart';
 import '../widgets/costume_offer_image.dart';
 import '../widgets/offer_image_list.dart';
 
@@ -35,9 +36,9 @@ class HomeScreen extends StatelessWidget {
             Gap(16),
             OfferImageList(),
             Gap(24),
-            TitleRow(),
-            Gap(16),
             CategoryGrid(),
+            Gap(15),
+            BrandGrid()
           ],
         ),
       ),

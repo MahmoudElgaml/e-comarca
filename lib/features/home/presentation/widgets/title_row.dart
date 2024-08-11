@@ -5,15 +5,15 @@ import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/app_style.dart';
 
 class TitleRow extends StatelessWidget {
-  const TitleRow({super.key});
-
+  const TitleRow({super.key,required this.title});
+final String title;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          AppString.category,
+          title,
           style: AppStyle.style18(context),
         ),
         TextButton(

@@ -7,36 +7,41 @@ abstract class HomeLayoutState {
 
 class HomeViewState extends HomeLayoutState {
   @override
-  Widget get viewTap => BlocProvider(
-        create: (context) => getIt<CategoryHomeCubit>()..getAllCategory(),
+  Widget get viewTap => MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => getIt<CategoryHomeCubit>()..getAllCategory(),
+          ),
+          BlocProvider(create:  (context) => getIt<BrandHomeCubit>()..getAllBrand(),)
+        ],
         child: const HomeScreen(),
       );
 }
 
 class CategoryViewState extends HomeLayoutState {
   @override
-  Widget get viewTap => MultiBlocProvider(
-    providers: [
-      BlocProvider(create:  (context) => getIt<CategoryCubit>()..getCategory(), ),
-      BlocProvider(create:  (context) => getIt<SubCategoryCubit>(), ),
-
-    ],
-
-      child: const CategoryView());
+  Widget get viewTap => MultiBlocProvider(providers: [
+        BlocProvider(
+          create: (context) => getIt<CategoryCubit>()..getCategory(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<SubCategoryCubit>(),
+        ),
+      ], child: const CategoryView());
 }
 
 class WhichListViewState extends HomeLayoutState {
   @override
-  Widget get viewTap =>  BlocProvider(
-    create: (context) => getIt<WishlistCubit>()..getWishlistProduct(),
-    child: const WichListView(),
-  );
+  Widget get viewTap => BlocProvider(
+        create: (context) => getIt<WishlistCubit>()..getWishlistProduct(),
+        child: const WichListView(),
+      );
 }
 
 class AccountViewState extends HomeLayoutState {
   @override
-  Widget get viewTap =>  BlocProvider(
-  create: (context) => getIt<AccountCubit>()..isLogged(),
-  child: AccountView(),
-);
+  Widget get viewTap => BlocProvider(
+        create: (context) => getIt<AccountCubit>()..isLogged(),
+        child: AccountView(),
+      );
 }
