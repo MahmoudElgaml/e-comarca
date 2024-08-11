@@ -7,10 +7,10 @@ import 'package:e_comarce_clean/features/home/domain/entities/category_entity.da
 import 'package:e_comarce_clean/features/home/domain/repositories/home_repo.dart';
 import 'package:injectable/injectable.dart';
 @Injectable(as: HomeRepo)
-class HomeReboImpl implements HomeRepo{
+class HomeRepoImpl implements HomeRepo{
   HomeRemoteDataSource homeRemoteDataSource;
 
-  HomeReboImpl(this.homeRemoteDataSource);
+  HomeRepoImpl(this.homeRemoteDataSource);
 
   @override
   Future<Either<Failure, CategoryEntity>> getAllCategory()async {
@@ -18,9 +18,8 @@ class HomeReboImpl implements HomeRepo{
   }
 
   @override
-  Future<Either<Failure, BrandEntity>> getAllBrand() {
-    // TODO: implement getAllBrand
-    throw UnimplementedError();
+  Future<Either<Failure, BrandEntity>> getAllBrand()async {
+    return await homeRemoteDataSource.getAllBrand();
   }
 
 }

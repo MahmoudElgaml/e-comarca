@@ -62,7 +62,11 @@ import '../../features/home/data/data_sources/remote/remote_data_source_impl.dar
     as _i1001;
 import '../../features/home/data/repositories/home_rebo_impl.dart' as _i327;
 import '../../features/home/domain/repositories/home_repo.dart' as _i1021;
+import '../../features/home/domain/use_cases/get_all_brand_use_case.dart'
+    as _i756;
 import '../../features/home/domain/use_cases/get_all_category.dart' as _i265;
+import '../../features/home/presentation/manager/brand_home_cubit.dart'
+    as _i148;
 import '../../features/home/presentation/manager/category_home_cubit.dart'
     as _i235;
 import '../../features/products_feature/data/data_sources/product_data_source.dart'
@@ -145,6 +149,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i548.UpdateProductQuantityUseCase(gh<_i147.CartRepo>()));
     gh.factory<_i751.AuthRepo>(
         () => _i662.AuthRepoImpl(gh<_i435.AuthRemoteDataSource>()));
+    gh.factory<_i1021.HomeRepo>(
+        () => _i327.HomeRepoImpl(gh<_i813.HomeRemoteDataSource>()));
     gh.factory<_i25.LogInUseCase>(
         () => _i25.LogInUseCase(gh<_i751.AuthRepo>()));
     gh.factory<_i960.SignUpUseCase>(
@@ -157,20 +163,26 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i156.WishlistRepo>(
         () => _i946.WishlistRepoImpl(gh<_i818.WishlistRemoteDataSource>()));
+    gh.factory<_i265.GetAllCategoryUseCase>(
+        () => _i265.GetAllCategoryUseCase(gh<_i1021.HomeRepo>()));
+    gh.factory<_i756.GetAllBrandUseCase>(
+        () => _i756.GetAllBrandUseCase(gh<_i1021.HomeRepo>()));
     gh.singleton<_i888.AuthCubit>(() => _i888.AuthCubit(
           gh<_i960.SignUpUseCase>(),
           gh<_i25.LogInUseCase>(),
         ));
     gh.factory<_i709.CategoryRepo>(
         () => _i449.CategoryRepoImpl(gh<_i1034.CategoryRemoteDataSource>()));
-    gh.factory<_i1021.HomeRepo>(
-        () => _i327.HomeReboImpl(gh<_i813.HomeRemoteDataSource>()));
     gh.factory<_i947.GetProductCubit>(
         () => _i947.GetProductCubit(gh<_i729.GetAllProductUseCase>()));
+    gh.factory<_i235.CategoryHomeCubit>(
+        () => _i235.CategoryHomeCubit(gh<_i265.GetAllCategoryUseCase>()));
     gh.factory<_i491.GetCategoryUseCase>(
         () => _i491.GetCategoryUseCase(gh<_i709.CategoryRepo>()));
     gh.factory<_i119.GetSubcategoryUseCase>(
         () => _i119.GetSubcategoryUseCase(gh<_i709.CategoryRepo>()));
+    gh.factory<_i148.BrandHomeCubit>(
+        () => _i148.BrandHomeCubit(gh<_i756.GetAllBrandUseCase>()));
     gh.factory<_i786.CategoryCubit>(
         () => _i786.CategoryCubit(gh<_i491.GetCategoryUseCase>()));
     gh.factory<_i505.AddToWishlistUseCase>(
@@ -179,10 +191,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1049.DeleteFromWishlistUseCase(gh<_i156.WishlistRepo>()));
     gh.factory<_i54.GetWishlistDataUseCase>(
         () => _i54.GetWishlistDataUseCase(gh<_i156.WishlistRepo>()));
-    gh.factory<_i265.GetAllCategoryUseCase>(
-        () => _i265.GetAllCategoryUseCase(gh<_i1021.HomeRepo>()));
-    gh.factory<_i235.CategoryHomeCubit>(
-        () => _i235.CategoryHomeCubit(gh<_i265.GetAllCategoryUseCase>()));
     gh.factory<_i484.SubCategoryCubit>(
         () => _i484.SubCategoryCubit(gh<_i119.GetSubcategoryUseCase>()));
     gh.factory<_i644.WishlistCubit>(() => _i644.WishlistCubit(
