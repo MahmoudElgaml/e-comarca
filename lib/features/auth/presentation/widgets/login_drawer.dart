@@ -14,8 +14,9 @@ import 'coatume_button.dart';
 import 'costume_text_filed.dart';
 
 class LogInDrawer extends StatelessWidget {
-  const LogInDrawer({super.key});
-
+   LogInDrawer({super.key});
+final TextEditingController email=TextEditingController();
+final TextEditingController password=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,11 +39,11 @@ class LogInDrawer extends StatelessWidget {
                 "Login",
                 style: AppStyle.style34(context),
               ),
-              Gap(32),
-             // const CostumeTextFiled(title: "Email"),
-              Gap(32),
-             // const CostumeTextFiled(title: "password"),
-              Gap(20),
+              const Gap(32),
+               CostumeTextFiled(title: "Email",textEditingController: email,),
+              const Gap(32),
+               CostumeTextFiled(title: "password",textEditingController: password,),
+              const Gap(20),
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -54,10 +55,12 @@ class LogInDrawer extends StatelessWidget {
               CostumeButton(
                 isSign: false,
                 title: 'Login',
-                onPressed: () => AuthCubit.get(context).logIn(
-                  email: "mahmoudelgaml@gmail.com",
-                  password: "123456789",
-                ),
+                onPressed: () {
+                  AuthCubit.get(context).logIn(
+                    email: email.text,
+                    password: password.text,
+                  );
+                },
               ),
               const Gap(32),
               Text(
