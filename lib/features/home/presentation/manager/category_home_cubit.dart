@@ -8,11 +8,11 @@ import 'package:meta/meta.dart';
 part 'home_state.dart';
 
 @injectable
-class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this.getAllCategoryUseCase) : super(HomeInitial());
+class CategoryHomeCubit extends Cubit<HomeState> {
+  CategoryHomeCubit(this.getAllCategoryUseCase) : super(HomeInitial());
   GetAllCategoryUseCase getAllCategoryUseCase;
 
-  static HomeCubit get(context) => BlocProvider.of(context);
+  static CategoryHomeCubit get(context) => BlocProvider.of(context);
   @override
   void emit(HomeState state) {
     if (!isClosed) {

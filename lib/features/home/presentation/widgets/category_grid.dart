@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../config/routes/routes.dart';
-import '../manager/home_cubit.dart';
+import '../manager/category_home_cubit.dart';
 import '../pages/home_feature_screen.dart';
 import 'costume_category.dart';
 
@@ -12,7 +12,7 @@ class CategoryGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<CategoryHomeCubit, HomeState>(
       builder: (context, state) {
         if (state is HomeFailureState) {
           const Center(

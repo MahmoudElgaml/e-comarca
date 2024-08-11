@@ -1,4 +1,4 @@
-part of 'home_cubit.dart';
+part of 'category_home_cubit.dart';
 
 @immutable
 abstract class HomeState {}

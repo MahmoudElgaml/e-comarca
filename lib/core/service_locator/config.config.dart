@@ -63,7 +63,8 @@ import '../../features/home/data/data_sources/remote/remote_data_source_impl.dar
 import '../../features/home/data/repositories/home_rebo_impl.dart' as _i327;
 import '../../features/home/domain/repositories/home_repo.dart' as _i1021;
 import '../../features/home/domain/use_cases/get_all_category.dart' as _i265;
-import '../../features/home/presentation/manager/home_cubit.dart' as _i629;
+import '../../features/home/presentation/manager/category_home_cubit.dart'
+    as _i235;
 import '../../features/products_feature/data/data_sources/product_data_source.dart'
     as _i1025;
 import '../../features/products_feature/data/data_sources/product_remote_datasource_impl.dart'
@@ -172,16 +173,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i119.GetSubcategoryUseCase(gh<_i709.CategoryRepo>()));
     gh.factory<_i786.CategoryCubit>(
         () => _i786.CategoryCubit(gh<_i491.GetCategoryUseCase>()));
-    gh.factory<_i54.GetWishlistDataUseCase>(
-        () => _i54.GetWishlistDataUseCase(gh<_i156.WishlistRepo>()));
     gh.factory<_i505.AddToWishlistUseCase>(
         () => _i505.AddToWishlistUseCase(gh<_i156.WishlistRepo>()));
     gh.factory<_i1049.DeleteFromWishlistUseCase>(
         () => _i1049.DeleteFromWishlistUseCase(gh<_i156.WishlistRepo>()));
+    gh.factory<_i54.GetWishlistDataUseCase>(
+        () => _i54.GetWishlistDataUseCase(gh<_i156.WishlistRepo>()));
     gh.factory<_i265.GetAllCategoryUseCase>(
         () => _i265.GetAllCategoryUseCase(gh<_i1021.HomeRepo>()));
-    gh.factory<_i629.HomeCubit>(
-        () => _i629.HomeCubit(gh<_i265.GetAllCategoryUseCase>()));
+    gh.factory<_i235.CategoryHomeCubit>(
+        () => _i235.CategoryHomeCubit(gh<_i265.GetAllCategoryUseCase>()));
     gh.factory<_i484.SubCategoryCubit>(
         () => _i484.SubCategoryCubit(gh<_i119.GetSubcategoryUseCase>()));
     gh.factory<_i644.WishlistCubit>(() => _i644.WishlistCubit(
