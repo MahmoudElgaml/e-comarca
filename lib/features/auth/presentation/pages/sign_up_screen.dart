@@ -32,13 +32,13 @@ class SignUpScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 88, left: 36),
+                  padding: const EdgeInsets.only(top: 88, left: 36),
                   child: Column(
                     children: [
                       Image.asset(AppImages.bubbleTextSign),
                       const Gap(16),
                       DefaultTextStyle(
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 24.0,
                         ),
                         child: AnimatedTextKit(
@@ -52,7 +52,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 40),
+                  padding: const EdgeInsets.only(top: 40),
                   child: Image.asset(AppImages.login_logo),
                 ),
               ],

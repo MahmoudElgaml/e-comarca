@@ -1,4 +1,5 @@
 import 'package:e_comarce_clean/config/routes/routes.dart';
+import 'package:e_comarce_clean/core/services/validation_service.dart';
 import 'package:e_comarce_clean/features/auth/data/models/SignUserModel.dart';
 import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:e_comarce_clean/features/auth/presentation/widgets/social_button.dart';
@@ -57,16 +58,21 @@ class SignUpDrawer extends StatelessWidget {
               ),
               const Gap(20),
               CostumeTextFiled(
+                validate: (value) {
+                 return ValidationService.validateEmail(value);
+                },
                 title: "Email",
                 textEditingController: email,
               ),
               const Gap(20),
               CostumeTextFiled(
+                isPassword: true,
                 title: "Password",
                 textEditingController: password,
               ),
               const Gap(20),
               CostumeTextFiled(
+                isPassword: true,
                 title: "rePassword",
                 textEditingController: rePassword,
               ),
