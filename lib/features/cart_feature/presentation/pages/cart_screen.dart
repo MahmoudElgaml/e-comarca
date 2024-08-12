@@ -64,11 +64,7 @@ class CartScreen extends StatelessWidget {
             EasyLoading.dismiss();
             return const NoLoggedWidget();
           } else if (state is GetCartProductEmptyState) {
-            return const Center(
-              child: Text(
-                "no data go do some shopping",
-              ),
-            );
+            return const EmptyCartWidget();
           } else if (state is GetCartProductFailState) {
             EasyLoading.dismiss();
             return Center(

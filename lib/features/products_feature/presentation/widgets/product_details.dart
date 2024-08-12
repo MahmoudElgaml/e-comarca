@@ -33,7 +33,7 @@ class ProductDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                HelperFunction.checkOnDiscount(product.price, product.priceAfterDiscount),
+                "EGP ${HelperFunction.checkOnDiscount(product.price, product.priceAfterDiscount)}",
                 style: AppStyle.style14(context),
               ),
               const SizedBox(
