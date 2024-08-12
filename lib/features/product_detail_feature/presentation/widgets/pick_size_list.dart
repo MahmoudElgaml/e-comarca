@@ -4,9 +4,16 @@ import 'package:gap/gap.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_style.dart';
 
-
 class PickSizeList extends StatelessWidget {
   const PickSizeList({super.key});
+
+  static const List<String> items = [
+    "30",
+    "40",
+    '50',
+    '60',
+    "65",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +29,10 @@ class PickSizeList extends StatelessWidget {
           child: ListView.separated(
             separatorBuilder: (context, index) => const Gap(8),
             scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) =>
-            const SizeItem(isSelected: true),
+            itemBuilder: (context, index) => SizeItem(
+              isSelected: true,
+              size: items[index],
+            ),
             itemCount: 5,
           ),
         ),
@@ -31,9 +40,11 @@ class PickSizeList extends StatelessWidget {
     );
   }
 }
-class SizeItem extends StatelessWidget {
-  const SizeItem({super.key, required this.isSelected});
 
+class SizeItem extends StatelessWidget {
+  const SizeItem({super.key, required this.isSelected, required this.size});
+
+  final String size;
   final bool isSelected;
 
   @override
@@ -45,7 +56,7 @@ class SizeItem extends StatelessWidget {
           shape: BoxShape.circle),
       child: Center(
         child: Text(
-          "40",
+          size,
           style: AppStyle.style14(context).copyWith(
             color: isSelected ? Colors.white : Colors.black,
           ),

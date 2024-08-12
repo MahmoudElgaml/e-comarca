@@ -20,6 +20,7 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
   DeleteFromCartUseCas deleteFromCartUseCas;
   UpdateProductQuantityUseCase updateProductQuantityUseCase;
   CartDataEntity? cartData;
+
   @override
   void emit(GetCartProductState state) {
     if (!isClosed) {
@@ -84,7 +85,7 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
   }
 
   updateProductQuantity(String productId, num count) async {
-
+    emit(GetCartProductLoadingState());
     var result = await updateProductQuantityUseCase.call(productId, count);
     result.fold(
       (l) {
@@ -95,16 +96,14 @@ class GetCartProductCubit extends Cubit<GetCartProductState> {
       },
     );
   }
-  updateProductQuantityWithoutGetData(String productId, num count) async {
 
+  updateProductQuantityWithoutGetData(String productId, num count) async {
     var result = await updateProductQuantityUseCase.call(productId, count);
     result.fold(
       (l) {
         emit(GetCartProductFailState(l.message));
       },
-      (r) {
-
-      },
+      (r) {},
     );
   }
 }

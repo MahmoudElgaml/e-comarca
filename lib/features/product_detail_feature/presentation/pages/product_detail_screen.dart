@@ -1,3 +1,4 @@
+import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
 import 'package:e_comarce_clean/features/product_detail_feature/presentation/widgets/pick_color_list.dart';
@@ -27,17 +28,23 @@ class ProductDetailScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text("products details", style: AppStyle.styleMedium20(context)),
-        actions: const [
-          Icon(
+        actions:  [
+          const Icon(
             Icons.search,
             size: 35,
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
-          Icon(
-            Icons.shopping_cart_outlined,
-            size: 35,
+          InkWell(
+            onTap: () => context.push(AppRoute.cartScreen),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.shopping_cart_outlined,
+                size: 35,
+              ),
+            ),
           ),
         ],
       ),
