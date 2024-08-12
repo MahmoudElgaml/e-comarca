@@ -1,4 +1,5 @@
 import 'package:e_comarce_clean/config/routes/routes.dart';
+import 'package:e_comarce_clean/core/services/snack_bar_services.dart';
 import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:flutter/material.dart';
@@ -40,13 +41,13 @@ class CostumeButton extends StatelessWidget {
               isSign
                   ? context.go(AppRoute.loginScreen)
                   : context.go(AppRoute.homeLayoutScreen);
+            } else if (state is AuthFailState) {
+              SnackBarServices.showErrorMessage(context, state.errorMessage);
             }
           },
           builder: (context, state) {
             if (state is AuthLoadingState) {
               return const Center(child: CircularProgressIndicator());
-            } else if (state is AuthFailState) {
-              return  Text(state.errorMessage);
             }
             return Text(
               title,
