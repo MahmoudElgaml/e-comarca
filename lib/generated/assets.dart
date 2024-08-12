@@ -2,7 +2,6 @@
 class Assets {
   Assets._();
 
-  static const String assetsImagesCategoryTest = 'assets/images/category_test.png';
   static const String fontsPoppinsLight = 'assets/fonts/Poppins-Light.ttf';
   static const String fontsPoppinsMedium = 'assets/fonts/Poppins-Medium.ttf';
   static const String fontsPoppinsRegular = 'assets/fonts/Poppins-Regular.ttf';
@@ -13,7 +12,6 @@ class Assets {
   static const String imagesBubbleTextSign = 'assets/images/bubble_text_sign.png';
   static const String imagesCategoryIcon = 'assets/images/categoryIcon.svg';
   static const String imagesCategoryOfferImage = 'assets/images/categoryOfferImage.png';
-  static const String imagesCategoryTest = 'assets/images/categoryTest.png';
   static const String imagesDecreaseIocn = 'assets/images/decreaseIocn.png';
   static const String imagesEmpty = 'assets/images/empty.json';
   static const String imagesEmptyCart = 'assets/images/empty_cart.svg';
@@ -31,9 +29,8 @@ class Assets {
   static const String imagesOfferImage2 = 'assets/images/offerImage2.png';
   static const String imagesOfferImage3 = 'assets/images/offerImage3.png';
   static const String imagesOfferPhoto = 'assets/images/offerPhoto.svg';
-  static const String imagesProductDetailTest = 'assets/images/productDetailTest.png';
-  static const String imagesProductTest = 'assets/images/productTest.png';
   static const String imagesSelectedLoveIcon = 'assets/images/selected_love_icon.svg';
+  static const String imagesSplash = 'assets/images/splash.json';
   static const String imagesUnselectedLobeButton = 'assets/images/unselected_lobe_button.svg';
   static const String imagesWichList = 'assets/images/wichList.svg';
   static const String utilsAppImages = 'lib/core/utils/app_images.dart';

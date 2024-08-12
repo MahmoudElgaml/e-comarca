@@ -10,13 +10,15 @@ import 'package:e_comarce_clean/features/home_layout/presentation/pages/home_lay
 import 'package:e_comarce_clean/features/product_detail_feature/presentation/pages/product_detail_screen.dart';
 import 'package:e_comarce_clean/features/products_feature/presentation/manager/get_product_cubit.dart';
 import 'package:e_comarce_clean/features/products_feature/presentation/pages/products_screen.dart';
+import 'package:e_comarce_clean/features/splash_feature/splash_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoute {
+  static const String splash = "/";
   static const String loginScreen = "/login";
   static const String signUPScreen = "/sign";
-  static const String homeLayoutScreen = "/";
+  static const String homeLayoutScreen = "/home";
   static const String cartScreen = "/cart";
   static const String productsScreen = "/product";
   static const String productsDetailScreen = "/detailedProduct";
@@ -53,6 +55,10 @@ class AppRoute {
       GoRoute(
         path: productsDetailScreen,
         builder: (context, state) => const ProductDetailScreen(),
+      ),
+      GoRoute(
+        path: splash,
+        builder: (context, state) => const SplashViewBody(),
       ),
     ],
   );

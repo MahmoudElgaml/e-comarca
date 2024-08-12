@@ -25,16 +25,16 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+
   configureDependencies();
   configureEasyLoading();
-  FlutterSecureStorage storage = const FlutterSecureStorage();
-  await storage.deleteAll();
+
   Bloc.observer = MyBlocObserver();
   runApp(
-    DevicePreview(enabled: true, builder: (context) => const MyApp()),
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const MyApp(),
+    ),
   );
 }
 
