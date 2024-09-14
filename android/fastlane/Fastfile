@@ -16,23 +16,22 @@
 default_platform(:android)
 
 platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
+  desc "distribute to app distribution by fastlane for first time"
+  lane :distribute do
+    sh "flutter clean"
+    sh "flutter build apk"
+   firebase_app_distribution(
+
+
+               android_artifact_type:"APK",
+               android_artifact_path:"../build/app/outputs/flutter-apk/app-release.apk",
+               firebase_cli_token:ENV["FIREBASE_CLI_TOKEN"],
+               app: "1:394728838570:android:41033d95517a51668387d3",
+               testers: "gamaloka789@gmail.com",
+               release_notes: "first use of fastlane"
+           )
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
 
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
-  end
+
 end
