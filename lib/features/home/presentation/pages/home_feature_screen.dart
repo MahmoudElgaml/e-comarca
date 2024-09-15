@@ -27,18 +27,22 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CostumeAppBar(),
-            Gap(16),
-            OfferImageList(),
-            Gap(24),
-            CategoryGrid(),
-            Gap(15),
-            BrandGrid()
+            const CostumeAppBar(),
+            const Gap(16),
+            const OfferImageList(),
+            TextButton(
+              onPressed: () => throw Exception(),
+              child: const Text("Throw Test Exception"),
+            ),
+            const Gap(24),
+            const CategoryGrid(),
+            const Gap(15),
+            const BrandGrid()
           ],
         ),
       ),
