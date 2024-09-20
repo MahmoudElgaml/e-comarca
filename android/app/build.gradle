@@ -1,8 +1,7 @@
 plugins {
     id "com.android.application"
     // START: FlutterFire Configuration
-    id 'com.google.gms.google-services'
-    id 'com.google.firebase.crashlytics'
+
     // END: FlutterFire Configuration
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
@@ -54,6 +53,20 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
+    flavorDimensions "default"
+
+    productFlavors {
+        production {
+            dimension "default"
+            resValue "string", "app_name", "ecomarceProd"
+            applicationIdSuffix ".prod"
+        }
+        development {
+            dimension "default"
+            resValue "string", "app_name", "ecomarceDev"
+        }
+    }
+
 
     buildTypes {
         release {
@@ -63,7 +76,19 @@ android {
         }
     }
 }
+afterEvaluate {
+    // Check if the task name contains the "development" flavor
+    def isFirebaseRequired = project.gradle.startParameter.taskRequests.toString().toLowerCase().contains("development")
 
+    if (isFirebaseRequired) {
+        apply plugin: 'com.google.gms.google-services'
+        apply plugin: 'com.google.firebase.crashlytics'
+        // Apply Firebase for development flavor only
+    } else {
+        // Firebase won't be applied for production flavor
+        println "Firebase plugins will not be applied for the production flavor."
+    }
+}
 flutter {
     source '../..'
 }
