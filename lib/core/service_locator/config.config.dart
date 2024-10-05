@@ -127,6 +127,11 @@ extension GetItInjectableX on _i174.GetIt {
             ));
     gh.factory<_i1021.HomeRepo>(
         () => _i327.HomeRepoImpl(gh<_i813.HomeRemoteDataSource>()));
+    gh.factory<_i1025.ProductRemoteDatasource>(
+        () => _i433.AllProductRemoteDatasourceImpl(
+              gh<_i339.APiManger>(),
+              gh<_i385.NewApiManger>(),
+            ));
     gh.factory<_i435.AuthRemoteDataSource>(() => _i593.AuthRemoteDataSourceImpl(
           gh<_i339.APiManger>(),
           gh<_i170.StorageToken>(),
@@ -144,8 +149,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i756.GetAllBrandUseCase(gh<_i1021.HomeRepo>()));
     gh.factory<_i265.GetAllCategoryUseCase>(
         () => _i265.GetAllCategoryUseCase(gh<_i1021.HomeRepo>()));
-    gh.factory<_i1025.ProductRemoteDatasource>(
-        () => _i433.AllProductRemoteDatasourceImpl(gh<_i339.APiManger>()));
     gh.factory<_i185.ProductRepo>(
         () => _i56.AllProductRepoImpl(gh<_i1025.ProductRemoteDatasource>()));
     gh.factory<_i147.CartRepo>(

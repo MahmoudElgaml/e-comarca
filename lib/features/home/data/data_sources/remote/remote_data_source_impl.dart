@@ -15,13 +15,12 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   APiManger apiManger;
   NewApiManger newApiManger;
 
-  HomeRemoteDataSourceImpl(this.apiManger,this.newApiManger);
+  HomeRemoteDataSourceImpl(this.apiManger, this.newApiManger);
 
   @override
   Future<Either<Failure, CategoryModel>> getAllCategory() async {
     try {
-
-      CategoryModel categoryModel =await newApiManger.getAllCategory();
+      CategoryModel categoryModel = await newApiManger.getAllCategory();
 
       return right(categoryModel);
     } catch (e) {
@@ -32,11 +31,11 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
       }
     }
   }
-@override
+
+  @override
   Future<Either<Failure, BrandModel>> getAllBrand() async {
     try {
-      var response = await apiManger.get(EndPoints.getAllBrand);
-      BrandModel brandModel = BrandModel.fromJson(response.data);
+      BrandModel brandModel = await newApiManger.getAllBrand();
 
       return right(brandModel);
     } catch (e) {
