@@ -116,10 +116,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final dioFactory = _$DioFactory();
     gh.factory<_i764.AccountCubit>(() => _i764.AccountCubit());
-    gh.singleton<_i361.Dio>(() => dioFactory.getDio());
-    gh.singleton<_i170.StorageToken>(() => _i170.StorageToken());
+    gh.lazySingleton<_i170.StorageToken>(() => _i170.StorageToken());
+    gh.singleton<_i361.Dio>(() => dioFactory.getDio(gh<_i170.StorageToken>()));
     gh.factory<_i385.NewApiManger>(() => _i385.NewApiManger(gh<_i361.Dio>()));
     gh.singleton<_i339.APiManger>(() => _i339.APiManger(gh<_i361.Dio>()));
+    gh.factory<_i266.CartRemoteDatasource>(() => _i687.CartRemoteDatasourceImpl(
+          gh<_i339.APiManger>(),
+          gh<_i170.StorageToken>(),
+          gh<_i385.NewApiManger>(),
+        ));
     gh.factory<_i813.HomeRemoteDataSource>(
         () => _i1001.HomeRemoteDataSourceImpl(
               gh<_i339.APiManger>(),
@@ -133,10 +138,6 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i385.NewApiManger>(),
             ));
     gh.factory<_i435.AuthRemoteDataSource>(() => _i593.AuthRemoteDataSourceImpl(
-          gh<_i339.APiManger>(),
-          gh<_i170.StorageToken>(),
-        ));
-    gh.factory<_i266.CartRemoteDatasource>(() => _i687.CartRemoteDatasourceImpl(
           gh<_i339.APiManger>(),
           gh<_i170.StorageToken>(),
         ));

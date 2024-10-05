@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
+import '../../features/cart_feature/data/models/CartProductsModel.dart';
 import '../../features/home/data/models/CategoryModel.dart';
 import '../../features/products_feature/data/models/ProductModel.dart';
 import 'end_points.dart';
@@ -25,5 +26,13 @@ abstract class NewApiManger {
 
   @GET(EndPoints.getProductBaseOnCategory)
   Future<ProductModel> getProductBaseOnCategory(@Path() String categoryId);
+  @GET(EndPoints.getCartProduct)
+  Future<CartProductsModel> getCartProduct();
+  @POST(EndPoints.addToCart)
+ Future<void> addToCart(@Body() Map<String, dynamic> body);
+  @DELETE(EndPoints.deleteFromCart)
+  Future<void> deleteFromCart(@Path() String productId);
+
+
 
 }
