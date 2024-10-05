@@ -8,6 +8,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -98,6 +99,8 @@ import '../../features/wishlist_feature/domain/use_cases/get_wishlist_data_use_c
 import '../../features/wishlist_feature/presentation/manager/wishlist_cubit.dart'
     as _i644;
 import '../api/api_manger.dart' as _i339;
+import '../api/dio_factory.dart' as _i1008;
+import '../api/new_api_manger.dart' as _i385;
 import '../cache/storage_token.dart' as _i170;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -111,9 +114,19 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    final dioFactory = _$DioFactory();
     gh.factory<_i764.AccountCubit>(() => _i764.AccountCubit());
-    gh.singleton<_i339.APiManger>(() => _i339.APiManger());
+    gh.singleton<_i361.Dio>(() => dioFactory.getDio());
     gh.singleton<_i170.StorageToken>(() => _i170.StorageToken());
+    gh.factory<_i385.NewApiManger>(() => _i385.NewApiManger(gh<_i361.Dio>()));
+    gh.singleton<_i339.APiManger>(() => _i339.APiManger(gh<_i361.Dio>()));
+    gh.factory<_i813.HomeRemoteDataSource>(
+        () => _i1001.HomeRemoteDataSourceImpl(
+              gh<_i339.APiManger>(),
+              gh<_i385.NewApiManger>(),
+            ));
+    gh.factory<_i1021.HomeRepo>(
+        () => _i327.HomeRepoImpl(gh<_i813.HomeRemoteDataSource>()));
     gh.factory<_i435.AuthRemoteDataSource>(() => _i593.AuthRemoteDataSourceImpl(
           gh<_i339.APiManger>(),
           gh<_i170.StorageToken>(),
@@ -127,6 +140,10 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i339.APiManger>(),
               gh<_i170.StorageToken>(),
             ));
+    gh.factory<_i756.GetAllBrandUseCase>(
+        () => _i756.GetAllBrandUseCase(gh<_i1021.HomeRepo>()));
+    gh.factory<_i265.GetAllCategoryUseCase>(
+        () => _i265.GetAllCategoryUseCase(gh<_i1021.HomeRepo>()));
     gh.factory<_i1025.ProductRemoteDatasource>(
         () => _i433.AllProductRemoteDatasourceImpl(gh<_i339.APiManger>()));
     gh.factory<_i185.ProductRepo>(
@@ -137,8 +154,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i558.CategoryRemoteDataSourceImp(gh<_i339.APiManger>()));
     gh.factory<_i729.GetAllProductUseCase>(
         () => _i729.GetAllProductUseCase(gh<_i185.ProductRepo>()));
-    gh.factory<_i813.HomeRemoteDataSource>(
-        () => _i1001.HomeRemoteDataSourceImpl(gh<_i339.APiManger>()));
+    gh.factory<_i235.CategoryHomeCubit>(
+        () => _i235.CategoryHomeCubit(gh<_i265.GetAllCategoryUseCase>()));
     gh.factory<_i537.AddToCartUseCase>(
         () => _i537.AddToCartUseCase(gh<_i147.CartRepo>()));
     gh.factory<_i303.DeleteFromCartUseCas>(
@@ -149,8 +166,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i548.UpdateProductQuantityUseCase(gh<_i147.CartRepo>()));
     gh.factory<_i751.AuthRepo>(
         () => _i662.AuthRepoImpl(gh<_i435.AuthRemoteDataSource>()));
-    gh.factory<_i1021.HomeRepo>(
-        () => _i327.HomeRepoImpl(gh<_i813.HomeRemoteDataSource>()));
+    gh.factory<_i148.BrandHomeCubit>(
+        () => _i148.BrandHomeCubit(gh<_i756.GetAllBrandUseCase>()));
     gh.factory<_i25.LogInUseCase>(
         () => _i25.LogInUseCase(gh<_i751.AuthRepo>()));
     gh.factory<_i960.SignUpUseCase>(
@@ -163,10 +180,6 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i156.WishlistRepo>(
         () => _i946.WishlistRepoImpl(gh<_i818.WishlistRemoteDataSource>()));
-    gh.factory<_i265.GetAllCategoryUseCase>(
-        () => _i265.GetAllCategoryUseCase(gh<_i1021.HomeRepo>()));
-    gh.factory<_i756.GetAllBrandUseCase>(
-        () => _i756.GetAllBrandUseCase(gh<_i1021.HomeRepo>()));
     gh.singleton<_i888.AuthCubit>(() => _i888.AuthCubit(
           gh<_i960.SignUpUseCase>(),
           gh<_i25.LogInUseCase>(),
@@ -175,14 +188,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i449.CategoryRepoImpl(gh<_i1034.CategoryRemoteDataSource>()));
     gh.factory<_i947.GetProductCubit>(
         () => _i947.GetProductCubit(gh<_i729.GetAllProductUseCase>()));
-    gh.factory<_i235.CategoryHomeCubit>(
-        () => _i235.CategoryHomeCubit(gh<_i265.GetAllCategoryUseCase>()));
     gh.factory<_i491.GetCategoryUseCase>(
         () => _i491.GetCategoryUseCase(gh<_i709.CategoryRepo>()));
     gh.factory<_i119.GetSubcategoryUseCase>(
         () => _i119.GetSubcategoryUseCase(gh<_i709.CategoryRepo>()));
-    gh.factory<_i148.BrandHomeCubit>(
-        () => _i148.BrandHomeCubit(gh<_i756.GetAllBrandUseCase>()));
     gh.factory<_i786.CategoryCubit>(
         () => _i786.CategoryCubit(gh<_i491.GetCategoryUseCase>()));
     gh.factory<_i505.AddToWishlistUseCase>(
@@ -201,3 +210,5 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$DioFactory extends _i1008.DioFactory {}
