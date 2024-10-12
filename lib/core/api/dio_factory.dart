@@ -8,8 +8,6 @@ import '../service_locator/config.dart';
 @module
 abstract class DioFactory {
   // Method to provide Dio instance as a singleton
-
-
   @singleton
   Dio getDio(StorageToken storageToken) {
     const Duration timeOut = Duration(seconds: 30);
