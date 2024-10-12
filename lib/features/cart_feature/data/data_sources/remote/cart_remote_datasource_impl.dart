@@ -22,8 +22,6 @@ class CartRemoteDatasourceImpl implements CartRemoteDatasource {
   @override
   Future<Either<Failure, CartProductsModel>> getCartProduct() async {
     try {
-      String? token = await storageToken.getToken();
-
       CartProductsModel cartProductsModel = await newApiManger.getCartProduct();
       return right(cartProductsModel);
     } catch (e) {
@@ -38,7 +36,6 @@ class CartRemoteDatasourceImpl implements CartRemoteDatasource {
   @override
   Future<Either<Failure, String>> addToCart(String productId) async {
     try {
-
       await newApiManger.addToCart({
         "productId": productId,
       });
@@ -63,7 +60,7 @@ class CartRemoteDatasourceImpl implements CartRemoteDatasource {
   @override
   Future<Either<Failure, String>> deleteFromCart(String productId) async {
     try {
-         await newApiManger.deleteFromCart(productId);
+      await newApiManger.deleteFromCart(productId);
       // String? token = await storageToken.getToken();
       // await aPiManger.delete("${EndPoints.deleteFromCart}/$productId",
       //     header: {'Content-Type': 'application/json', "token": token});

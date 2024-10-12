@@ -9,6 +9,7 @@ import 'package:retrofit/http.dart';
 import '../../features/cart_feature/data/models/CartProductsModel.dart';
 import '../../features/home/data/models/CategoryModel.dart';
 import '../../features/products_feature/data/models/ProductModel.dart';
+import '../../features/wishlist_feature/data/models/ProductModel.dart';
 import 'end_points.dart';
 
 part 'new_api_manger.g.dart';
@@ -37,4 +38,10 @@ abstract class NewApiManger {
 
   @DELETE(EndPoints.deleteFromCart)
   Future<void> deleteFromCart(@Path() String productId);
+  @GET(EndPoints.getWishlistData)
+  Future<WishlistProductModel> getWishlistData();
+  @POST(EndPoints.addToWishList)
+  Future<void> addToWishList(@Body() Map<String, dynamic> body);
+  @DELETE(EndPoints.deleteFromWishList)
+  Future<void> deleteFromWishList(@Path() String productId);
 }

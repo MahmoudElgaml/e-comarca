@@ -141,11 +141,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i339.APiManger>(),
           gh<_i170.StorageToken>(),
         ));
-    gh.factory<_i818.WishlistRemoteDataSource>(
-        () => _i872.WishlistRemoteDataSourceImpl(
-              gh<_i339.APiManger>(),
-              gh<_i170.StorageToken>(),
-            ));
     gh.factory<_i756.GetAllBrandUseCase>(
         () => _i756.GetAllBrandUseCase(gh<_i1021.HomeRepo>()));
     gh.factory<_i265.GetAllCategoryUseCase>(
@@ -156,6 +151,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i253.CartRepoImpl(gh<_i266.CartRemoteDatasource>()));
     gh.factory<_i1034.CategoryRemoteDataSource>(
         () => _i558.CategoryRemoteDataSourceImp(gh<_i339.APiManger>()));
+    gh.factory<_i818.WishlistRemoteDataSource>(
+        () => _i872.WishlistRemoteDataSourceImpl(
+              gh<_i339.APiManger>(),
+              gh<_i170.StorageToken>(),
+              gh<_i385.NewApiManger>(),
+            ));
     gh.factory<_i729.GetAllProductUseCase>(
         () => _i729.GetAllProductUseCase(gh<_i185.ProductRepo>()));
     gh.factory<_i235.CategoryHomeCubit>(
