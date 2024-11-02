@@ -1,7 +1,8 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
-@lazySingleton
+
 @injectable
+@singleton
 class StorageToken {
   final _storage = const FlutterSecureStorage();
   String? _token;

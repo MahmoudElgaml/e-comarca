@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:e_comarce_clean/core/erorr/failure.dart';
+import 'package:e_comarce_clean/features/auth/data/models/UserModel.dart';
+import 'package:e_comarce_clean/features/category_feature/data/models/SubCategoryModel.dart';
 import 'package:e_comarce_clean/features/home/data/models/BrandModel.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
@@ -29,6 +31,9 @@ abstract class NewApiManger {
 
   @GET(EndPoints.getProductBaseOnCategory)
   Future<ProductModel> getProductBaseOnCategory(@Path() String categoryId);
+  @GET(EndPoints.getProductBaseOnCategory)
+  Future<SubCategoryModel> getProductBaseOnCategoryForCategory(@Path() String categoryId);
+
 
   @GET(EndPoints.getCartProduct)
   Future<CartProductsModel> getCartProduct();
@@ -44,4 +49,7 @@ abstract class NewApiManger {
   Future<void> addToWishList(@Body() Map<String, dynamic> body);
   @DELETE(EndPoints.deleteFromWishList)
   Future<void> deleteFromWishList(@Path() String productId);
+
+  @POST(EndPoints.logIn)
+  Future<UserModel> signIn(@Body() Map<String, dynamic> body);
 }
