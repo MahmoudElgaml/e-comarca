@@ -1,6 +1,6 @@
 import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/core/services/validation_service.dart';
-import 'package:e_comarce_clean/features/auth/data/models/SignUserModel.dart';
+import 'package:e_comarce_clean/features/auth/data/models/request/SignUserModel.dart';
 import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:e_comarce_clean/features/auth/presentation/widgets/social_button.dart';
 import 'package:flutter/material.dart';

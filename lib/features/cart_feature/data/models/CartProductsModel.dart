@@ -1,8 +1,6 @@
 import 'package:e_comarce_clean/features/cart_feature/domain/entities/CartProduct.dart';
-import 'package:e_comarce_clean/features/products_feature/data/models/ProductModel.dart';
-import 'package:e_comarce_clean/features/products_feature/data/models/ProductModel.dart';
-import 'package:e_comarce_clean/features/products_feature/data/models/ProductModel.dart';
-import 'package:e_comarce_clean/features/products_feature/data/models/ProductModel.dart';
+
+
 
 class CartProductsModel extends CartDataEntity {
   CartProductsModel({
@@ -64,13 +62,13 @@ class Products extends CartProducts {
     count = json['count'];
     id = json['_id'];
     product =
-        json['product'] != null ? ProductModel.fromJson(json['product']) : null;
+        json['product'] != null ? ProductsModel.fromJson(json['product']) : null;
     price = json['price'];
   }
 }
 
-class ProductModel extends CartProduct {
-  ProductModel({
+class ProductsModel extends CartProduct {
+  ProductsModel({
     this.subcategory,
     this.id2,
     super.title,
@@ -82,7 +80,7 @@ class ProductModel extends CartProduct {
     super.id,
   });
 
-  ProductModel.fromJson(dynamic json) {
+  ProductsModel.fromJson(dynamic json) {
     if (json['subcategory'] != null) {
       subcategory = [];
       json['subcategory'].forEach((v) {

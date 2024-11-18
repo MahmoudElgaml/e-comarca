@@ -1,4 +1,4 @@
-import 'package:e_comarce_clean/features/auth/data/models/SignUserModel.dart';
+import 'package:e_comarce_clean/features/auth/data/models/request/SignUserModel.dart';
 import 'package:e_comarce_clean/features/auth/domain/entities/UserEntity.dart';
 import 'package:e_comarce_clean/features/auth/domain/use_cases/log_in_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

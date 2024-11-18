@@ -8,12 +8,14 @@ import 'package:e_comarce_clean/features/category_feature/data/models/SubCategor
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/api/end_points.dart';
+import '../../../../../core/api/new_api_manger.dart';
 
 @Injectable(as: CategoryRemoteDataSource)
 class CategoryRemoteDataSourceImp implements CategoryRemoteDataSource {
   APiManger apiManger;
+  NewApiManger newApiManger;
 
-  CategoryRemoteDataSourceImp(this.apiManger);
+  CategoryRemoteDataSourceImp(this.apiManger,this.newApiManger);
 
   @override
   Future<Either<Failure, Category2Model>> getAllCategory() async {
@@ -35,9 +37,10 @@ class CategoryRemoteDataSourceImp implements CategoryRemoteDataSource {
   Future<Either<Failure, SubCategoryModel>> getSubCategory(
       String categoryId) async {
     try {
-      var response = await apiManger.get("${EndPoints.getProductBaseOnCategory}$categoryId");
-      SubCategoryModel subCategoryModel =
-          SubCategoryModel.fromJson(response.data);
+      // var response = await apiManger.get("${EndPoints.getProductBaseOnCategory}$categoryId");
+      // SubCategoryModel subCategoryModel =
+      //     SubCategoryModel.fromJson(response.data);
+      SubCategoryModel subCategoryModel = await newApiManger.getProductBaseOnCategoryForCategory(categoryId);
       return right(subCategoryModel);
     } catch (e) {
       if (e is DioException) {

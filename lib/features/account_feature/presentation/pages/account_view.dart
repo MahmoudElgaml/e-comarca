@@ -22,7 +22,6 @@ class AccountView extends StatefulWidget {
 class _AccountViewState extends State<AccountView> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         surfaceTintColor: Colors.transparent,
@@ -31,11 +30,10 @@ class _AccountViewState extends State<AccountView> {
       ),
       body: BlocBuilder<AccountCubit, AccountState>(
         builder: (context, state) {
-          if(state is AccountNotLoggedState){
+          if (state is AccountNotLoggedState) {
             return const NoLoggedWidget();
-          }
-          else if(state is AccountIsLoggedState){
-            User? user=getIt<AuthCubit>().signedUser?.user;
+          } else if (state is AccountIsLoggedState) {
+            User? user = getIt<AuthCubit>().signedUser?.user;
             return CustomScrollView(
               //crossAxisAlignment: CrossAxisAlignment.start,
               slivers: [
@@ -47,12 +45,12 @@ class _AccountViewState extends State<AccountView> {
                   title: Column(
                     children: [
                       Text(
-                        "Welcome,${user!.name} ",
+                        "Welcome,${user?.name} ",
                         style: AppStyle.style18(context),
                       ),
                       const Gap(5),
                       Text(
-                        user.email??"",
+                        user?.email ?? "",
                         style: AppStyle.style14(context)
                             .copyWith(color: const Color(0x9906004E)),
                       ),
@@ -60,18 +58,19 @@ class _AccountViewState extends State<AccountView> {
                   ),
                 ),
                 const SliverToBoxAdapter(child: Gap(40)),
-                 SliverFillRemaining(
+                SliverFillRemaining(
                   hasScrollBody: false,
                   child: Column(
                     children: [
                       CustomTextFiled(
-                          title: "Your full name", hint: user.name??""),
+                          title: "Your full name", hint: user?.name ?? ""),
                       CustomTextFiled(
-                          title: "Your E-mail", hint: user.email??""),
-                      CustomTextFiled(title: "Your password", hint: "*******"),
-                      CustomTextFiled(
+                          title: "Your E-mail", hint: user?.email ?? ""),
+                      const CustomTextFiled(
+                          title: "Your password", hint: "*******"),
+                      const CustomTextFiled(
                           title: "Your mobile number", hint: "01061746848"),
-                      CustomTextFiled(
+                      const CustomTextFiled(
                           title: "Your Address",
                           hint: "6th October, street 11....."),
                     ],
@@ -79,11 +78,9 @@ class _AccountViewState extends State<AccountView> {
                 )
               ],
             );
+          } else {
+            return const Center(child: CircularProgressIndicator());
           }
-          else{
-           return Center(child: const CircularProgressIndicator());
-          }
-
         },
       ),
     );
