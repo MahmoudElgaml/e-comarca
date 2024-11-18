@@ -16,6 +16,7 @@ class AllProductRemoteDatasourceImpl implements ProductRemoteDatasource {
 
   AllProductRemoteDatasourceImpl(this.aPiManger,this.newApiManger);
 
+
   @override
   Future<Either<Failure, ProductModel>> getAllProduct(String categoryId) async {
     try {
