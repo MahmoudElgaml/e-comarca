@@ -9,21 +9,25 @@ import 'package:e_comarce_clean/features/wishlist_feature/data/models/ProductMod
 import 'package:e_comarce_clean/features/wishlist_feature/domain/entities/WishProductEntity.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/api/new_api_manger.dart';
+
 @Injectable(as: WishlistRemoteDataSource)
 class WishlistRemoteDataSourceImpl implements WishlistRemoteDataSource {
   APiManger aPiManger;
   StorageToken storageToken;
+  NewApiManger newApiManger;
 
-  WishlistRemoteDataSourceImpl(this.aPiManger, this.storageToken);
+  WishlistRemoteDataSourceImpl(
+      this.aPiManger, this.storageToken, this.newApiManger);
 
   @override
   Future<Either<Failure, WishlistProductModel>> getWishlistData() async {
-    String? token = await storageToken.getToken();
     try {
-      var response = await aPiManger
-          .get(EndPoints.getWishlistData, header: {"token": token});
-      WishlistProductModel productModel =
-          WishlistProductModel.fromJson(response.data);
+      var productModel = await newApiManger.getWishlistData();
+      // var response = await aPiManger
+      //     .get(EndPoints.getWishlistData, header: {"token": token});
+      // WishlistProductModel productModel =
+      //     WishlistProductModel.fromJson(response.data);
       return right(productModel);
     } catch (e) {
       if (e is DioException) {
@@ -38,9 +42,14 @@ class WishlistRemoteDataSourceImpl implements WishlistRemoteDataSource {
   Future<Either<Failure, String>> addToWishlist(String productId) async {
     String? token = await storageToken.getToken();
     try {
-      var response = await aPiManger.post(
-          EndPoints.addToWishList, {"productId": productId},
-          header: {"token": token});
+      await newApiManger.addToWishList(
+        {
+          "productId": productId,
+        },
+      );
+      // var response = await aPiManger.post(
+      //     EndPoints.addToWishList, {"productId": productId},
+      //     header: {"token": token});
 
       return right("success");
     } catch (e) {
@@ -54,12 +63,13 @@ class WishlistRemoteDataSourceImpl implements WishlistRemoteDataSource {
 
   @override
   Future<Either<Failure, String>> deleteFromWishlist(String productId) async {
-    String? token = await storageToken.getToken();
-    try {
-      var response = await aPiManger.delete(
-          "${EndPoints.deleteFromWishList}/$productId",
-          header: {"token": token});
 
+    try {
+      await newApiManger.deleteFromWishList(productId);
+      // var response = await aPiManger.delete(
+      //     "${EndPoints.deleteFromWishList}/$productId",
+      //     header: {"token": token});
+      //
       return right("success");
     } catch (e) {
       if (e is DioException) {
