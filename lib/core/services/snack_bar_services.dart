@@ -26,6 +26,7 @@ class SnackBarServices {
   }
 
   static void showErrorMessage(BuildContext context, String error) {
+    
     var snackBar = SnackBar(
       content: Text(
         error,
@@ -33,6 +34,26 @@ class SnackBarServices {
       ),
       padding: const EdgeInsets.all(15),
       duration: const Duration(seconds: 4),
+      backgroundColor: AppColor.authColor,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+  static void showNoInternetMessage(BuildContext context, String error) {
+    
+    var snackBar = SnackBar(
+      content: Text(
+        error,
+        style: AppStyle.styleMedium20(context).copyWith(color: Colors.white),
+      ),
+      padding: const EdgeInsets.all(15),
+      duration: const Duration(seconds: 10),
+      action: SnackBarAction(
+        textColor: Colors.black,
+        label: "Retry",
+        onPressed: () {
+          context.go(AppRoute.loginScreen);
+        },
+      ),
       backgroundColor: AppColor.authColor,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
