@@ -6,6 +6,7 @@ import 'package:e_comarce_clean/config/routes/routes.dart';
 import 'package:e_comarce_clean/config/themeing/light_theme.dart';
 import 'package:e_comarce_clean/core/cache/storage_token.dart';
 import 'package:e_comarce_clean/core/service_locator/config.dart';
+import 'package:e_comarce_clean/core/services/global_connection_service/cubit/global_connection_cubit.dart';
 import 'package:e_comarce_clean/core/services/loading_service.dart';
 import 'package:e_comarce_clean/features/auth/presentation/manager/auth_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -53,9 +54,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AuthCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => GlobalConnectionCubit()..checkConnection()..trackConnection()),
+        BlocProvider(create: (context) => getIt<AuthCubit>()),
+      ],
+    
       child: MaterialApp.router(
+
         locale: DevicePreview.locale(context),
         builder: EasyLoading.init(builder: DevicePreview.appBuilder),
         debugShowCheckedModeBanner: false,
