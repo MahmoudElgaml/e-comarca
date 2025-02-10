@@ -3,6 +3,7 @@ import 'package:e_comarce_clean/core/utils/app_color.dart';
 import 'package:e_comarce_clean/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:open_settings_plus/core/open_settings_plus.dart';
 
 class SnackBarServices {
   static void showUnLoggedMessage(BuildContext context) {
@@ -51,7 +52,16 @@ class SnackBarServices {
         textColor: Colors.black,
         label: "Retry",
         onPressed: () {
-          context.go(AppRoute.loginScreen);
+          switch (OpenSettingsPlus.shared) {
+               case OpenSettingsPlusAndroid settings: 
+                settings.wifi();
+                break;
+                case OpenSettingsPlusIOS settings:
+                settings.wifi();
+                break;
+                default:
+                throw Exception('Platform not supported');
+              }
         },
       ),
       backgroundColor: AppColor.authColor,
